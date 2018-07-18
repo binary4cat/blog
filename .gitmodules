@@ -1,3 +1,3 @@
-[submodule "themes/bootstrap4"]
-	path = themes/bootstrap4
-	url = https://github.com/haijiandong/hugo-theme-bootstrap4-blog.git
+[submodule "themes/hugo-theme-cleanwhite"]
+	path = themes/hugo-theme-cleanwhite
+	url = https://github.com/haijiandong/hugo-theme-cleanwhite.git
