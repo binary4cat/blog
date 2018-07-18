@@ -18,7 +18,7 @@ home = ["HTML", "RSS", "Algolia"]
 
 
 [params]
-  header_image = "img/home-bg-jeep.jpg"
+  header_image = "img/home-bg-naruto.jpg"
   SEOTitle = "海建东的博客 | haijd's Blog"
   description = "海建东 | 欢迎访问我的博客，希望能和你交个朋友。"
   keyword = "海建东, haijiandong, HaiJianDong, , Haijd, _Is2, Is2, 海建东的博客, Haijd Blog, 博客, 个人网站, 互联网, Web, 微服务, Microservice, golang , .Net, Java"
