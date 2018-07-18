@@ -1,0 +1,3 @@
+[submodule "themes/bootstrap4"]
+	path = themes/bootstrap4
+	url = https://github.com/haijiandong/hugo-theme-bootstrap4-blog.git

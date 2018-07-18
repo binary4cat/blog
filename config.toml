@@ -1,0 +1,4 @@
+baseURL = "http://haijiandong.github.io"
+languageCode = "en-us"
+title = "Haijd's Blog"
+theme = "bootstrap4"
