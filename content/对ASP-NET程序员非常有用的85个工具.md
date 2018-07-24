@@ -6,10 +6,11 @@ tags: ["转载","随笔"]
 categories: ASP.NET
 permalink: ASP-NET-85-Tools
 categories: ["ASP.NET"]
+---
 ## 介绍
 　　这篇文章列出了针对ASP.NET开发人员的有用工具。
 ## 工具
-------
+
 
 ### 1.Visual Studio
 1. [Visual Studio Productivity Power tool](https://visualstudiogallery.msdn.microsoft.com/34ebc6a2-2777-421d-8914-e29c1dfa7f5d)：Visual Studio专业版（及以上）的扩展，具有丰富的功能，如快速查找，导航解决方案，可搜索的附加参考对话框等
