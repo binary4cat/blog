@@ -1,7 +1,8 @@
+---
 title: 1、Hexo博客简介
 date: 2016-03-05T17:55:45+08:00
-tags: Hexo博客搭建
-categories: Hexo
+tags: ["Hexo博客搭建"]
+categories: ["Hexo"]
 permalink: Hexo-Getting-Started-1
 description: Hexo博客搭建
 ---

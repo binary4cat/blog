@@ -1,7 +1,8 @@
+---
 title: 数组(array)
 date: 2015-06-07T00:20:12+08:00
-tags: c#学习笔记
-categories: c#
+tags: ["c#学习笔记"]
+categories: ["c#"]
 permalink: c#-array
 description: 数组(array)
 ---

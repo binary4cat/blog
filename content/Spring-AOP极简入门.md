@@ -1,8 +1,8 @@
 ---
 title: Spring-AOP极简入门
 date: 2018-05-30T22:36:50+08:00
-categories: Java
-tags: Spring
+categories: ["Java"]
+tags: ["Spring"]
 permalink: Spring-AOP-Minimalist-Getting-Started
 description: SpringAop入门教程
 photos: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527701268185&di=7ca52773e094b8ee3c40a78ccdf701d9&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D4172169013%2C464131932%26fm%3D214%26gp%3D0.jpg

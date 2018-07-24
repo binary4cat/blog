@@ -1,7 +1,8 @@
+---
 title: 泛型(generic)
 date: 2015-05-22T16:17:54+08:00
-tags: c#学习笔记
-categories: c#
+tags: ["c#学习笔记"]
+categories: ["c#"]
 permalink: c#-generic
 description: 泛型(generic)
 ---

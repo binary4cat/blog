@@ -1,8 +1,8 @@
 ---
 title: Java基础：this&super关键字
 date: 2017-4-10 19:23:27
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink: Java-this&super-keyword
 description: Java基础：this&super关键字
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg

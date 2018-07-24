@@ -1,8 +1,8 @@
 ---
 title: Go语言基础知识
 date: 2017-08-11T21:53:08+08:00
-categories: Golang
-tags: Golang入门
+categories: ["Golang"]
+tags: ["Golang入门"]
 permalink:
 description:
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg

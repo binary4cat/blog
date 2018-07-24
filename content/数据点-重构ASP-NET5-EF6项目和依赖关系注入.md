@@ -1,11 +1,10 @@
+---
 title: 数据点-重构ASP.NET5/EF6项目和依赖关系注入
 date: 2016-02-16T13:05:29+08:00
-tags:
-- ASP.NET Core
-- 转载
+tags: ["ASP.NET Core","转载"]
 categories: ASP.NET
 permalink: Data-ASP-NET5-EF6-reconstruction-projects-and-dependency-injection
-description: 数据点-重构ASP.NET5/EF6项目和依赖关系注入
+categories: ["ASP.NET"]
 ---
 
 就在截稿时间之前，Microsoft 宣布了更改 ASP.NET 5 和相关堆叠的名称。ASP.NET 5 已更名为 ASP.NET Core 1.0。Entity Framework (EF) 7 已更名为 Entity Framework (EF) Core 1.0。虽然 ASP.NET 5 和 EF7 程序包以及命名空间将会发生变化，但新的命名法不会对本文中的课程造成任何影响。

@@ -1,8 +1,8 @@
 ---
 title: RabbitMQ快速上手
 date: 2017-04-11T20:18:59+08:00
-categories: Message queue
-tags: RabbitMQ
+categories: ["Message queue"]
+tags: ["RabbitMQ"]
 permalink: RabbitMQ_Quick_Start_Guide
 description: RabbitMQ快速上手
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fej0bq1oryj206404hmwy.jpg

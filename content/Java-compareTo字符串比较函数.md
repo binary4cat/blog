@@ -1,8 +1,8 @@
 ---
 title: Java compareTo字符串比较函数
 date: 2017-12-10T19:23:27+08:00
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink: Java-compareTo-String-Function
 description: compareTo字符串比较函数
 photos: 

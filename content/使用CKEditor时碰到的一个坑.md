@@ -1,8 +1,8 @@
 ---
 title: 使用CKEditor时碰到的一个坑
 date: 2017-02-26T21:54:03+08:00
-categories: Frontend
-tags: 前端组件
+categories: ["Frontend"]
+tags: ["前端组件"]
 permalink: use-ckeditor-error
 description: 使用CKEditor时碰到的一个坑
 photos:

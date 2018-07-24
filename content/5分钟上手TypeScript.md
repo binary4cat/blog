@@ -1,8 +1,8 @@
 ---
 title: 5分钟概览TypeScript
 date: 2018-04-15T20:03:07+08:00
-categories: Frontend
-tags: TypeScript
+categories: ["Frontend"]
+tags: ["TypeScript"]
 permalink: 5-minutes-to-fit-the-TypeScript
 description: 5分钟快速概览上手TypeScript
 photos: https://lc-mhke0kuv.cn-n1.lcfile.com/4efd9a4018b57efdcf77.png

@@ -1,8 +1,8 @@
 ---
 title: 在树莓派3上部署qiandao.today签到程序
 date: 2017-03-15T20:41:35+08:00
-categories: Raspberry
-tags: 树莓派应用
+categories: ["Raspberry"]
+tags: ["树莓派应用"]
 permalink: Raspberry-pie3-deployed-on-the-qiandao.today-check-in-procedures
 description: 在树莓派3上部署qiandao.today签到程序
 photos:

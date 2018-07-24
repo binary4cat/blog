@@ -1,10 +1,8 @@
 ---
 title: Java基础：JAVA基本类型和包装类
 date: 2017-05-27T19:45:09+08:00
-categories: Java
-tags: 
-- Java基础
-- 转载
+categories: ["Java"]
+tags: ["Java基础","转载"]
 permalink:
 description: Java基础：JAVA基本类型和包装类
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg

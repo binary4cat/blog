@@ -1,8 +1,8 @@
 ---
 title: GO环境安装部署
 date: 2017-08-08T21:50:58+08:00
-categories: Golang
-tags: Golang入门
+categories: ["Golang"]
+tags: ["Golang入门"]
 permalink: 
 description: GO环境安装部署
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg

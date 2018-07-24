@@ -1,7 +1,8 @@
+---
 title: 11、Umbraco入门总结
 date: 2016-01-10T14:05:19+08:00
-tags: Umbraco入门
-categories: Umbraco
+tags: ["Umbraco入门"]
+categories: ["Umbraco"]
 permalink: Umbraco-Getting-Started-11
 description: Umbraco入门教程
 ---

@@ -1,8 +1,8 @@
 ---
 title: 异常(try语句)
 date: 2015-05-19T17:29:08+08:00
-tags: c#学习笔记
-categories: c#
+tags: ["c#学习笔记"]
+categories: ["c#"]
 permalink: Exceptions-try-statements
 description: 异常(try语句)
 ---

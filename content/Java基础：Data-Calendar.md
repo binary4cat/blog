@@ -1,8 +1,8 @@
 ---
 title: Java基础：Data&Calendar
 date: 2017-05-25T19:18:10+08:00
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink:
 description: Java基础：Data&Calendar
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmdrn8b8i8j20go0dejrs.jpg

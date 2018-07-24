@@ -1,8 +1,8 @@
 ---
 title: Java基础：List接口
 date: 2017-06-14T22:00:58+08:00
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink: 
 description: Java中的List接口
 photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.png

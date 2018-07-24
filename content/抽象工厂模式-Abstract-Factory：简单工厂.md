@@ -1,8 +1,8 @@
 ---
 title: 抽象工厂模式(Abstract Factory)：简单工厂
 date: 2016-01-15T17:28:48+08:00
-tags: 设计模式学习笔记
-categories: 设计模式
+tags: ["设计模式学习笔记"]
+categories: ["设计模式"]
 permalink: Abstract-Factory-simple-factory
 description: 抽象工厂模式(Abstract Factory)：简单工厂
 ---

@@ -1,7 +1,8 @@
+---
 title: angular.module()的简单使用
 date: 2015-07-13T23:17:26+08:00
-tags: AngularJS
-categories: Frontend
+tags: ["AngularJS"]
+categories: ["Frontend"]
 permalink: Angular-module-simple-to-use
 description: angular.module()的简单使用
 ---

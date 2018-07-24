@@ -1,7 +1,8 @@
+---
 title: 4、UmbracoNewsSite：Templates展示内容数据
 date: 2016-01-04T16:45:02+08:00
-tags: Umbraco入门
-categories: Umbraco
+tags: ["Umbraco入门"]
+categories: ["Umbraco"]
 permalink: Umbraco-Getting-Started-4
 description: Umbraco入门教程
 ---

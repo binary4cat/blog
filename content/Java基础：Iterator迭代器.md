@@ -1,8 +1,8 @@
 ---
 title: Java基础：Iterator迭代器
 date: 2017-06-03T19:43:42+08:00
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink: 
 description: Iterator迭代器概述和应用
 photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.png

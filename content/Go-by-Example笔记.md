@@ -1,8 +1,8 @@
 ---
 title: Go by Example笔记
 date: 2017-10-26T20:59:43+08:00
-categories: Golang
-tags: Golang入门
+categories: ["Golang"]
+tags: ["Golang入门"]
 permalink: Go-by-Example
 description: Go by Example笔记，思维导图
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg

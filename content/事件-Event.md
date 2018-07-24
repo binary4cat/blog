@@ -1,8 +1,8 @@
 ---
 title: 事件(Event)
 date: 2015-05-21T23:07:00+08:00
-tags: c#学习笔记
-categories: c#
+tags: ["c#学习笔记"]
+categories: ["c#"]
 permalink: c#-Event
 description: c#事件
 ---

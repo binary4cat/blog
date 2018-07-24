@@ -1,7 +1,8 @@
+---
 title: 'c#类型、存储和变量'
 date: 2015-05-13T22:02:53+08:00
-tags: c#学习笔记
-categories: c#
+tags: ["c#学习笔记"]
+categories: ["c#"]
 permalink: C-#-types-storage-and-variable
 description: c#类型、存储和变量
 ---

@@ -1,8 +1,8 @@
 ---
 title: Go标准库笔记Ⅰ：IO
 date: 2017-10-14T16:56:24+08:00
-categories: Golang
-tags: Go标准库
+categories: ["Golang"]
+tags: ["Go标准库"]
 permalink: GO标准库笔记Ⅰ-IO
 description: GO标准库笔记Ⅰ：IO
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg

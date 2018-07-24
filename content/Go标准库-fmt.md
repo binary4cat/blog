@@ -1,8 +1,8 @@
 ---
 title: Go语言标准库-fmt
 date: 2017-08-23T20:56:34+08:00
-categories: Golang 
-tags: Golang入门
+categories: ["Golang"]
+tags: ["Golang入门"]
 permalink:
 description: Go标准库-fmt
 photos: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503503176164&di=3178bb0b334068f911022455b9f48b80&imgtype=0&src=http%3A%2F%2F7viirv.com1.z0.glb.clouddn.com%2Fgolang.jpg

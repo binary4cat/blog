@@ -1,8 +1,8 @@
 ---
 title: 适配器模式(Adapter)
 date: 2016-01-12T20:52:41+08:00
-tags: 设计模式学习笔记
-categories: 设计模式
+tags: ["设计模式学习笔记"]
+categories: ["设计模式"]
 permalink: Design-patterns-Adapter
 description: 适配器模式(Adapter)
 ---

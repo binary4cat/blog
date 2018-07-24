@@ -1,8 +1,8 @@
 ---
 title: 单例模式(Singleton)
 date: 2016-01-11T11:26:52+08:00
-tags: 设计模式学习笔记
-categories: 设计模式
+tags: ["设计模式学习笔记"]
+categories: ["设计模式"]
 permalink: Design-patterns-Singleton
 description: 单例模式(Singleton)
 ---

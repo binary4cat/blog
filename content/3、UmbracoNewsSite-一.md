@@ -1,7 +1,8 @@
+---
 title: 3、UmbracoNewsSite：文档类型设置
 date: 2016-01-03T13:37:04+08:00
-tags: Umbraco入门
-categories: Umbraco
+tags: ["Umbraco入门"]
+categories: ["Umbraco"]
 permalink: Umbraco-Getting-Started-3
 description: Umbraco入门教程
 ---

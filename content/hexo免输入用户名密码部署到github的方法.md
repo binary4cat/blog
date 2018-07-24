@@ -1,7 +1,8 @@
+---
 title: hexo免输入用户名密码部署到github的方法
 date: 2016-01-22T23:34:58+08:00
-tags: Hexo博客搭建
-categories: Hexo
+tags: ["Hexo博客搭建"]
+categories: ["Hexo"]
 permalink: Hexo-Getting-Started-9
 description: hexo免输入用户名密码部署到github的方法
 ---

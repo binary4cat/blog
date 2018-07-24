@@ -1,7 +1,8 @@
+---
 title: Guid.ToString()的格式化重载
 date: 2016-04-20T22:35:06+08:00
-tags: c#基础知识
-categories: c#
+tags: ["c#基础知识"]
+categories: ["c#"]
 permalink: Guid-ToString-overload-of-the-format
 description: Guid.ToString()的格式化重载
 ---

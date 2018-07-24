@@ -1,8 +1,8 @@
 ---
 title: Java基础：泛型
 date: 2017-06-08T22:37:01+08:00
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink:
 description: Java泛型学习
 photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.png

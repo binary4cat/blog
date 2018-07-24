@@ -1,7 +1,8 @@
+---
 title: HTML辅助方法
 date: 2015-08-02T23:15:02+08:00
-tags: Asp.Net MVC
-categories: Asp.Net MVC
+tags: ["Asp.Net MVC"]
+categories: ["Asp.Net MVC"]
 permalink: HTML-helper-methods
 description: HTML辅助方法
 ---

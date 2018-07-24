@@ -1,8 +1,8 @@
 ---
 title: bootstrap-fileinput组件在上传时传递额外参数
 date: 2016-11-23T20:54:46+08:00
-tags: 前端组件
-categories: Frontend
+tags: ["前端组件"]
+categories: ["Frontend"]
 permalink: bootstrap-fileinput-uploadExtraData
 description: bootstrap-fileinput组件在上传时传递额外参数
 photos:

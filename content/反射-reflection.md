@@ -1,8 +1,8 @@
 ---
 title: 反射(reflection)
 date: 2015-06-18T16:01:14+08:00
-tags: c#学习笔记
-categories: c#
+tags: ["c#学习笔记"]
+categories: ["c#"]
 permalink: c#-reflection
 description: 反射(reflection)
 ---

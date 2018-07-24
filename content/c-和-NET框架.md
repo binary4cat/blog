@@ -1,7 +1,8 @@
+---
 title: 'c#和.NET框架'
 date: 2015-05-12T00:24:34+08:00
-tags: c#学习笔记
-categories: c#
+tags: ["c#学习笔记"]
+categories: ["c#"]
 permalink: C-#-and-the-NET-Framework
 description: c#和.NET框架
 ---

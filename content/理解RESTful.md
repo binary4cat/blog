@@ -1,8 +1,8 @@
 ---
 title: 理解RESTful
 date: 2016-02-24T23:37:09+08:00
-tags: ASP.NET Web API笔记
-categories: ASP.NET Web API
+tags: ["ASP.NET Web API笔记"]
+categories: ["ASP.NET Web API"]
 permalink: Understanding-RESTful
 description: 理解RESTful
 ---

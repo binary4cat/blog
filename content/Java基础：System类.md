@@ -1,8 +1,8 @@
 ---
 title: Java基础：System类
 date: 2017-05-28T21:48:41+08:00
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink:
 description: System类
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg

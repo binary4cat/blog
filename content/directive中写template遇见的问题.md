@@ -1,7 +1,8 @@
+---
 title: directive中写template遇见的问题
 date: 2015-07-18T23:51:57+08:00
-tags: AngularJS
-categories: Frontend
+tags: ["AngularJS"]
+categories: ["Frontend"]
 permalink: Write-the-template-directive-met-problems
 description: directive中写template遇见的问题
 ---

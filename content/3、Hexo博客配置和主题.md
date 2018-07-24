@@ -1,7 +1,8 @@
+---
 title: 3、Hexo博客配置和主题
 date: 2016-03-05T23:16:49+08:00
-tags: Hexo博客搭建
-categories: Hexo
+tags: ["Hexo博客搭建"]
+categories: ["Hexo"]
 permalink: Hexo-Getting-Started-3
 description: Hexo博客搭建
 ---

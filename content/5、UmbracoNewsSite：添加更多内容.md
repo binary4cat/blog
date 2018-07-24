@@ -1,7 +1,8 @@
+---
 title: 5、UmbracoNewsSite：添加css和js文件
 date: 2016-01-05T10:41:40+08:00
-tags: Umbraco入门
-categories: Umbraco
+tags: ["Umbraco入门"]
+categories: ["Umbraco"]
 permalink: Umbraco-Getting-Started-5
 description: Umbraco入门教程
 ---

@@ -1,8 +1,8 @@
 ---
 title: Java基础：Map接口
 date: 2017-06-20T22:13:42+08:00
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink: 
 description: Java中的Map接口使用概述
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg

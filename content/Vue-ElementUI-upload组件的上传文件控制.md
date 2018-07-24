@@ -1,8 +1,8 @@
 ---
 title: Vue-ElementUI upload组件的上传文件控制
 date: 2018-06-14T10:06:13+08:00
-categories: Frontend
-tags: Vue
+categories: ["Frontend"]
+tags: ["Vue"]
 permalink: Vue-ElementUI-upload-file-controller
 description: Vue-ElementUI upload组件的上传文件控制，上传失败文件的复原，作为表单时的填充
 photos: https://cdn-images-1.medium.com/max/1003/1*M20GkaLW-OBcz6-ifDAJEg.png

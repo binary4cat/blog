@@ -1,8 +1,8 @@
 ---
 title: Java基础：数值类型操作
 date: 2017-05-30T23:51:32+08:00
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink:
 description: Java基础：数值类型操作
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg

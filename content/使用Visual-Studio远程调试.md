@@ -1,8 +1,8 @@
 ---
 title: 使用Visual Studio远程调试
 date: 2017-04-12T21:18:28+08:00
-categories: Tool
-tags: Visual Studio
+categories: ["Tool"]
+tags: ["Visual Studio"]
 permalink: Using-the-Visual-Studio-Remote-debugging
 description: Using the Visual Studio Remote debugging
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficp8vja6yj20zk0k0wen.jpg

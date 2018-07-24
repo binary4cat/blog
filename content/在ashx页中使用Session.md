@@ -1,8 +1,8 @@
 ---
 title: 在ashx页中使用Session
 date: 2016-03-20T23:30:19+08:00
-tags: WebForm
-categories: ASP.NET
+tags: ["WebForm"]
+categories: ["ASP.NET"]
 permalink: Ashx-pages-use-Session
 description: 在ashx页中使用Session
 ---

@@ -1,7 +1,8 @@
+---
 title: 8、使用SSH方式部署博客
 date: 2016-05-14T01:35:24+08:00
-tags: Hexo博客搭建
-categories: Hexo
+tags: ["Hexo博客搭建"]
+categories: ["Hexo"]
 permalink: Hexo-Getting-Started-1
 description: Hexo博客搭建
 ---

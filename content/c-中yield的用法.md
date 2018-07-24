@@ -1,7 +1,8 @@
+---
 title: 'c#中yield的用法'
 date: 2016-03-26T17:01:24+08:00
-tags: c#基础知识
-categories: c#
+tags: ["c#基础知识"]
+categories: ["c#"]
 permalink: Usage-of-yield-in-c-#
 description: c#中yield的用法
 ---

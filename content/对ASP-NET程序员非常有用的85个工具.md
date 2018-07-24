@@ -2,12 +2,10 @@
 title: 对ASP.NET程序员非常有用的85个工具
 description: 对ASP.NET程序员非常有用的85个工具
 date: 2016-10-09T23:01:48+08:00
-tags: 
-- 转载
-- 随笔
+tags: ["转载","随笔"]
 categories: ASP.NET
 permalink: ASP-NET-85-Tools
----
+categories: ["ASP.NET"]
 ## 介绍
 　　这篇文章列出了针对ASP.NET开发人员的有用工具。
 ## 工具

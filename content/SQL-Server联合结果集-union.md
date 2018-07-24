@@ -1,7 +1,8 @@
+---
 title: SQL Server联合结果集(union)
 date: 2015-04-10T20:46:09+08:00
-tags: SQL Server
-categories: SQL
+tags: ["SQL Server"]
+categories: ["SQL"]
 permalink: SQL-Server-union
 description: SQL Server联合结果集(union)
 ---

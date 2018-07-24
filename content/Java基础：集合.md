@@ -1,8 +1,8 @@
 ---
 title: Java基础：集合
 date: 2017-06-01T20:28:49+08:00
-categories: Java
-tags: Java基础
+categories: ["Java"]
+tags: ["Java基础"]
 permalink:
 description:
 photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.png

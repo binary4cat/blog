@@ -1,7 +1,8 @@
+---
 title: 5、Hexo博客的写作
 date: 2016-03-07T21:12:55+08:00
-tags: Hexo博客搭建
-categories: Hexo
+tags: ["Hexo博客搭建"]
+categories: ["Hexo"]
 permalink: Hexo-Getting-Started-6
 description: Hexo博客搭建
 ---

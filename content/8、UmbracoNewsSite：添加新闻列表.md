@@ -1,7 +1,8 @@
+---
 title: 8、UmbracoNewsSite：添加新闻列表
 date: 2016-01-08T12:20:45+08:00
-tags: Umbraco入门
-categories: Umbraco
+tags: ["Umbraco入门"]
+categories: ["Umbraco"]
 permalink: Umbraco-Getting-Started-8
 description: Umbraco入门教程
 ---

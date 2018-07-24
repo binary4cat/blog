@@ -1,8 +1,8 @@
 ---
 title: Spring Core Annotations
 date: 2018-06-12T10:15:12+08:00
-categories: Java
-tags: Spring Annotations
+categories: ["Java"]
+tags: ["Spring Annotations"]
 permalink: Spring-Core-Annotations-1
 description: Spring 核心注解
 photos: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528780019766&di=68e5f2f2eef5b87bf5b5d54455fe994f&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D2161947716%2C2940818680%26fm%3D214%26gp%3D0.jpg
