@@ -1,6 +1,6 @@
 ---
 title: Java基础：final&匿名类&代码块
-date: 2017-4-23 15:23:27
+date: 2017-04-23T15:23:27+08:00
 categories: ["Java"]
 tags: ["Java基础"]
 permalink: Java-final-class-code
