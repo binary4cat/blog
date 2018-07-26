@@ -2,7 +2,7 @@
 title: 4、Hexo博客主题的修改
 date: 2016-03-06T22:54:10+08:00
 tags: ["Hexo博客搭建"]
-categories: ["Hexo"]
+categories: ["Blog"]
 permalink: Hexo-Getting-Started-4
 description: Hexo博客搭建
 ---

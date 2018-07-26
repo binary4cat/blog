@@ -2,7 +2,7 @@
 title: Hexo标签分类写错的处理
 date: 2016-07-18T01:17:13+08:00
 tags: ["Hexo博客搭建"]
-categories: ["Hexo"]
+categories: ["Blog"]
 permalink: Hexo-misspelled-tag
 description: Hexo标签分类写错的处理
 ---

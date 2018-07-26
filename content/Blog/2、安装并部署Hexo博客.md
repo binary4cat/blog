@@ -2,7 +2,7 @@
 title: 2、安装并部署Hexo博客
 date: 2016-03-05T20:46:11+08:00
 tags: ["Hexo博客搭建"]
-categories: ["Hexo"]
+categories: ["Blog"]
 permalink: Hexo-Getting-Started-2
 description: Hexo博客搭建
 ---

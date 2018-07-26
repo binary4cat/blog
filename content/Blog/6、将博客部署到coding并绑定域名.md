@@ -2,7 +2,7 @@
 title: 6、将博客部署到coding并绑定域名
 date: 2016-03-08T21:52:33+08:00
 tags: ["Hexo博客搭建"]
-categories: ["Hexo"]
+categories: ["Blog"]
 permalink: Hexo-Getting-Started-6
 description: Hexo博客搭建
 ---
