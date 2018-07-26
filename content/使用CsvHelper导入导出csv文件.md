@@ -3,7 +3,7 @@ title: 使用CsvHelper导入导出csv文件
 photos: 
 date: 2017-02-25T00:39:03+08:00
 categories: ["c#"]
-tags: ["- ASP.NET","- ASP.NET MVC"]
+tags: ["ASP.NET","ASP.NET MVC"]
 permalink: Use-CsvHelper-ReadOrWrite-csvFile
 description: 使用CsvHelper导入导出csv文件
 ---

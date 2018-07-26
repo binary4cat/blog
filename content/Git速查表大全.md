@@ -2,7 +2,6 @@
 title: Git速查表大全
 date: 2016-02-12T22:06:36+08:00
 tags: ["Git学习","转载"]
-categories: Git
 permalink: Git-quick-reference-table-greatly-entire
 categories: ["Git"]
 ---

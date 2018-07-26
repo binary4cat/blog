@@ -2,7 +2,6 @@
 title: ASP.NET存储过程操作
 date: 2015-04-06T17:21:22+08:00
 tags: ["SQL Server","转载"]
-categories: SQL
 permalink: ASP-NET-stored-procedure-operations
 categories: ["SQL"]
 ---

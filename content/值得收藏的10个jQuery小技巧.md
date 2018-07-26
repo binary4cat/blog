@@ -2,7 +2,6 @@
 title: 值得收藏的10个jQuery小技巧
 date: 2016-03-25T21:25:54+08:00
 tags: ["jQuery","转载"]
-categories: Frontend
 permalink: Collector-10-jQuery-tips
 categories: ["Frontend"]
 ---

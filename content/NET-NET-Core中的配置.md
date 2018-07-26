@@ -2,7 +2,6 @@
 title: .NET-.NET Core中的配置
 date: 2016-02-20T13:31:43+08:00
 tags: ["ASP.NET Core","转载"]
-categories: ASP.NET
 permalink: NET-NET-in-the-Core-Configuration
 categories: ["ASP.NET"]
 ---

@@ -3,7 +3,7 @@ baseURL = "http://www.hais2.com/"
 languageCode = "en-us"
 title = "Haijd's Blog"
 # Enable comments by entering your Disqus shortname
-# disqusShortname = ""
+disqusShortname = "HaijdBlog"
 # Enable Google Analytics by entering your tracking code
 # googleAnalytics = ""
 paginate = 20
@@ -33,8 +33,8 @@ theme = "sublime-hugo-theme"
 	title = "Haijd's Blog"
 	bio = "one coder."
 	bio2 = "beijing china"
-  categories = "CATEGORIES"
-  tags = "TAGS"
+  	categories = "CATEGORIES"
+  	tags = "TAGS"
 	subscribe = "LOOK ME."
 
 	# Enable Google search

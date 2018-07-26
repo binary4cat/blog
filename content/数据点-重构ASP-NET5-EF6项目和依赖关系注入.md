@@ -2,7 +2,6 @@
 title: 数据点-重构ASP.NET5/EF6项目和依赖关系注入
 date: 2016-02-16T13:05:29+08:00
 tags: ["ASP.NET Core","转载"]
-categories: ASP.NET
 permalink: Data-ASP-NET5-EF6-reconstruction-projects-and-dependency-injection
 categories: ["ASP.NET"]
 ---
