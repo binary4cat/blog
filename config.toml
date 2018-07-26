@@ -1,4 +1,4 @@
-baseURL = "http://www.hais2.com"
+baseURL = "http://www.hais2.com/"
 # remember trailing / at end of baseurl
 languageCode = "en-us"
 title = "Haijd's Blog"
