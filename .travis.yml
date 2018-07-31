@@ -13,7 +13,7 @@ deploy:
         branch: master
     local_dir: public
     repo: hjdo/hjdo.github.io
-    fqdn: http://hjdo.github.io
+    fqdn: 
     target_branch: master
     email: haijiandong@outlook.com
     name: haijd
