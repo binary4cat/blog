@@ -1,4 +1,4 @@
-baseURL = "http://www.hais2.com/"
+baseURL = "http://hjdo.github.io/"
 # remember trailing / at end of baseurl
 languageCode = "en-us"
 title = "Haijd's Blog"
@@ -46,4 +46,4 @@ theme = "sublime-hugo-theme"
 		url = "mailto:haijiandong@outlook.com"
   [[params.offcanvas.socialnetworks]]
 		name = "GITHUB"
-		url = "https://github.com/haijiandong"
+		url = "https://github.com/hjdo"

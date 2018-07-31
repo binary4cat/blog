@@ -12,8 +12,8 @@ deploy:
     on:
         branch: master
     local_dir: public
-    repo: haijiandong/haijiandong.github.io
-    fqdn: http://www.hais2.com
+    repo: hjdo/hjdo.github.io
+    fqdn: http://hjdo.github.io
     target_branch: master
     email: haijiandong@outlook.com
-    name: haijiandong
+    name: haijd
