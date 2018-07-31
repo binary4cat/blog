@@ -2,7 +2,7 @@
 title: 枚举(enumerate)
 date: 2015-06-04T23:14:38+08:00
 tags: ["c#学习笔记"]
-categories: ["c#"]
+categories: ["cSharp"]
 permalink: c#-enumerate
 description: 枚举(enumerate)
 ---

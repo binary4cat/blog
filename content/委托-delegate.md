@@ -2,7 +2,7 @@
 title: 委托(delegate)
 date: 2015-05-20T16:47:52+08:00
 tags: ["c#学习笔记"]
-categories: ["c#"]
+categories: ["cSharp"]
 permalink: c#-delegate
 description: 委托(delegate)
 ---

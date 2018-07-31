@@ -2,7 +2,7 @@
 title: 接口(interface)
 date: 2015-06-03T01:08:11+08:00
 tags: ["c#学习笔记"]
-categories: ["c#"]
+categories: ["cSharp"]
 permalink: c#-interface
 description: 接口(interface)
 ---

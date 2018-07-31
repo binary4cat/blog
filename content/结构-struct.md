@@ -2,7 +2,7 @@
 title: 结构(struct)
 date: 2015-05-24T23:26:37+08:00
 tags: ["c#学习笔记"]
-categories: ["c#"]
+categories: ["cSharp"]
 permalink: c#-struct
 description: 结构(struct)
 ---

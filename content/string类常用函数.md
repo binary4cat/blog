@@ -2,7 +2,7 @@
 title: string类常用函数和属性
 date: 2016-02-03T01:25:40+08:00
 tags: ["c#基础知识"]
-categories: ["c#"]
+categories: ["cSharp"]
 permalink: String-class-functions-and-properties
 description: string类常用函数和属性
 ---
