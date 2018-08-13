@@ -7,8 +7,26 @@ permalink:
 description:
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 ---
-## strings库常见例子
-### `strings.Contains()`包含
+<!-- TOC -->
+
+- [1. strings库常见例子](#1-strings%E5%BA%93%E5%B8%B8%E8%A7%81%E4%BE%8B%E5%AD%90)
+    - [1.1. `strings.Contains()`包含](#11-stringscontains%E5%8C%85%E5%90%AB)
+    - [1.2. `strings.Index()`索引](#12-stringsindex%E7%B4%A2%E5%BC%95)
+    - [1.3. `strings.Split()`切割](#13-stringssplit%E5%88%87%E5%89%B2)
+    - [1.4. `strings.Join()`合并](#14-stringsjoin%E5%90%88%E5%B9%B6)
+    - [1.5. `strings.HasPrefix() strings.HasSuffix()`是否包含前、后缀](#15-stringshasprefix-stringshassuffix%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E5%89%8D%E3%80%81%E5%90%8E%E7%BC%80)
+- [2. `strconv`库常用操作](#2-strconv%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C)
+    - [2.1. `Itoa`数字转字符串](#21-itoa%E6%95%B0%E5%AD%97%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2)
+    - [2.2. `Atoi`字符串转数字](#22-atoi%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97)
+    - [2.3. `ParseBool`字符串转bool类型](#23-parsebool%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%ACbool%E7%B1%BB%E5%9E%8B)
+    - [2.4. `ParseFloat`字符串转浮点数](#24-parsefloat%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%B5%AE%E7%82%B9%E6%95%B0)
+    - [2.5. `Format...`格式化](#25-format%E6%A0%BC%E5%BC%8F%E5%8C%96)
+
+<!-- /TOC -->
+# 1. strings库常见例子
+
+## 1.1. `strings.Contains()`包含
+
 ```Golang
 import(
     "fmt"
@@ -20,8 +38,9 @@ func main(){
     fmt.Println(strings.Contains(str,"?"))      //输出  false
 }
 ```
-<!--more-->
-### `strings.Index()`索引
+
+## 1.2. `strings.Index()`索引
+
 ```Golang
 import(
     "fmt"
@@ -32,7 +51,9 @@ func main(){
     fmt.Println(strings.Index(str,"w"))      //输出 6
 }
 ```
-### `strings.Split()`切割
+
+## 1.3. `strings.Split()`切割
+
 ```Golang
 import(
     "fmt"
@@ -43,7 +64,9 @@ func main(){
     fmt.Println(strings.Split(str,","))      //输出 [hello world]
 }
 ```
-### `strings.Join()`合并
+
+## 1.4. `strings.Join()`合并
+
 ```Golang
 import(
     "fmt"
@@ -54,7 +77,9 @@ func main(){
     fmt.Println(strings.Join(str,","))      //输出 hello,world
 }
 ```
-### `strings.HasPrefix() strings.HasSuffix()`是否包含前、后缀
+
+## 1.5. `strings.HasPrefix() strings.HasSuffix()`是否包含前、后缀
+
 ```Golang
 import(
     "fmt"
@@ -66,8 +91,11 @@ func main(){
     fmt.Println(strings.HasSuffix(str,"ld"))      //输出 true
 }
 ```
-## `strconv`库常用操作
-### `Itoa`数字转字符串
+
+# 2. `strconv`库常用操作
+
+## 2.1. `Itoa`数字转字符串
+
 ```Golang
 import(
     "fmt"
@@ -77,16 +105,19 @@ func main(){
     fmt.Println(strconv.Itoa(10))  //输出 10
 }
 ```
+
 - Itoa的内部实现:  
 可以看到是直接调用`FormatInt`函函数进行格式化的
 
 ```Golang
 // Itoa is shorthand for FormatInt(int64(i), 10).
 func Itoa(i int) string {
-	return FormatInt(int64(i), 10)
+    return FormatInt(int64(i), 10)
 }
 ```
-### `Atoi`字符串转数字
+
+## 2.2. `Atoi`字符串转数字
+
 ```Golang
 import(
     "fmt"
@@ -96,21 +127,24 @@ func main(){
     fmt.Println(strconv.Atoi("10"))  //输出 10 <nil>
 }
 ```
+
 - Atoi的内部实现:  
 内部调用了`ParseInt`函数进行转换，失败会将异常返回，所以传入的字符串必须是符合转换要求的
 
 ```Golang
 // Atoi returns the result of ParseInt(s, 10, 0) converted to type int.
 func Atoi(s string) (int, error) {
-	const fnAtoi = "Atoi"
-	i64, err := ParseInt(s, 10, 0)
-	if nerr, ok := err.(*NumError); ok {
-		nerr.Func = fnAtoi
-	}
-	return int(i64), err
+    const fnAtoi = "Atoi"
+    i64, err := ParseInt(s, 10, 0)
+    if nerr, ok := err.(*NumError); ok {
+        nerr.Func = fnAtoi
+    }
+    return int(i64), err
 }
 ```
-### `ParseBool`字符串转bool类型
+
+## 2.3. `ParseBool`字符串转bool类型
+
 ```Golang
 import(
     "fmt"
@@ -120,6 +154,7 @@ func main(){
     fmt.Println(strconv.ParseBool("true"))  //输出 true <nil>
 }
 ```
+
 - `ParseBool`的内部实现：   
 从内部实现可以看到这个函数需要的参数要求
 
@@ -128,16 +163,18 @@ func main(){
 // It accepts 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False.
 // Any other value returns an error.
 func ParseBool(str string) (bool, error) {
-	switch str {
-	case "1", "t", "T", "true", "TRUE", "True":
-		return true, nil
-	case "0", "f", "F", "false", "FALSE", "False":
-		return false, nil
-	}
-	return false, syntaxError("ParseBool", str)
+    switch str {
+    case "1", "t", "T", "true", "TRUE", "True":
+        return true, nil
+    case "0", "f", "F", "false", "FALSE", "False":
+        return false, nil
+    }
+    return false, syntaxError("ParseBool", str)
 }
 ```
-### `ParseFloat`字符串转浮点数
+
+## 2.4. `ParseFloat`字符串转浮点数
+
 ```Golang
 import(
     "fmt"
@@ -148,6 +185,7 @@ func main(){
     fmt.Println(strconv.ParseFloat("1.11",32))  //输出 1.1100000143051147 <nil>
 }
 ```
+
 - `ParseFloat`的内部实现：
 可以看到内部最终是把转换后的浮点数放到float64类型中返回的
 
@@ -170,14 +208,16 @@ func main(){
 // away from the largest floating point number of the given size,
 // ParseFloat returns f = ±Inf, err.Err = ErrRange.
 func ParseFloat(s string, bitSize int) (float64, error) {
-	if bitSize == 32 {
-		f, err := atof32(s)
-		return float64(f), err
-	}
-	return atof64(s)
+    if bitSize == 32 {
+        f, err := atof32(s)
+        return float64(f), err
+    }
+    return atof64(s)
 }
 ```
-### `Format...`格式化
+
+## 2.5. `Format...`格式化
+
 ```Golang
 import(
     "fmt"
@@ -185,24 +225,26 @@ import(
 )
 func main(){
     fmt.Println(strconv.FormatBool(true)) //输出 true(字符串)
-	fmt.Println(strconv.FormatFloat(1.123, 'e', 2, 32))  //输出 1.12e+00(字符串)
-	fmt.Println(strconv.FormatInt(222,2))   //输出 11011110(字符串)
- 	fmt.Println(strconv.FormatUint(123,10))  //输出 123(字符串)
+    fmt.Println(strconv.FormatFloat(1.123, 'e', 2, 32))  //输出 1.12e+00(字符串)
+    fmt.Println(strconv.FormatInt(222,2))   //输出 11011110(字符串)
+    fmt.Println(strconv.FormatUint(123,10))  //输出 123(字符串)
 }
 ```
+
 - `FormatBool`内部实现：   
 内部实现比较简单，直接if判断返回相应的字符串
 
 ```Golang
 // FormatBool returns "true" or "false" according to the value of b
 func FormatBool(b bool) string {
-	if b {
-		return "true"
-	}
-	return "false"
+    if b {
+        return "true"
+    }
+    return "false"
 }
 ```
-- `FormatFloat`内部实现：   
+
+- `FormatFloat`内部实现： 
 可以看到源码注释很详细：需要4个参数分别是：
     - f : 要转换的浮点数
     - fmt : 格式标记(b、e、E、f、g、G)
@@ -233,6 +275,7 @@ func FormatFloat(f float64, fmt byte, prec, bitSize int) string {
 	return string(genericFtoa(make([]byte, 0, max(prec+4, 24)), f, fmt, prec, bitSize))
 }
 ```
+
 - `FormatInt`内部实现:    
 可以看到第二个参数`base`表示进制，调用了`formatBits`这个函数对int进行了转换
 
@@ -241,7 +284,7 @@ func FormatFloat(f float64, fmt byte, prec, bitSize int) string {
 // for 2 <= base <= 36. The result uses the lower-case letters 'a' to 'z'
 // for digit values >= 10.
 func FormatInt(i int64, base int) string {
-	_, s := formatBits(nil, uint64(i), base, i < 0, false)
-	return s
+    _, s := formatBits(nil, uint64(i), base, i < 0, false)
+    return s
 }
 ```
