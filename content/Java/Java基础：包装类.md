@@ -25,16 +25,16 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 
 <!--more-->
 
-| 基本类型    | 大小    | 包装器类型     |
-|---------|-------|-----------|
-| boolean | /     | Boolean   |
-| char    | 16bit | Character |
-| byte    | 8bit  | Byte      |
-| short   | 16bit | Short     |
-| int     | 32bit | Integer   |
-| long    | 64bit | Long      |
-| float   | 32bit | Float     |
-| double  | 64bit | Double    |
+| 基本类型 | 大小  | 包装器类型 |
+| -------- | ----- | ---------- |
+| boolean  | /     | Boolean    |
+| char     | 16bit | Character  |
+| byte     | 8bit  | Byte       |
+| short    | 16bit | Short      |
+| int      | 32bit | Integer    |
+| long     | 64bit | Long       |
+| float    | 32bit | Float      |
+| double   | 64bit | Double     |
 ## Java中的包装器类有两个主要的目的：
 - 提供一种机制，将基本值“包装”到对象中，从而使基本值能够包含在为对象而保留的操作中，比如添加到Collections 中，或者从带对象返回值的方法中返回。注意，java5增加了自动装箱和拆箱，程序员过去需手工执行的许多包装操作，现在可以由java自动处理了。
 - 为基本值提供分类功能。这些功能大多数于各种转换有关：在基本值和String对象间相互转换，在基本值和String对象之间按不同基数转换，如二进制、八进制和十六进制。
@@ -53,21 +53,25 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 
 ### 定义
 - 在前面的文章中提到，Java为每种基本数据类型都提供了对应的包装器类型，至于为什么会为每种基本数据类型提供包装器类型在此不进行阐述，有兴趣的朋友可以查阅相关资料。在Java SE5之前，如果要生成一个数值为10的Integer对象，必须这样进行：
+
 ```Java
 Integer i = new Integer(100);
 ```
 - 而在从Java SE5开始就提供了自动装箱的特性，如果要生成一个数值为10的Integer对象，只需要这样就可以了：
+
 ```Java
 int i = 100;
 ```
 - 这个过程中会自动根据数值创建对应的 Integer对象，这就是装箱。
 - 那什么是拆箱呢？顾名思义，跟装箱对应，就是自动将包装器类型转换为基本数据类型：
+
 ```Java
 Integer i = 10; //装箱
 int index = i;  //拆箱
 ```
 - 简单一点说，装箱就是自动将基本数据类型转换为包装器类型；拆箱就是自动将包装器类型转换为基本数据类型。
 - 注意：
+
 ```Java
 Integer test = null;
 int f = test.intValue();
@@ -76,6 +80,7 @@ int f = test.intValue();
 
 ### 实现机制
 - 我们就以Interger类为例，下面看一段代码：
+
 ```Java
 public static void main(String[] args){
     Integer i = 10; //装箱
@@ -92,6 +97,7 @@ public static void main(String[] args){
 ## 面试问题
 - 虽然大多数人对装箱和拆箱的概念都清楚，但是在面试和笔试中遇到了与装箱和拆箱的问题却不一定会答得上来。下面列举一些常见的与装箱/拆箱有关的面试题，建议先自己尝试编译看源码做做。
     - 下面这段代码的输出结果是什么？
+
 ```Java
 public class Main {
     public static void main(String[] args) {
@@ -106,19 +112,21 @@ public class Main {
 }
 ```
 也许有些朋友会说都会输出false，或者也有朋友会说都会输出true。这里注意“==”和“equal”的区别：
-| 基本类型   | ==         | equals     |
-|--------|------------|------------|
-| 字符串变量  | 对象在内存中的首地址 | 字符串内容      |
+| 基本类型     | ==                   | equals               |
+| ------------ | -------------------- | -------------------- |
+| 字符串变量   | 对象在内存中的首地址 | 字符串内容           |
 | 非字符串变量 | 对象在内存中的首地址 | 对象在内存中的首地址 |
-| 基本类型   | 值          | 不可用        |
-| 包装类    | 地址         | 内容         |
+| 基本类型     | 值                   | 不可用               |
+| 包装类       | 地址                 | 内容                 |
 
 结果：
+
 ```shell
 true
 false
 ```
 为什么会出现这样的结果？输出结果表明 i1 和 i2 指向的是同一个对象，而 i3 和 i4 指向的是不同的对象。此时只需一看源码便知究竟，下面这段代码是Integer的`valueOf`方法的具体实现：
+
 ```Java
 public static Integer valueOf(int i) {
     if(i >= -128 && i <= IntegerCache.high)
@@ -130,6 +138,7 @@ public static Integer valueOf(int i) {
 从这2段代码可以看出，在通过valueOf方法创建Integer对象的时候，如果数值在 [-128,127] 之间，便返回指向IntegerCache.cache中已经存在的对象的引用；否则创建一个新的Integer对象。
 上面的代码中 i1 和 i2 的数值为100，因此会直接从cache中取已经存在的对象，所以 i1 和 i2 指向的是同一个对象，而 i3 和 i4 则是分别指向不同的对象。
 - 下面这段代码的输出结果是什么？
+
 ```Java
 public class Main {
     public static void main(String[] args) {
@@ -151,6 +160,7 @@ false
 在这里只解释一下为什么Double类的valueOf方法会采用与Integer类的valueOf方法不同的实现。很简单：在某个范围内的整型数值的个数是有限的，而浮点数却不是。
 注意，Integer、Short、Byte、Character、Long这几个类的valueOf方法的实现是类似的，Double、Float的valueOf方法的实现是类似的。
 - 下面这段代码的输出结果是什么？
+
 ```Java
 public class Main {
     public static void main(String[] args) {
@@ -168,12 +178,14 @@ public class Main {
 true
 true
 至于为什么是这个结果，同样地，看了Boolean类的源码也会一目了然。下面是Boolean的valueOf方法的具体实现：
+
 ```Java
 public static Boolean valueOf(boolean b) {
     return (b ? TRUE : FALSE);
 }
 ```
 至于TRUE和FALSE的定义：
+
 ```Java
 /**
      * The {@code Boolean} object corresponding to the primitive
@@ -192,6 +204,7 @@ public static Boolean valueOf(boolean b) {
     - 在执行效率和资源占用上的区别。第二种方式的执行效率和资源占用在一般性情况下要优于第一种情况（注意这并不是绝对的）。
 
 下面这段代码的输出结果是什么？
+
 ```Java
 public class Main {
     public static void main(String[] args) {
@@ -215,6 +228,7 @@ public class Main {
 }
 ```
 先别看输出结果，读者自己想一下这段代码的输出结果是什么。这里面需要注意的是：当 “==” 运算符的两个操作数都是 包装器类型的引用，则是比较指向的是否是同一个对象，而如果其中有一个操作数是表达式（即包含算术运算）则比较的是数值（即会触发自动拆箱的过程）。另外，对于包装器类型，equals方法并不会进行类型转换。明白了这2点之后，上面的输出结果便一目了然：
+
 ```shell
 true
 false

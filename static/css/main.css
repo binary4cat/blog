@@ -220,6 +220,7 @@ table {
 td,
 th {
     padding: 0;
+    border-style: outset;
 }
 
 .site-wrapper,
@@ -1006,7 +1007,6 @@ footer {
     bottom: 0;
     left: 0;
     text-align: center;
-    position: inherit;
 }
 
 footer small {

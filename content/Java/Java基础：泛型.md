@@ -30,6 +30,7 @@ photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.
 <!--more-->
 ### 泛型类
 - 定义格式：
+
 ```java
 class ArrayList<E>{ 
     public boolean add(E e){ }
@@ -39,6 +40,7 @@ class ArrayList<E>{
 
 - 使用格式：
     - 创建对象时，确定泛型的类型
+
 ```java
 ArrayList<String> list = new ArrayList<String>();
 //此时，变量E的值就是String类型
@@ -58,11 +60,13 @@ class ArrayList<Integer>{
 
 ### 泛型的方法
 - 定义格式：
+
 ```java
 public <T> T[] toArray(T[] a){  } 
 ```
 
 - 使用格式：调用方法时，确定泛型的类型
+
 ```java
 //变量T的值就是String类型
 public <String> String[] toArray(String[] a){ 
@@ -76,6 +80,7 @@ public <Integer> Integer[] toArray(Integer[] a){
 
 ### 泛型的接口 
 - 带有泛型的接口
+
 ```java
 public interface List <E>{
     abstract boolean add(E e);
@@ -93,6 +98,7 @@ public static void function(){
 ### 泛型的通配符   
 - 泛型的通配符就相当于给泛型穿了一个Object类型，也就是可以给泛型传递任何类型的参数。
 - 用在集合中，那么就相当于之前的没有使用泛型的集合，因为没有限制了。
+
 ```java
 public class Test {
     public static void main(String[] args) {
@@ -116,6 +122,7 @@ public class Test {
 
 ### 泛型的限定
 - 由于通配符太灵活了，容易出错，所以引入了限制条件，这就是限定通配符
+
 ```java
 class Parent  {}
 class Subclass extends Parent {}

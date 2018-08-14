@@ -22,12 +22,12 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 - 权限修饰符有哪些
 	- 在Java中提供了四种访问权限，使用不同的访问权限时，被修饰的内容会有不同的访问权限  
 
-| 范围           | public | protected | default | private |
-|:--------------|:--------|:-----------|:---------|:---------|
-| 同一类中         | ✔      | ✔         | ✔       | ✔       |
+| 范围                   | public | protected | default | private |
+| :--------------------- | :----- | :-------- | :------ | :------ |
+| 同一类中               | ✔      | ✔         | ✔       | ✔       |
 | 同一包中(子类与无关类) | ✔      | ✔         | ✔       |         |
-| 不同包的子类       | ✔      | ✔         |         |         |
-| 不同包中的无关类     | ✔      |           |         |         |
+| 不同包的子类           | ✔      | ✔         |         |         |
+| 不同包中的无关类       | ✔      |           |         |         |
 <!--more-->
 - 要想仅能在本类中访问使用`private`修饰；
 - 要想本包中的类都可以访问不加修饰符即可；
@@ -52,6 +52,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 #### 修饰类能够使用的修饰符：
 - 修饰类只能使用`public`、默认的、`final`、`abstract`关键字
 - 使用最多的是`public`关键字
+
 ```Java
 public class Test {} //最常用的方式
 class Test2{}
@@ -68,6 +69,7 @@ public abstract class Test4{}
 - `final` : 最终的
 - `static` : 静态的
 - 使用最多的是`private`
+
 ```Java
 public int i = 100;
 protected int i2 = 100;
@@ -84,6 +86,7 @@ public static int i6 = 100;
 - 	: 默认的
 - `private` ：私有的
 - 使用最多的是`public`
+
 ```Java
 public Test(){} //最常用的方式
 protected Test(){}
@@ -101,6 +104,7 @@ private Test(){}
 - `static` : 静态的
 - `abstract` : 抽象的
 - 使用最多的是`public`
+
 ```Java
 public void method1(){}//最常用的方式
 protected void method2(){}

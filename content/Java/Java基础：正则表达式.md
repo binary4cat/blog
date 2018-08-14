@@ -69,6 +69,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmdrn8b8i8j20go0dejrs.jpg
 	
 	
 ### 匹配示例
+
 ```Java
 /*
 *  检查手机号码是否合法
@@ -97,6 +98,7 @@ public static void checkQQ(){
 
 
 ### 切割示例
+
 ```Java
 /*
 * String类方法split对字符串进行切割
@@ -144,6 +146,7 @@ public static void splitExample(){
 
 
 ### 替换示例
+
 ```Java
 /*
 * 将字符串中出现的所有数字替换掉

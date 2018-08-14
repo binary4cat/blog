@@ -67,6 +67,7 @@ photos: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527
 ## 2.3. 代码示例:
 
 接口`IHello`：
+
 ```java
 package Proxy_1;
 
@@ -76,6 +77,7 @@ public interface IHello {
 ```
 
 被代理对象`Hello`：
+
 ```java
 package Proxy_1;
 
@@ -89,6 +91,7 @@ public class Hello implements IHello {
 
 代理实现类`ProxyHandler`：
 Java规定，代理实现类必须继承`InvocationHandler`接口，并且实现其`invoke`方法。
+
 ```java
 package Proxy_1;
 
@@ -121,6 +124,7 @@ public class ProxyHandler implements InvocationHandler {
 ```
 
 测试类`TestProxy`：
+
 ```java
 import Proxy_1.Hello;
 import Proxy_1.IHello;
@@ -138,6 +142,7 @@ public class TestProxy {
 ```
 
 输出：
+
 ```shell
 Before sayHello
 Hello World!
@@ -162,6 +167,7 @@ cglib和Java动态代理的主要区别：
 
 代理对象`Hello`：
 使用cglib不需要实现任何接口。
+
 ```java
 package dome_1;
 
@@ -174,6 +180,7 @@ public class Hello {
 
 Cglib代理类`CglibProxyHandler`:
 需要继承cglib库的`MethodInterceptor`的`intercept`方法，该方法类似于JDK代理的`invoke`方法。
+
 ```java
 package dome_1;
 
@@ -207,6 +214,7 @@ public class CglibProxyHandler implements MethodInterceptor {
 ```
 
 测试类`TestProxy`:
+
 ```java
 import dome_1.CglibProxyHandler;
 import dome_1.Hello;
@@ -222,6 +230,7 @@ public class TestProxy {
 ```
 
 执行结果：
+
 ```shell
 Before sayHello
 Hello World!
@@ -231,6 +240,7 @@ After sayHello
 # 4. Spring AOP的实现
 
 ## 4.1. 使用IDEA创建一个Maven项目，添加下列依赖：
+
 ```java
 <dependencies>
         <dependency>
@@ -267,6 +277,7 @@ After sayHello
 ```
 
 ## 4.2. 创建代理类`Hello`：
+
 ```java
 package spring_aop;
 
@@ -364,6 +375,7 @@ public class MyAdvice {
 ```
 
 ## 4.5. 测试类`TestAop`:
+
 ```java
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import spring_aop.Hello;
@@ -384,6 +396,7 @@ public class TestAop {
 ```
 
 ## 4.6. 输出：
+
 ```shell
 我是前置通知
 我是环绕在切入点之前的通知

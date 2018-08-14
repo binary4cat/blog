@@ -17,6 +17,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ### Math类的方法
 - `public static double sqrt(double a)`
     - 返回参数的平方根  
+
 ```Java
 public static void function(){
 double d = Math.sqrt(7);
@@ -27,7 +28,8 @@ double d = Math.sqrt(7);
 
 <!--more-->
 - `static double pow(double a, double b)`
-    - 返回a的b次方  
+    - 返回a的b次方 
+	
 ```Java
 public static void function(){
    	double d = Math.pow(2, 3);
@@ -38,6 +40,7 @@ public static void function(){
 
 - `static double floor(double d)`
 	- 返回小于或者等于参数d的最大整数(地板函数)    
+
 ```Java
 public static void function(){
    	double d = Math.floor(1.5);
@@ -98,6 +101,7 @@ public static void function(){
 - BigInteger类概述和构造方法
     - BigInteger类可以对超大的数值进行操作(远超long类型的最大长度)
     - 构造方法中传递的字符串参数不允许出现数字以外的字符
+
 ```Java
 /*
 * BigInteger类的构造方法
@@ -113,6 +117,7 @@ public static void function(){
 
 
 - BigInteger类四则运算
+
 ```Java
 public static void function_1(){
 	BigInteger b1 = new BigInteger("5665464516451051581613661405146");
@@ -142,6 +147,7 @@ public static void function_1(){
     - BigDecimal可以操作超大型的浮点数据，提供高精度的浮点运算
 
 - 反例：
+
 ```Java
 /*
 * 下列计算结构都不是我们想象中的精度运算
@@ -156,6 +162,7 @@ System.out.println(1.301 / 100);//0.013009999999999999
 
 
 - BigDecimal类实现加法减法乘法
+
 ```Java
 public static void function(){
   	BigDecimal b1 =  new BigDecimal("0.09");
@@ -187,6 +194,7 @@ public static void function(){
             - `static int ROUND_DOWN` 直接舍去
             - `static int ROUND_HALF_UP` >= 0.5 向上+1
             - `static int ROUND_HALF_DOWN` > 0.5 向上+1 ,否则直接舍去
+			
 ```Java
 public static void function_1(){
 	BigDecimal b1 = new BigDecimal("1.1314");

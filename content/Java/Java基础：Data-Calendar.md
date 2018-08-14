@@ -58,6 +58,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmdrn8b8i8j20go0dejrs.jpg
 			    - mm      小时中的分钟
 	 		    - ss      秒
 	 		    - yyyy年MM月dd日 HH点mm分钟ss秒
+
 ```Java
 SimpleDateFormat myFmt=new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
 SimpleDateFormat myFmt1=new SimpleDateFormat("yy/MM/dd HH:mm"); 
@@ -74,6 +75,7 @@ System.out.println(myFmt1.format(now)); //输出：17/05/25 18:17
 			- 构造方法中,指定日期模式
 		- 子类对象,调用方法 parse 传递String,返回Date
 			- 注意: 时间和日期的模式yyyy-MM-dd, 必须和字符串中的时间日期匹配
+
 ```Java
 SimpleDateFormat myFmt=new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
 String now = "2017年05月25日 18时17分35秒";
@@ -90,6 +92,7 @@ System.out.println(myFmt.parse(now));  //输出：Thu May 25 18:17:35 CST 2017
 - 成员方法
 	- `getTime()` 把日历对象,转成Date日期对象
 	- `get(int field)` 获取指定日期类型的值
+
 ```Java
 Calendar c = Calendar.getInstance();
 // 获取年份
@@ -105,6 +108,7 @@ System.out.println(year + "年" + month + "月" + day + "日");
 - 成员方法
 	 `set(int field,int value)`  给指定的日期类型设置时间 (field代表了Calendar定义的一些字段，例如:Calendar.YEAR=1，再这里写1和Calendar.YEAR都可以，都是int常量数值，但是推荐使用Calendar.YEAR这种形式，因为比较容易识别，也不容易写错)
      `set(int year, int month, int date)`  设置指定的时间
+
 ```Java
 public static void CalendarFunc() {
 	Calendar c = Calendar.getInstance();
@@ -125,6 +129,7 @@ public static void CalendarFunc() {
 
 - 成员方法
 	- `add(int field, int value)` 进行整数的偏移(给当前日期类型增加或减少)
+
 ```Java
 public static void function_2() {
 	Calendar c = Calendar.getInstance();
@@ -144,6 +149,7 @@ public static void function_2() {
 ### set(int field,int value)和add(int field, int value)的区别
 - add：调整时间，在当前的时间的基础上增加或者减少，超过最大值，会全部增加。
 - set：设置时间，直接将指定的日期类型设置成指定的值，超过类型的最大值，会自动计算，例如set(Calendar.MONTH,13)，那么就会折合成1年零一个月，年份增加1年，月份为折合后的余数。
+
 ```Java
 Calendar c = Calendar.getInstance();
 c.set(2017,5, 25);

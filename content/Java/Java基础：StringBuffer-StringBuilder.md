@@ -33,6 +33,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 		- `reverse()`: 将缓冲区中的字符反转
 		- `String toString()`: 继承Object,重写toString()
 			-   将缓冲区中的所有字符,变成字符串
+			
 ```Java
 /*
 *   StringBuffer类的方法

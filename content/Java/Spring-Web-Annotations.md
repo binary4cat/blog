@@ -45,6 +45,7 @@ photos: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528
 
 
 来看一个简单的例子：
+
 ```Java
 @Controller
 class VehicleController {
@@ -57,6 +58,7 @@ class VehicleController {
 ```
 
 如果我们在类级别上应用此注释，我们可以为`@Controller`类中的所有处理程序方法(request handler)提供默认设置。唯一的区别就是Spring在寻找URL映射的时候，不仅仅只看方法或者类上面的配置，而是会结合起来：
+
 ```Java
 @Controller
 @RequestMapping(value = "/vehicles", method = RequestMethod.GET)
@@ -75,6 +77,7 @@ class VehicleController {
 
 # 3. `@RequestBody`
 使用`@RequestBody`注解可以将HTTP请求body体映射到一个对象：
+
 ```Java
 @PostMapping("/save")
 void saveVehicle(@RequestBody Vehicle vehicle) {
@@ -90,6 +93,7 @@ void saveVehicle(@RequestBody Vehicle vehicle) {
 此注解表示将方法参数绑定到URI模板变量。我们可以使用`@RequestMapping`注解指定URI模板变量，然后使用`@PathVariable`指定需要绑定的方法参数。
 
 我们可以使用`name`或者别名绑定，有`value`参数的例子：
+
 ```Java
 @RequestMapping("/{id}")
 Vehicle getVehicle(@PathVariable("id") long id) {
@@ -98,6 +102,7 @@ Vehicle getVehicle(@PathVariable("id") long id) {
 ```
 
 如果方法的参数名和URI模板变量的名称一致，那么我们就不需要在`@PathVariable`注解中指定了：
+
 ```Java
 @RequestMapping("/{id}")
 Vehicle getVehicle(@PathVariable long id) {
@@ -106,6 +111,7 @@ Vehicle getVehicle(@PathVariable long id) {
 ```
 
 此外，我们还可以标记这个URI模板变量是不是必需的：
+
 ```Java
 @RequestMapping("/{id}")
 Vehicle getVehicle(@PathVariable(required = false) long id) {
@@ -115,6 +121,7 @@ Vehicle getVehicle(@PathVariable(required = false) long id) {
 
 # 5. `@RequestParam`
 我们可以使用`@RequestParam`注解访问HTTP请求参数：
+
 ```Java
 @RequestMapping
 Vehicle getVehicleByParam(@RequestParam("id") long id) {
@@ -127,6 +134,7 @@ Vehicle getVehicleByParam(@RequestParam("id") long id) {
 除了一致的配置以外，当Spring从绑定的HTTP请求参数中获得了一个空值，或者根本没找到这个参数的时候，`@RequestParam`还可以为方法参数设置一个默认值，为了实现这一点，我们需要使用`defaultValue`这个参数：
 
 提供默认的值的情况下，`required`参数会被设置为`false`(博主注：也就是无论如何都赋一个值)：
+
 ```Java
 @RequestMapping("/buy")
 Car buyCar(@RequestParam(defaultValue = "5") int seatCount){
@@ -140,6 +148,7 @@ Car buyCar(@RequestParam(defaultValue = "5") int seatCount){
 
 ## 6.1. `@ResponseBody`
 如果我们对一个请求处理器(request handler)方法使用`@ResponseBody`注解，那么Spring会把这个方法的返回值当作响应本身(博主注：也就是不会当作视图名称返回，当作rest API使用可以返回json数据)：
+
 ```Java
 @ResponseBody
 @RequestMapping("/hello")
@@ -154,6 +163,7 @@ String hello() {
 使用这个注解，我们可以声明一个自定义的错误处理器(error handler)方法。当请求处理器(request handler)方法抛出任何指定的异常时，Spring会调用此自定义方法。
 
 被捕获的异常可以作为参数传递给方法：
+
 ```Java
 @ExceptionHandler(IllegalArgumentException.class)
 void onIllegalArgumentException(IllegalArgumentException exception) {
@@ -169,6 +179,7 @@ void onIllegalArgumentException(IllegalArgumentException exception) {
 另外，我们也可以使用`reason`参数提供一个“reason”。
 
 可以在`@ExceptionHandler`方法上使用`@ResponseStatus`：
+
 ```Java
 @ExceptionHandler(IllegalArgumentException.class)
 @ResponseStatus(value = HttpStatus.BAD_REQUEST,reason = "用户名和密码不匹配!")
@@ -186,6 +197,7 @@ void onIllegalArgumentException(IllegalArgumentException exception) {
 `@RestController`注解合并了`@Controller`和`@ResponseBody`这两个注解的功能。(博主注：也就是实现rest API的关键)
 
 因此，下面这两组代码实现的功能是相同的：
+
 ```Java
 @Controller
 @ResponseBody
@@ -193,6 +205,7 @@ class VehicleRestController {
     // ...
 }
 ```
+
 ```Java
 @RestController
 class VehicleRestController {
@@ -202,6 +215,7 @@ class VehicleRestController {
 
 ## 7.2. `@ModelAttribute`
 通过这个注解我们可以通过设置的数据模型(model)`key`访问已经在MVC控制器中的数据模型(model)：
+
 ```Java
 @PostMapping("/assemble")
 void assembleVehicle(@ModelAttribute("vehicle") Vehicle vehicleInModel) {
@@ -210,6 +224,7 @@ void assembleVehicle(@ModelAttribute("vehicle") Vehicle vehicleInModel) {
 ```
 
 类似`@PathVariable`和`@RequestParam`注解，我们如果方法参数名和数据模型(model)`key`一致，就可省略：
+
 ```Java
 @PostMapping("/assemble")
 void assembleVehicle(@ModelAttribute Vehicle vehicle) {
@@ -218,6 +233,7 @@ void assembleVehicle(@ModelAttribute Vehicle vehicle) {
 ```
 
 除了这些，`@ModelAttribute`还有另外一个地方会用到：如果我们在一个方法上标注，Spring会自动将方法的返回值添加到这个数据模型(model)中：
+
 ```Java
 @ModelAttribute("vehicle")
 Vehicle getVehicle() {
@@ -226,6 +242,7 @@ Vehicle getVehicle() {
 ```
 
 类似的，如果方法名和数据模型(model)`key`一致，那么也可以省略这个`key`：
+
 ```Java
 @ModelAttribute
 Vehicle vehicle() {
@@ -239,6 +256,7 @@ Spring在调用请求处理器(request handler)方法之前，他会先调用该
 
 ## 7.3. `@CrossOrigin`
 `@CrossOrigin`注解可以在请求处理器(request handler)方法上启用允许跨域请求：
+
 ```Java
 @CrossOrigin
 @RequestMapping("/hello")

@@ -17,10 +17,11 @@ photos: https://lc-mhke0kuv.cn-n1.lcfile.com/4efd9a4018b57efdcf77.png
     - [属性和函数](#属性和函数)
 
 <!-- /TOC -->
-> 5分钟快速上手，请猛击[这里](https://www.tslang.cn/docs/handbook/typescript-in-5-minutes.html)看官网文档。    
+> 5分钟快速上手，请猛击[这里](https://www.tslang.cn/docs/handbook/typescript-in-5-minutes.html)看官网文档。  
+  
 ## 简介  
 　　TypeScript不是一种新的语言，可以认为是给JavaScript添加语言特性的语言扩展(例如在JavaScript还未出现import和装饰器的时候，TypeScript已经有了)，官方的说法是JavaScript的超集，最终还是会编译成JavaScript代码在浏览器执行。
-<!--more-->
+
 ## 语法特性       
 　　TypeScript是支持OOP开发的，对于有OOP经验的人来说是非常友好的，写过c#、Java、golang语言的开发者，很容易上手。  
 　　学习的时候，建议通读文档，中文文档非常全面，更新的也特别及时，建议多做参考，文档地址：[点此](https://www.tslang.cn/docs/home.html)！

@@ -30,6 +30,7 @@ photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.
 ### List接口的方法
 - `boolean add(E e);` :将指定的元素添加到集合的末尾，返回是否添加成功
 - `void add(int index, E element);`  :将指定元素添加到指定的索引处
+
 ```java
 public static void function(){
     List<String> list = new ArrayList<String>();
@@ -41,11 +42,13 @@ public static void function(){
     list.add(1, "aa");
     System.out.println(list);  //输出：[a1, aa, a2, a3, a4]
 }
+
 ```
 
 <!--more-->
 - `boolean remove(Object o);`  ：从集合中删除指定元素，返回值为是否删除成功
 - `E remove(int index);` ：删除集合中指定位置的元素，返回值为被删除的元素
+
 ```java
 public static void function(){
     List<String> list = new ArrayList<String>();
@@ -58,8 +61,10 @@ public static void function(){
 	boolean d2=list.remove("a1");
 	System.out.println(d2);       //输出：true
 }
+
 ```
 - `E set(int index, E element);`：将指定索引处的元素替换成指定的元素，返回值为替换前的元素
+
 ```java
 public static void function(){
     List<String> list = new ArrayList<String>();
@@ -71,9 +76,11 @@ public static void function(){
     list.set(2, "aa");
 	System.out.println(list);  //输出：[a1, a2, aa, a4]
 }
+
 ```
 
 - ` E get(int index);` ：获取指定索引处的元素
+
 ```java
 public static void function(){
     List<String> list = new ArrayList<String>();
@@ -85,12 +92,14 @@ public static void function(){
     String str=list.get(2);
 	System.out.println(str);   //输出：a3
 }
+
 ```
 
 ### ArrayList集合
 - ArrayList集合底层采用的是数组结构
     - 当`new ArrayList()`的时候，底层创建了一个长度为10的Object类型的数组
-    ```java
+    
+```java
     /**
      * Shared empty array instance used for default sized empty instances. We
      * distinguish this from EMPTY_ELEMENTDATA to know how much to inflate when
@@ -104,10 +113,10 @@ public static void function(){
     public ArrayList() {
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
-
-    ``` 
-    - 通过阅读源码可以知道，默认的数组长度是10，当`add`操作超出了默认的长度的时候，就会进行数组的扩容，数组的扩容其实就是将数组重新复制一份，保存到一个新的数组中，新数组的长度是旧数组长度乘1.5取整。
-    ```java
+``` 
+  - 通过阅读源码可以知道，默认的数组长度是10，当`add`操作超出了默认的长度的时候，就会进行数组的扩容，数组的扩容其实就是将数组重新复制一份，保存到一个新的数组中，新数组的长度是旧数组长度乘1.5取整。
+    
+```java
     /**
      * Increases the capacity to ensure that it can hold at least the
      * number of elements specified by the minimum capacity argument.
@@ -132,7 +141,8 @@ public static void function(){
      * OutOfMemoryError: Requested array size exceeds VM limit
      */
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;  //数组默认的最大容量为int类型的最大值减8
-    ```
+    
+```
 
 
 ### LinkedList集合的自身特点
@@ -142,6 +152,7 @@ public static void function(){
 ### LinkedList集合特有方法
 - `E removeFirst()` :移除链表的开头，并返回移除的元素
 - `E removeLast()` ：移除链表的结尾，并返回移除的元素
+
 ```java
 /**
 * Unlinks non-null first node f.
@@ -162,10 +173,12 @@ private E unlinkFirst(Node<E> f) {
     return element;        //返回原先的(移除)节点数据
 }
 private E unlinkLast(Node<E> l)  //类似unlinkFirst
+
 ```
 
 - `E getFirst()` : 获取链表的开头
 - `E getLast()`  : 获取链表的结尾
+
 ```java
 /**
 * Returns the first element in this list.
@@ -179,9 +192,11 @@ public E getFirst() {
         throw new NoSuchElementException();
     return f.item;    //直接返回头结点的数据
 }
+
 ```
 - `void addFirst(E)` : 添加到链表的开头
 - `void addLast(E)` : 添加到链表的结尾
+
 ```java
 /**
 * Links e as first element.
@@ -198,6 +213,7 @@ private void linkFirst(E e) {
     size++;
     modCount++;
 }
+
 ```
 
 ### Vector类

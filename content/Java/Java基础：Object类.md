@@ -27,6 +27,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 	- 用于比较两个对象是否相同，Object类中就是使用两个对象的内存地址在比较。
 	- Object类中的`equals`方法内部使用的就是`==`比较运算符。
 <!--more-->
+
 ```Java
 public class Person { //默认继承Object类
 	private String name;
@@ -63,6 +64,7 @@ public class TestEquals {
 		System.out.println(p.equals(p2));   //输出：false
 	}
 }
+
 ```
 
 
@@ -73,6 +75,7 @@ public class TestEquals {
 	- `==`号和`equals`方法的区别
 		- `==`是一个比较运算符号，既可以比较基本数据类型,也可以比较引用数据类型，基本数据类型比较的是值,引用数据类型比较的是地址值
 		- `equals`方法是一个方法，只能比较引用数据类型，所有的对象都会继承`Object`类中的方法，如果没有重写`Object`类中的`equals`方法， `equals`方法和`==`号比较引用数据类型无区别。
+
 ```Java
 public class Person extends Object{
 	private String name;
@@ -124,6 +127,7 @@ public class TestEquals {
 		System.out.println(p.equals(p2));  //输出：true
 	}
 }			
+
 ```
 
 
@@ -133,10 +137,12 @@ public class TestEquals {
 		- toString方法返回该对象的字符串表示，其实该字符串内容就是对象的类型+@+内存地址值。
 		- 由于toString方法返回的结果是内存地址，而在开发中，经常需要按照对象的属性得到相应的字符串表现形式，因此也需要重写它。
 		- Object类中的toString的核心代码
-        ```Java
+        
+		```Java
 		getClass().getName() + "@" + Integer.toHexString(hashCode()) 
-        ```
-		- 由于默认情况下的数据对我们来说没有意义，一般建议重写该方法。
+		```
+        - 由于默认情况下的数据对我们来说没有意义，一般建议重写该方法。
+
 ```Java
 public String toString(){
 	return name + age;
@@ -153,5 +159,6 @@ public class TestToString {
 		System.out.println(s);   //输出：zhangsan20
 	}
 }
+
 ```
 

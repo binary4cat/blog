@@ -10,3 +10,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 学习[GoWeb示例](http://books.studygolang.com/gowebexamples)的笔记，做了总结和摘录，加入了一些没有提到的知识点。
 <!--more-->
 ![](\image\GoWeb示例.svg)
+
+```Golang
+
+```

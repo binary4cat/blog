@@ -33,6 +33,7 @@ photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.
         - `next()` 取出集合中的下一个元素
 
 ### 迭代器代码实现
+
 ```java
 public static void main(String[] args) {
     Collection<String> coll = new ArrayList<String>();
@@ -55,6 +56,7 @@ public static void main(String[] args) {
 
 
 ### 迭代器的执行过程
+
 ```java
 /**
 * An optimized version of AbstractList.Itr
@@ -137,6 +139,7 @@ private class Itr implements Iterator<E> {
     - `modCount`是ArrayList中的一个属性，对集合中的增删操作都会进行`modCount++`操作，它保存了对这个集合操作的次数。
     - `checkForComodification()`函数中对这个这个值进行了判断，看看是否在迭代的时候，对该集合进行了增删操作，所以如果两个值不一样，就会抛出异常。可以看到在`next`和`remove`的时候，都执行了该方法，就是对集合正确性的判断。
     - 比如下面的代码中，在迭代的时候，对集合进行了增加操作，就会抛出异常
+
     ```java
     while(it.hasNext()){
         String s = it.next();
@@ -154,6 +157,7 @@ private class Itr implements Iterator<E> {
     
 - 集合存储时默认使用了Object作为储存元素的类型。也就是说集合中可以存储任何类型的数据
     - 下面的代码中，存储了String和int类型，然后在迭代的时候，进行强转的时候就会发生错误。
+
 ```java
 Collection coll = new ArrayList();
 coll.add("123");
@@ -169,6 +173,7 @@ while (it.hasNext()) {
 
 - 要灵活使用，就需要用到泛型
     - 泛型限制了集合中存储的对象的类型，在编译期就会检测出集合元素的类型，避免发生异常
+
 ```java
 Collection<String> coll = new ArrayList<String>();
 coll.add("123");
@@ -184,6 +189,7 @@ while (it.hasNext()) {
 ### foreach遍历数组
 - JDK1.5版本后,出现新的接口`java.lang.Iterable`，对于任何实现`Iterator`接口的对象都可以使用`foreach`遍历。
 - 格式：
+
 ```java
 public static void function(){
     //遍历数组

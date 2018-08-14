@@ -24,6 +24,7 @@ draft: false
 由于上述问题，迁移遇到了困难，一个一个手动改太麻烦了，于是用golang写了一个简单的替换代码，可以直接将hexo的博客文档转换成hugo能够编译的。
 
 // hexo的头部
+
 ```yaml
 ---
 title: Hexo博客迁移到Hugo
@@ -33,6 +34,7 @@ tags: Hugo
 description: Hexo博客迁移到Hugo
 ---
 ```
+
 // hugo的头部
 ```yaml
 ---

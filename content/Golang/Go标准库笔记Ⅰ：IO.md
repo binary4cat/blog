@@ -10,6 +10,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 ## `io`：基本的I/O接口
 ### `Reader`接口
 - 定义：
+
     ```Golang
     type Reader interface{
         Read(p []byte)(n int,err error)
@@ -21,6 +22,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 - 因为所有实现了`Read`方法的类型都相当于实现了`io.Reader`接口，也就是说，在所有需要`io.Reader`的地方，可以传递实现了`Read()`方法的类型的实例。
 <!--more-->
 - Example：
+
     ```golang
     func ReadFrom(reader io.Reader,num int)([]byte,error){
         p := make([]byte,num)    //创建长度为num的byte数组
@@ -42,6 +44,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
     ```
 ### `Writer`接口
 - 定义：
+
     ```golang
     type Write interface{
         Write(p []byte)(n ,int,err error)
@@ -68,6 +71,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 
 ### `ReaderAt`和`WriterAt`接口
 - 定义：
+
     ```golang
     type ReaderAt interface{
         ReadAt(p []byte, off int64) (n int, err error)
@@ -79,6 +83,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 - `ReadAt()`和`WriteAt()`方法多了一个参数`off int64`，这个参数表示偏移量。实现的功能是从该制定的偏移量处读取/写入。
 - `ReadAt()`方法比`Read()`方法严格一些，当返回的字节数小于`p`的长度时，必须要返回一个非nil的错误，通知调用方。
 - Example:
+
     ```golang
     reader := strings.NewReader("Go标准库")
     p := make([]byte,9)
@@ -94,6 +99,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
     ```
     **注意**：需要知道的是，如果上面代码中改成`p := make([]byte,10)`将会触发`panic`，输出`panic: EOF`，这就可以看出`ReadAt`比Read严格的错误机制了。
 - `WriteAt`方法基本一致，但是在写入的时候，会将从offset处开始到写入内容长度相同的这一段内容覆盖掉，举例:
+
     ```golang
     // file是一个.txt文件，里面的内容是“Golang中文社区——这里是多余的”
     n,err := file.WriteAt([]byte("Go语言中文网"),24)
@@ -101,10 +107,10 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
     ```
 ### `ReaderFrom`和`WriterTo`接口
 - 定义：
+
     ```golang
     type ReadFrom interface{
         ReadFrom(r Reader)(n int64,err error)
     }
     ```
 - `ReadFrom`方法从一个reader中读取数据，读取到文件末尾(EOF)或者发生错误是进行返回，返回读取的字节数，还有发生的错误，或者`io.EOF`。
-- 

@@ -14,6 +14,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ### 构造方法的定义和运行特点
 - 构造方法定义
 构造方法的格式：
+
 ```Java
 修饰符 构造方法名(参数列表)
 {
@@ -39,6 +40,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 		1. 首先会将main方法压入栈中，执行main方法中的 new Person(23,"张三"); 
 		2. 在堆内存中分配一片区域，用来存放创建的Person对象，这片内存区域会有属于自己的内存地址（0x0001）。然后给成员变量进行默认初始化（name=null，age=0）。
 		3. 执行构造方法中的代码（age = a ; name = nm;）,将变量a对应的23赋值给age，将变量nm对应的“张三”赋值给name，这段代码执行结束后，成员变量age和name的值已经改变。执行结束之后构造方法弹栈，Person对象创建完成。将Person对象的内存地址0x0001赋值给p。
+
 		```Java
 		public class Person{
 			public String name;
@@ -59,6 +61,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 - 构造方法的细节：
 	- 一个类中可以有多个构造方法，多个构造方法是以重载的形式存在的
 	- 构造方法是可以被private修饰的，作用：其他程序无法创建该类的对象。
+
 ```Java
 class Person {
 	private int age;
@@ -79,6 +82,7 @@ class Person {
 ```
 
 ### this在构造方法调用的内存
+
 ```Java
 class Person {
 	private int age;
@@ -121,6 +125,7 @@ class PersonDemo {
 	`super(实参列表);`
 
 - 子类构造方法,有一个默认添加的构造方法
+
 ```Java
 public class Student extends Person {
 	public Student(){
@@ -129,6 +134,7 @@ public class Student extends Person {
 }
 ```
 - 为什么子类对象创建都要访问父类中的构造方法？因为子类继承了父类的内容，所以创建对象时，必须要先看父类是如何对其内容进行初始化的
+
 ```Java
 public class Test {
 	public static void main(String[] args) {
@@ -150,6 +156,7 @@ class Zi extends Fu{
 }
 ```
 执行结果：
+
 ```shell
 Fu构造方法0
 Zi构造方法4

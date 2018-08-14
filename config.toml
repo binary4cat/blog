@@ -9,6 +9,12 @@ disqusShortname = "HaijdBlog"
 paginate = 20
 theme = "sublime-hugo-theme"
 
+pygmentsCodefencesGuessSyntax = true
+pygmentsCodeFences = true
+pygmentsStyle = "dracula"
+pygmentsOptions = "linenos=table"
+
+
 [permalinks]
 	post = "/:year/:month/:day/:slug"
 
@@ -44,6 +50,6 @@ theme = "sublime-hugo-theme"
 	[[params.offcanvas.socialnetworks]]
 		name = "EMAIL"
 		url = "mailto:haijiandong@outlook.com"
-  [[params.offcanvas.socialnetworks]]
+    [[params.offcanvas.socialnetworks]]
 		name = "GITHUB"
 		url = "https://github.com/hjdo"

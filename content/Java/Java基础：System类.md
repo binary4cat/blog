@@ -18,6 +18,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 <!-- /TOC -->
 ### System类方法currentTimeMillis
 - System类方法`currentTimeMillis()`:获取系统当前的毫秒值
+
 ```Java
 /*
 *  获取系统当前毫秒值
@@ -39,6 +40,7 @@ public static void function(){
 ### System类方法exit 
 - System类方法`exit()`方法
 	- 退出虚拟机，所有程序全停止
+
 ```Java
 /*
 *  退出虚拟机,所有程序全停止
@@ -56,6 +58,7 @@ public static void function(){
 ### System类方法gc 
 - System类方法gc
 	- 调用垃圾回收，直接回收所有对象。
+
 ```Java
 public class Test {
 	//此方法会在对象被回收时执行一次
@@ -86,6 +89,7 @@ public static void function(){
 ### System类方法getProperties 
 - System类方法getProperties
 	- 获取当前操作系统的相关属性数据
+
 ```Java
 /*
 *  获取当前操作系统的属性:例如操作系统名称,
@@ -101,6 +105,7 @@ public static void function(){
 ### System类方法arraycopy
 - System类方法arraycopy：
 	- 用来实现将源数组部分元素复制到目标数组的指定位置
+    
 ```Java
 /*
 * System类方法,复制数组

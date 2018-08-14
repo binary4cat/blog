@@ -48,14 +48,15 @@ func main(){
 ```
 
 - import
-    - 多个包可以一个一个import：
+  - 多个包可以一个一个import：
+  
     ```golang
     import "fmt"
     import "os"
     import "log"
     ```
-    
-    - 也可以简化：
+  - 也可以简化：
+
     ```golang
     import (
         "fmt"
@@ -67,8 +68,9 @@ func main(){
         fmt.Println("hello world");
     }
     ```
-    - 导入的包没有调用里面的函数等，就会导致编译失败。
-    - 可以设置别名：
+  - 导入的包没有调用里面的函数等，就会导致编译失败。
+  - 可以设置别名：
+
     ```golang
     import env "fmt"
 
@@ -77,7 +79,9 @@ func main(){
         env.Println("Hello world")
     }
     ```
-    - 或者可以直接省略调用：使用“`.`”代替别名，调用包函数的时候就不需要使用包名了(但是不推荐这样做)
+    
+  - 或者可以直接省略调用：使用“`.`”代替别名，调用包函数的时候就不需要使用包名了(但是不推荐这样做)
+  
     ```golang
     import . "fmt"
 
@@ -86,10 +90,10 @@ func main(){
     }
     ```
 
-    - 省略调用和别名不能同时使用
-    - 可见性规则：使用大小写来决定是`private`或者`public`
-        - 大写就是表示`public`，表示在包的外部可以调用
-        - 小写就是表示`private`，表示只能在包内部被调用
+  - 省略调用和别名不能同时使用
+  - 可见性规则：使用大小写来决定是`private`或者`public`
+    - 大写就是表示`public`，表示在包的外部可以调用
+    - 小写就是表示`private`，表示只能在包内部被调用
 
 
 # 2. 类型与变量
@@ -118,6 +122,7 @@ func main(){
 - string默认为空字符串
 
 ### 2.2.1. 类型的别名
+
 ```golang
 package main
 import (
@@ -216,7 +221,6 @@ func main(){
 - 同时声明多个常量，第一个常量必须赋默认值
 - 申明多个常量，没有赋初始值的会默认取上一行的值
 
-
 ```golang
 const (
     a = 1
@@ -250,10 +254,10 @@ const (
 
 ## 2.6. 运算符
 
-
 ## 2.7. 控制语句
 
 - 控制语句条件没有括号
+
 ```golang
 if a > 1 {
     //TODO
@@ -261,6 +265,7 @@ if a > 1 {
 ```
 
 - 可以在控制语句中声明变量并使用，但是作用域只在控制语句内
+
 ```golang
 func main(){
     a := 10
@@ -272,9 +277,11 @@ func main(){
 ```
 
 ### 2.7.1. 循环
+
 - Go语言中只有一个`for`循环关键字，像c#中除了`for`还有`foreach`、`while`关键字
 - Go语言中的`for`支持3种形式
     - 无限循环
+
     ```golang
     func mian(){
         a := 1
@@ -288,6 +295,7 @@ func main(){
     ```
 
     - 自带条件表达式
+
     ```golang
     func main (){
         a := 1
@@ -299,6 +307,7 @@ func main(){
     ```
 
     - 正常循环语句
+
     ```golang
     func main(){
         for i := 0; i < 10; i++{
@@ -308,6 +317,7 @@ func main(){
     ```
 
 ### 2.7.2. switch
+
 - 不需要写关键字`break`,符合条件就会自动终止switch
 
 ```golang
@@ -323,6 +333,7 @@ func main(){
 ```
 
 - 如果符合后需要继续下一个`case`，那么就需要显示的使用`fallthrough`关键字
+
 ```golang
 func main(){
     a := 1
@@ -337,6 +348,7 @@ func main(){
 ```
 
 - 支持初始化一个表达式，这时表达式需要以封号结尾
+
 ```golang
 func main (){
     switch a := 1;{
@@ -350,7 +362,9 @@ func main (){
 ```
 
 ## 2.8. Array
+
 - 数组的声明
+
 ```golang
 func main(){
     a := [2]int  //数组必须要声明长度
@@ -366,6 +380,7 @@ func main(){
 ```
 
 - 可以不指定数组的长度
+
 ```golang
 func main(){
     a := [...]int{1,2,3,4,5}  //使用3个点代替长度，编译器会自动帮我们计算
@@ -377,6 +392,7 @@ func main(){
 
 - 数组在Go语言中为值类型(c#中是作为引用类型的)
 - 可以对单个元素的值进行操作
+
 ```golang
 func main(){
     a := [10]int{}
@@ -385,6 +401,7 @@ func main(){
 ```
 
 - 可以定义使用多维数组
+
 ```golang
 func main(){
     a := [2][3]int {
@@ -395,6 +412,7 @@ func main(){
 ```
 
 - 冒泡排序
+
 ```golang
 func main(){
     a := [...]int{3,6,1,2,8}
@@ -413,9 +431,11 @@ func main(){
 ```
 
 ## 2.9. 切片Slice
+
 - Slice本身不是数组，它只是指向一个数组的底层地址
 - 因为指向的是的内存地址，所以Slice是引用类型
 - Slice可以从一个数组获取生成
+
 ```golang
 func main(){
     a := [5]int{1,2,3,4,5}   
@@ -432,6 +452,7 @@ func main(){
     - `len`：长度，表示这个Slice里面包含多少个元素
     - `cap`：容量，因为Slice是长度可变的，为了不浪费空间，可以指定一个大致的容量，让内存取分配指定容量的连续内存空间。当实际存储的长度大于容量是，会自动的对容量进行乘2操作，并重新寻找一块新容量大小的连续内存空间。所以在开始应该对容量有一个大致的设定，避免频繁重新创建，带来的性能损耗。
     - `cap`可以省略不写，如果`cap`省略掉，那么默认就和`len`相同
+    
 ```golang
 func main(){
     //make函数的参数
@@ -440,17 +461,18 @@ func main(){
 }
 ```
 
-- Slice指向的是一个数组的内存地址，并不是一个独立的数组
-![](http://ww1.sinaimg.cn/large/c55a7aeely1figzlm0oafj20lm0d5abl.jpg)
+- Slice指向的是一个数组的内存地址，并不是一个独立的数组  ![](http://ww1.sinaimg.cn/large/c55a7aeely1figzlm0oafj20lm0d5abl.jpg)
     - 从图中可以看到，Slice_a 只包含三个元素，实际容量是包含了Array_ori这个数组的c元素开始到最后。
     - Slice_a根据内存寻址，可以找到从c开始到Array_ori这个数组结尾的所有元素，但是Slice_a本身只包含了c,d,e三个元素，这也说明了Slice指向的是一个底层数组的引用地址。
     - 例如:
+
     ```golang
     Slice_a[2]    //得到“e”
     Slice_a[4]    //得到“g”
     ```
 - Reslice
     - 从一个Slice取一个新的Slice
+
     ```golang
     func main(){
         a := [] int{1,2,3,4,5}
@@ -466,6 +488,7 @@ func main(){
 - Append 
     - 可以在Slice的结尾追加元素
     - 可以把一个Slice追加到另一个Slice的尾部
+
     ```golang
     func main(){
         s := make([]int,3,5)   //长度为3，容量为5的slice
@@ -476,6 +499,7 @@ func main(){
 
     - 如果最终追加后的长度没有超过slice的容量，那么返回的还是原来的那个slice，如果超过了，那么就会创建一个新的容量的内存空间，把数值复制到新的地址，然后返回的就是新的slice。
         - 追加后的slice没有超过原slice的容量
+
         ```golang
         func main(){
             s := make([]int,5,10)
@@ -484,6 +508,7 @@ func main(){
         ```
 
         - 追加后的slice超过了远slice的容量
+
         ```golang
         func main(){
             s := make([]int,5,10)
@@ -496,6 +521,7 @@ func main(){
     - 将一个slice拷贝到另一个slice中
         - `copy(拷贝到的slice,被拷贝的slice)`
         - 将长度大的slice拷贝到长度小的slice中
+
         ```golang
         func main(){
             s1 := []int{1,2,3,4,5,6}
@@ -505,6 +531,7 @@ func main(){
         ```
 
         - 将长度小的slice拷贝到长度大的slice中
+
         ```golang
         func main(){
             s1 := []int{1,2,3,4,5,6,}
@@ -514,6 +541,7 @@ func main(){
         ```
 
 - 循环slice
+
 ```golang
 func main(){
     //i取的是slice中元素的索引，v取的是slice中的每一个值
@@ -529,6 +557,7 @@ func main(){
 ## 2.10. map
 
 - `map`类似c#中的`Dictionary`，以`key-value`对的形式存储数据
+
 ```golang
 func main(){
     var m map[int]string     //int表示key，string表示value
@@ -553,6 +582,7 @@ func main(){
 ```
 
 - map嵌套的时候，需要对每一级的map进行make操作
+
 ```golang
 func main(){
     //声明一个key为int类型，value为map[int]string类型的map
@@ -568,6 +598,7 @@ func main(){
 ```
 
 - 判断map是否被初始化
+
 ```golang
 func main(){
      m := make(map[int]map[int]string)   
@@ -581,6 +612,7 @@ func main(){
 ```
 
 - 循环map
+
 ```golang
 func main(){
     for k,v:=range map{
@@ -620,6 +652,7 @@ func main(){
 ```
 
 - map的间接排序
+
 ```golang
 import (
     "fmt"
@@ -641,6 +674,7 @@ func main(){
 
 ## 2.11. 函数
 - Go语言的函数不支持嵌套、重载和默认参数
+
 ```golang
 //没有参数。没有返回值
 func fa(){
@@ -667,6 +701,7 @@ func ff(a,b,c int) (c,d,e int){
 ```
 
 - 不定长变参
+
 ```golang
 //不定长变参(其实就是相当于传入了一个slice类型)
 func fa(a ...int){
@@ -683,6 +718,7 @@ func main(){
 ```
 
 - int、string值类型参数传递
+
 ```golang
 func main(){
     a,b := 1,2
@@ -698,6 +734,7 @@ func fa(a ...int){
 ```
 
 - slice引用类型作为参数传递，传递的是内存地址的拷贝
+
 ```golang
 func main(){
     s := []int{1,2}
@@ -712,6 +749,7 @@ func fa(a []int){
 ```
 
 - 传递引用类型，使用指针修改参数本身
+
 ```golang
 func main(){
     a := 1
@@ -726,6 +764,7 @@ func fa(a *int){
 ```
 
 - 函数可以作为类型使用
+
 ```golang
 func main(){
     a := fa
@@ -737,6 +776,7 @@ func fa(){
 ```
 
 - 匿名函数的使用
+
 ```golang
 func main(){
     a := func (){
@@ -747,6 +787,7 @@ func main(){
 ```
 
 - 闭包
+
 ```golang
 func main(){
     f := closure(10)   //将函数赋值给变量
@@ -764,6 +805,7 @@ func closure(x int) func(int) int{
 
 ### 2.11.1. defer
 - 类似于其他语言中的析构函数，在函数体执行结束后，按照调用顺序相反的顺序捉个执行一遍
+
 ```golang
 func main(){
     for i := 0; i < 3; i++{
@@ -774,6 +816,7 @@ func main(){
 
 - 即使函数发生严重的错误，defer也会正常执行
 - 支持匿名函数调用
+
 ```golang
 func main(){
     for i := 0; i < 3; i++{
@@ -789,6 +832,7 @@ func main(){
     - `panic`可以在任何地方引发错误抛出
     - `recover`只能在`defer`调用的函数中有效，因为使用`recover`的时候错误已经引发了，只能借助于`defer`进行一些“恢复”操作
     - `recover`可以返回`panic`信息
+
     ```golang
     func main(){
 
@@ -830,6 +874,7 @@ func main(){
 
 - Go语言中没有`class`的概念，而`struct`就相当于go语言中的类
 - `struct`是一种类型(type)
+
 ```golang
 //声明一个名称为person的struct
 type person struct{
@@ -854,6 +899,7 @@ func main(){
 ```
 
 - `struct`是一个值类型，传递的时候是值拷贝，在其他函数中修改改变不了值本身，希望做改变的时候，可以使用指针传递
+
 ```golang
 type person struct{
     Name string
@@ -878,6 +924,7 @@ func fa(per *person){
 ```
 
 -  匿名结构
+
 ```golang
 func main(){
     a := struct{  //直接声明一个没有名称的struct
@@ -898,6 +945,7 @@ func main(){
 ```
 
 - 嵌套struct
+
 ```golang
 type person struct{
     Name string
@@ -919,6 +967,7 @@ func main(){
 ```
 
 - 匿名字段
+
 ```golang
 type person struct{
     string     //没有字段名称，只有类型
@@ -940,6 +989,7 @@ func main(){
 ```
 
 - 相同类型的struct相互之间可以进行赋值
+
 ```golang
 type person struct{
     Name string
@@ -957,6 +1007,7 @@ func main(){
 
 - 两个名称不同的struct，尽管它们的字段一致，它们也是两个不同的类型，它们之间不能进行比较个赋值。
 - 使用嵌入结构实现类似继承的能力
+
 ```golang
 type person struct{
     Sex int
@@ -991,6 +1042,7 @@ func main(){
 
 - 嵌入结构，同名字段的处理
     - 单层嵌套
+
     ```golang
     type sa struct{
         sb
@@ -1008,6 +1060,7 @@ func main(){
     ```
 
     - 多层嵌入
+
     ```golang
     type sa struct{
         sb
@@ -1028,6 +1081,7 @@ func main(){
 ## 2.13. 方法method
 
 - 相当于是c#中的扩展方法，给某一个类型(type)编写额外的扩展方法，供类型(type)调用
+
 ```golang
 type sa struct{
     Name string
@@ -1054,6 +1108,7 @@ func (a sb) PrintName(){
 ```
 
 - 方法同样可以传入指针，对参数本身进行修改
+
 ```golang
 type sa struct{
     Name string
@@ -1071,6 +1126,7 @@ func (a *sa) EditName() {
 ```
 
 - 使用底层类型方法
+
 ```golang
 type IN int  //声明一个底层为int类型的type
 
@@ -1088,6 +1144,7 @@ func main(){
 
 - 接口是一个或多个方法签名的集合(类似c#中的接口，只有声明，没有具体的实现)
 - 只要某个类型拥有某个接口的所有的方法签名，那么就算是这个类型实现了该接口，而无需显示的声明实现了哪个接口(在c#中实现一个接口是在类的名字后面写上冒号，然后写接口名，go语言中无需这样做)
+
 ```golang
 //声明一个接口
 type USB interface{
@@ -1114,6 +1171,7 @@ func main(){
 ```
 
 - 可以嵌入接口
+
 ```golang
 //声明一个接口
 type USB interface{
@@ -1143,6 +1201,7 @@ func main(){
 ```
 
 - 接口调用
+
 ```golang
 //编写一个判断传入对象的方法
 func Disconnect(usb USB){
@@ -1158,6 +1217,7 @@ func Disconnect(usb USB){
 
 - 所有的类型的父接口，就是一个空的接口(相当于就是c#中的`System.Object`)，理论上来说所有的类型都实现了一个空接口
 - 简单工厂
+
 ```golang
 //方法接受一个空接口，也就是可以传入进来任何值
 func Disconnect(usb interface{}){
@@ -1172,6 +1232,7 @@ func Disconnect(usb interface{}){
 ```
 
 - 接口之间可以互相转换：按照上面的例子，因为接口`USB`包含了接口`Connecter`,所以接口`USB`可以转换成`Connecter`,但是`Connecter`不能转换乘`USB`,这里有一个包含和被包含的关系
+
 ```golang
 func main(){
     //a是接口USB变量
@@ -1185,6 +1246,7 @@ func main(){
 
 ## 2.15. 反射reflection
 - 反射使用`TypeOf`和`ValueOf`函数从接口中获取目标对象信息。
+
 ```golang
 package main
 import (
@@ -1231,6 +1293,7 @@ func Info(o interface{}){
 ```
 
 输出结果
+
 ```Shell
 Type: User
 Fields: 
@@ -1256,6 +1319,7 @@ func Info(o Interface{}){
 ```
 
 - 反射匿名、嵌入字段
+
 ```golang
 type User struct{
     Id int
@@ -1284,6 +1348,7 @@ func main(){
 ```
 
 输出：
+
 ```Shell
 //输出1：可以看到根据索引，输出了第一个字段(匿名字段)的类型信息最后一个参数很特殊：Anonymous，值为true的时候表示这个字段是匿名字段，反之就不是匿名字段
 reflect.StructField{Name:"User", PkgPath:"", Type:(*reflect.rtype)(0x4a4000), Tag:"", Offset:0x0, Index:[]int{0}, Anonymous:true}
@@ -1299,6 +1364,7 @@ reflect.StructField{Name:"Name", PkgPath:"", Type:(*reflect.rtype)(0x498860), Ta
 ```
 
 - 反射修改字段的值
+
 ```golang
 func main(){
     i := 111
@@ -1311,6 +1377,7 @@ func main(){
 ```
 
 - 反射修改struct的字段值
+
 ```golang
 type User struct{
     Id int
@@ -1353,6 +1420,7 @@ func Set(o interface{}){
 ```
 
 - 反射调用方法
+
 ```golang
 type User struct{
     Id int
@@ -1388,6 +1456,7 @@ func main(){
 - goroutine奉行通过通信来共享内存，而不是共享内存来通信
     - 简单理解：goroutine之间是使用channel进行通信的，而不是使用锁机制，所以不需要对两个goroutine之间的切换加锁，只需要使用go语言实现的channel进行通信即可实现共享内存的切换。
 - 使用`go`关键字使用：
+
 ```golang
 import(
     "fmt"
@@ -1401,6 +1470,7 @@ func Go(){
 ```
 
 上面的代码运行结果并没有跟想象的那样输出一句"hahaha"，而是什么都没有输出，然后就退出了，原因是：我们在main函数中启动了一个goroutine执行Go函数，这时候就由一个线程去执行Go函数了，然后main没什么影响，继续往下执行，下面什么都没有，所以就直接退出了。
+
 ```golang
 //为了正确输出，我们使用线程休眠的方法，实现一下
 import(
@@ -1421,6 +1491,7 @@ func Go(){
     - channel存取值操作：
         - 存值使用操作符：`channel<-` (存值时操作符在channel变量的右边)
         - 取值使用操作符：`<-channel` (取值时操作符在channel变量的左边)
+
     ```golang
     func main(){
         c := make(chan bool)   //使用make函数创建一个channel，存储bool 类型的值
@@ -1437,6 +1508,7 @@ func Go(){
     - channel是通过`make()`创建，`close()`进行关闭的
     - channel是引用类型
     - 可以使用`for range`来不断的迭代操作channel，进行取值操作
+
     ```golang
     func main(){
         c := make(chan bool)
@@ -1454,6 +1526,7 @@ func Go(){
 
     - 可以设置双向(读写)和单向通道(只读、只写)
     - 可以设置缓存(channel存储数据量)的大小，在没有到最大值的时候，不会发生线程阻塞
+    
     ```golang
     func main (){
         c := make(chan bool,3)   //创建一个channel，可以存储3个长度的数据

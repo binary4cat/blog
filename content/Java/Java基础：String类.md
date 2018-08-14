@@ -115,6 +115,7 @@ public class StringDemo3 {
 - 其他构造方法
 	- `public String(char[] value)`:把字符数组转成字符串
 	- `public String(char[] value,int index,int count)`:把字符数组的一部分转成字符串
+	
 ```Java
 public class StringDemo {
 	public static void main(String[] args) {
