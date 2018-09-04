@@ -3,9 +3,9 @@ title: "记一次经常遇到的Vue加载顺序问题"
 date: 2018-09-04T22:55:50+08:00
 tags: ["Vue"]
 categories: ["Frontend"]
-description : 
-draft: false
+description : "记一次经常遇到的Vue加载顺序问题"
 ---
+
 <!-- TOC -->
 
 - [1. 一个典型的问题](#1-一个典型的问题)
