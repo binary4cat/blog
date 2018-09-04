@@ -420,6 +420,9 @@ a:hover {
     font-family: 'Source Code Pro';
     font-size: 100%;
     line-height: 1.5;
+    /*下面是防止行内代码段样式覆盖掉代码块的样式*/
+    background-color: transparent !important;
+    color: inherit !important;
 }
 
 
