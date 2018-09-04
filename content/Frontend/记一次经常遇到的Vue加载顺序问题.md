@@ -21,34 +21,34 @@ description : "记一次经常遇到的Vue加载顺序问题"
 
 　　假如我们在页面中有一个对话框，对话框中列了一个上传控件(我使用的是elementUI上传控件)，该控件是作为新上传图片和编辑已上传图片的功能存在的，所以我们要在对话框弹出的时候，将上传过的图片加载到上传组件中，造成一种修改数据的假象。
 
-*HTML代码*：
+*HTML代码* ：
 
 ```html
 <el-button type='info' icon='el-icon-setting' @click="configEdit">配置</el-button>
 ...
 <!--配置对话框-->
-    <el-dialog title="配置编辑" :visible.sync="dialogConfigVisible">
-      <el-form>
+<el-dialog title="配置编辑" :visible.sync="dialogConfigVisible">
+    <el-form>
         <el-form-item label="前端图片">
           <el-upload ref="uploadPic" :auto-upload="false" :action="url" name="file">
             <i class="el-icon-plus"></i>
           </el-upload>
         </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
+    </el-form>
+    <div slot="footer" class="dialog-footer">
         <el-button @click="dialogConfigVisible = false">取 消</el-button>
         <el-button type="primary" @click="saveConfig">确 定</el-button>
-      </div>
-    </el-dialog>
+    </div>
+</el-dialog>
 ```
 
 ## 1.1. 第一次尝试
 
 ```javascript
 /**
-     * 配置按钮点击操作
-     */
-    configEdit() {
+* 配置按钮点击操作
+*/
+configEdit() {
       // 查找已有的图片
       getImg({}).then(res => {
         if (res.data && res.data.code === 1) {
@@ -61,7 +61,7 @@ description : "记一次经常遇到的Vue加载顺序问题"
       }).catch(err => {
         this.dialogConfigVisible = true;
       })
-    }
+}
 ```
 
 　　我们已经上传过一张图片了，现在我们刷新页面，点击配置按钮，弹出的对话框，发现没有任何的图片被加载出来，调试chrome可以看到，请求后台正常返回了图片地址，也加载到了上传组件中。
@@ -71,9 +71,9 @@ description : "记一次经常遇到的Vue加载顺序问题"
 
 ```javascript
 /**
-     * 配置按钮点击操作
-     */
-    configEdit() {
+* 配置按钮点击操作
+*/
+configEdit() {
         this.dialogConfigVisible = true;
       // 查找已有的图片
       getImg({}).then(res => {
@@ -87,7 +87,7 @@ description : "记一次经常遇到的Vue加载顺序问题"
       }).catch(err => {
         this.dialogConfigVisible = true;
       })
-    }
+}
 ```
 　　
 　　这次我们将对话框弹出操作，放在获取图片地址请求的前面，但是依然没有图片加载出来；
@@ -97,13 +97,11 @@ description : "记一次经常遇到的Vue加载顺序问题"
 
 ```javascript
 /**
-     * 配置按钮点击操作
-     */
-    configEdit() {
-      console.log("123")
+* 配置按钮点击操作
+*/
+configEdit() {
       // 查找已有的头图
       getImg({}).then(res => {
-        
         if (res.data && res.data.code === 1) {
           this.$nextTick(() => {
             this.$refs.uploadPic.uploadFiles = [{
@@ -116,7 +114,7 @@ description : "记一次经常遇到的Vue加载顺序问题"
       }).catch(err => {
         this.dialogConfigVisible = true;
       })
-    }
+}
 ```  
 
 　　这时，再刷新页面点击配置按钮，可以看到已有图片被加载到了上传组件的文件选择框中；  
