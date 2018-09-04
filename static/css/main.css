@@ -51,7 +51,7 @@ a {
     background: 0 0;
 }
 
-ul a{
+ul a {
     color: #fbb297;
 }
 
@@ -409,21 +409,28 @@ a:hover {
     color: gray;
 }
 
-.highlight div{
+.highlight div {
     padding: 5px;
 }
 
-code {
+
+/*代码块样式*/
+
+.single-content pre code {
     font-family: 'Source Code Pro';
     font-size: 100%;
     line-height: 1.5;
 }
 
+
 /*行内代码段的样式*/
-p code{
+
+.single-content code {
     font-family: 'Source Code Pro';
+    font-weight: lighter;
+    font-size: 92%;
     background-color: #eee;
-    color: palevioletred;
+    color: #FF0033;
 }
 
 .highlight .c {
@@ -941,7 +948,6 @@ header {
     padding-left: 10px;
     padding-right: 10px;
 }
-
 
 .search-input {
     background: none;
