@@ -4,6 +4,7 @@ date: 2018-09-04T22:55:50+08:00
 tags: ["Vue"]
 categories: ["Frontend"]
 description : "记一次经常遇到的Vue加载顺序问题"
+draft: true
 ---
 
 <!-- TOC -->
