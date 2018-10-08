@@ -1,10 +1,11 @@
-sudo: false
+sudo: true
 #language: go
 #go: 
 #  - master
 git:
     depth: 1
 #install: #go get -v github.com/gohugoio/hugo
+before_install: sudo apt install snapd
 install: snap install hugo --channel=extended
 script: 
     - hugo
