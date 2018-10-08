@@ -1,5 +1,7 @@
 sudo: false
 language: go
+go: 
+  - master
 git:
     depth: 1
 install: go get -v github.com/gohugoio/hugo
