@@ -1,13 +1,34 @@
-sudo: true
+#sudo: true
 #language: go
 #go: 
 #  - master
-git:
-    depth: 1
+#git:
+#    depth: 1
 #install: #go get -v github.com/gohugoio/hugo
-install: sudo apt-get install hugo
-script: 
+#install: sudo apt-get install hugo
+#script: 
+#    - hugo
+###################################
+
+#update content by https://axdlog.com/2018/using-hugo-and-travis-ci-to-deploy-blog-to-github-pages-automatically/
+language: python
+
+python:
+    - "3.6"
+
+install:
+    # install latest release version
+    # - wget $(wget -qO- https://api.github.com/repos/gohugoio/hugo/releases/latest | sed -r -n '/browser_download_url/{/Linux-64bit.deb/{s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p}}')
+    - wget -qO- https://api.github.com/repos/gohugoio/hugo/releases/latest | sed -r -n '/browser_download_url/{/Linux-64bit.deb/{s@[^:]*:[[:space:]]*"([^"]*)".*@\1@g;p}}' | xargs wget
+    - sudo dpkg -i hugo*.deb
+    - pip install Pygments
+    - rm -rf public 2> /dev/null
+
+script:
     - hugo
+    #- echo 'axdlog.com' > public/CNAME
+
+#nothing changes
 deploy:
     provider: pages
     skip_cleanup: true
