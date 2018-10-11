@@ -19,11 +19,11 @@ draft: false
             - [2.2.1.1. angular项目的启动过程](#2211-angular项目的启动过程)
             - [2.2.1.2. 根模块AppModule的内容](#2212-根模块appmodule的内容)
         - [2.2.2. 组件装饰器](#222-组件装饰器)
-- [基本的项目开发](#基本的项目开发)
-    - [生成一个自定义的组件](#生成一个自定义的组件)
-    - [怎么引入第三方的库](#怎么引入第三方的库)
-    - [Hello World](#hello-world)
-- [3. 参考资料](#3-参考资料)
+- [3. 基本的项目开发](#3-基本的项目开发)
+    - [3.1. 生成一个自定义的组件](#31-生成一个自定义的组件)
+    - [3.2. 怎么引入第三方的库](#32-怎么引入第三方的库)
+    - [3.3. Hello World](#33-hello-world)
+- [4. 参考资料](#4-参考资料)
 
 <!-- /TOC -->
 
@@ -183,9 +183,9 @@ export class AppComponent {
 - `templateUrl`：当前的组件模板的文件路径，在渲染的时候会将该文件中的HTML替换到`selector`选择器标签的位置。
 - `styleUrls`：当前组件模板用到的样式文件，可以是多个。
 
-# 基本的项目开发
+# 3. 基本的项目开发
 
-## 生成一个自定义的组件
+## 3.1. 生成一个自定义的组件
 
 可以使用命令`ng g component [name]`生成一个自定义的命令，在这里我使用`ng g component test`生成一个`testComponent`:
 
@@ -199,7 +199,7 @@ UPDATE src/app/app.module.ts (388 bytes)
 ```
 
 然后会在`app`目录下生成一个名为`test`的文件夹，其中包含组件的四个文件：
-![自定义组件test]](/image/Snipaste_2018-10-11_22-24-40.png)
+![自定义组件test](/image/Snipaste_2018-10-11_22-24-40.png)
 
 - `test.component.css`该文件是当前组件的样式文件；
 - `test.component.html`该文件是当前组件的模板文件；
@@ -207,7 +207,7 @@ UPDATE src/app/app.module.ts (388 bytes)
 - `test.component.ts`该文件是组件的“控制器”代码文件。
 
 
-## 怎么引入第三方的库
+## 3.2. 怎么引入第三方的库
 
 有时候我们需要在项目中用到一些第三方的库，例如样式库bootstrap、搭配bootstrap使用的Jquery等，这些库需要单独的引入angular项目，才可以使用。在这里我使用yarn安装一下这两个库：
 
@@ -270,7 +270,7 @@ export class TestComponent implements OnInit {
 - 要使用初始化方法`ngOnInit`需要组件类实现`OnInit`接口。其他的生命周期方法也需要实现各自的接口，在后面会讲到。
 - `constructor`构造函数可以用来依赖注入一些服务，避免手动创建类，方便解耦。
 
-## Hello World
+## 3.3. Hello World
 
 使用一个简单的示例，演示编写组件的工作流程：
 
@@ -332,7 +332,7 @@ export class TestComponent implements OnInit {
 使用命令`ng serve`启动服务，并在浏览器浏览：
 ![浏览内容](/image/Snipaste_2018-10-11_23-13-09.png)
 
-# 3. 参考资料
+# 4. 参考资料
 
 [https://github.com/angular/angular-cli/wiki](https://github.com/angular/angular-cli/wiki)  
 [https://medium.com/@beeman/using-yarn-with-angular-cli-v6-7f53a7678b93](https://medium.com/@beeman/using-yarn-with-angular-cli-v6-7f53a7678b93)
