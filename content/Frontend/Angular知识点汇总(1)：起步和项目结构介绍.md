@@ -8,20 +8,22 @@ draft: false
 ---
 <!-- TOC -->
 
-- [1. 起步](#1-%E8%B5%B7%E6%AD%A5)
-    - [1.1. 安装angular-cli](#11-%E5%AE%89%E8%A3%85angular-cli)
-    - [1.2. 生成项目](#12-%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE)
-    - [1.3. 尝试运行生成的项目](#13-%E5%B0%9D%E8%AF%95%E8%BF%90%E8%A1%8C%E7%94%9F%E6%88%90%E7%9A%84%E9%A1%B9%E7%9B%AE)
-- [2. 项目架构](#2-%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84)
-    - [2.1. 文件结构](#21-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84)
-    - [2.2. 组件](#22-%E7%BB%84%E4%BB%B6)
-        - [2.2.1. 组件](#221-%E7%BB%84%E4%BB%B6)
-            - [2.2.1.1. angular项目的激动过程](#2211-angular%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%BF%80%E5%8A%A8%E8%BF%87%E7%A8%8B)
-            - [2.2.1.2. 根模块AppModule的内容](#2212-%E6%A0%B9%E6%A8%A1%E5%9D%97appmodule%E7%9A%84%E5%86%85%E5%AE%B9)
-    - [2.3. 两个装饰器](#23-%E4%B8%A4%E4%B8%AA%E8%A3%85%E9%A5%B0%E5%99%A8)
-        - [2.3.1. `@Component`](#231-component)
-        - [2.3.2. `@NgModule`](#232-ngmodule)
-- [3. 参考资料](#3-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
+- [1. 起步](#1-起步)
+    - [1.1. 安装angular-cli](#11-安装angular-cli)
+    - [1.2. 生成项目](#12-生成项目)
+    - [1.3. 尝试运行生成的项目](#13-尝试运行生成的项目)
+- [2. 项目架构](#2-项目架构)
+    - [2.1. 文件结构](#21-文件结构)
+    - [2.2. 组件](#22-组件)
+        - [2.2.1. 组件](#221-组件)
+            - [2.2.1.1. angular项目的启动过程](#2211-angular项目的启动过程)
+            - [2.2.1.2. 根模块AppModule的内容](#2212-根模块appmodule的内容)
+        - [2.2.2. 组件装饰器](#222-组件装饰器)
+- [基本的项目开发](#基本的项目开发)
+    - [生成一个自定义的组件](#生成一个自定义的组件)
+    - [怎么引入第三方的库](#怎么引入第三方的库)
+    - [Hello World](#hello-world)
+- [3. 参考资料](#3-参考资料)
 
 <!-- /TOC -->
 
@@ -106,7 +108,7 @@ angular项目的核心就是组件，可以说angular项目就是一个一个组
 
 ### 2.2.1. 组件
 
-#### 2.2.1.1. angular项目的激动过程
+#### 2.2.1.1. angular项目的启动过程
 
 使用`ng new`生成的项目，在`app`文件夹中已经包含了一个默认的组件，就是整个项目的根组件，是其他所有我们自定义组件的父组件，因为angular项目在启动的时候，需要从一个根组件开始进行渲染，我们借助`main.ts`文件可以看到angular项目的启动过程，并且看到根组件的调用：
 
@@ -159,11 +161,176 @@ export class AppModule { }
     - `provides`是angular的依赖注入提供器，写在这里面的class，就可以在angular项目的任何构造函数中依赖注入了。
     - `bootstrap`传入了初始化的第一个组件，也就是我们的根组件，其他的组件应该包含在这个根组件下面
 
-## 2.3. 两个装饰器
+### 2.2.2. 组件装饰器
 
-### 2.3.1. `@Component`
 
-### 2.3.2. `@NgModule`
+组件装饰器可以修饰一个普通的typescript类，angular会将被修饰的类当作一个组件渲染。
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'my-project';
+}
+```
+
+- `selector`：选择器，指定当前的组件是通过模板中哪个HTML标签调用的；例如可以在调用该组件的位置写上标签`<app-root><?app-root`，就会在此位置渲染该组件的内容了。
+- `templateUrl`：当前的组件模板的文件路径，在渲染的时候会将该文件中的HTML替换到`selector`选择器标签的位置。
+- `styleUrls`：当前组件模板用到的样式文件，可以是多个。
+
+# 基本的项目开发
+
+## 生成一个自定义的组件
+
+可以使用命令`ng g component [name]`生成一个自定义的命令，在这里我使用`ng g component test`生成一个`testComponent`:
+
+```shell
+PS E:\Angular\my-project> ng g component test
+CREATE src/app/test/test.component.html (23 bytes)
+CREATE src/app/test/test.component.spec.ts (614 bytes)
+CREATE src/app/test/test.component.ts (261 bytes)
+CREATE src/app/test/test.component.css (0 bytes)
+UPDATE src/app/app.module.ts (388 bytes)
+```
+
+然后会在`app`目录下生成一个名为`test`的文件夹，其中包含组件的四个文件：
+![自定义组件test]](/image/Snipaste_2018-10-11_22-24-40.png)
+
+- `test.component.css`该文件是当前组件的样式文件；
+- `test.component.html`该文件是当前组件的模板文件；
+- `test.component.spec.ts`该文件是组件源文件的单元测试，当使用`ng test`命令的时候，这个文件会通过Karma任务运行器使用Jasmine javascript测试框架运行。
+- `test.component.ts`该文件是组件的“控制器”代码文件。
+
+
+## 怎么引入第三方的库
+
+有时候我们需要在项目中用到一些第三方的库，例如样式库bootstrap、搭配bootstrap使用的Jquery等，这些库需要单独的引入angular项目，才可以使用。在这里我使用yarn安装一下这两个库：
+
+```shell
+cd my-project
+yarn add bootstrap
+yarn add jquery
+```
+
+安装完成后打开`angular.json`文件，找到`styles`和`scripts`节点，把需要用到的bootstrap和jQuery文件导入项目：
+
+```json
+{
+  ...
+  "projects": {
+    "my-project": {
+      "architect": {
+        "build": {
+          "options": {
+            ...
+            "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/jquery/dist/jquery.js"
+            ]
+            ...
+          },
+        },
+      }
+    },
+  ...
+}
+```
+然后就可以在项目中使用bootstrap库了。
+
+接下来打开`test.component.ts`看一下组件的基本结构：
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css']
+})
+export class TestComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+```
+
+- 首先从angular的核心库中导入了`Component`这个装饰器和初始化生命周期接口`OnInit`。
+- 要使用初始化方法`ngOnInit`需要组件类实现`OnInit`接口。其他的生命周期方法也需要实现各自的接口，在后面会讲到。
+- `constructor`构造函数可以用来依赖注入一些服务，避免手动创建类，方便解耦。
+
+## Hello World
+
+使用一个简单的示例，演示编写组件的工作流程：
+
+`test.component.ts`：
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css']
+})
+export class TestComponent implements OnInit {
+  /**
+   * 声明一个消息属性
+   */
+  msg: string;
+
+  constructor() { }
+
+  ngOnInit() {
+    /**
+     * 在初始化时，给消息属性赋值
+     */
+    this.msg = 'Hello World';
+  }
+}
+```
+
+`test.component.html`：使用绑定语法`{{}}`将消息展示在页面上
+
+```html
+<h1 class="display-4 text">{{msg}}</h1>
+```
+
+`test.component.css`：将展示的字体修改成白色
+
+```css
+.text{
+    color: white;
+}
+```
+
+`app.component.html`：将自定义组件test绑定到根组件`app`的模板中
+
+```html
+<div class="jumbotron">
+  <h1 class="display-4">我是根组件</h1>
+  <p class="lead">这是一个简单的bootstrap Jumbotron样式组件！</p>
+  <hr class="my-4">
+  <p>下面绑定的是子组件的内容：</p>
+  <p class="lead">
+    <app-test></app-test>
+  </p>
+</div>
+```
+
+使用命令`ng serve`启动服务，并在浏览器浏览：
+![浏览内容](/image/Snipaste_2018-10-11_23-13-09.png)
 
 # 3. 参考资料
 
