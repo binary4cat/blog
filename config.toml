@@ -37,11 +37,11 @@ pygmentsOptions = "linenos=table"
 [params.offcanvas]
 	# Menu items
 	title = "Haijd's Blog"
-	bio = "one coder."
-	bio2 = "beijing china"
+	bio = "The coder"
+	bio2 = "Bj China"
   	categories = "CATEGORIES"
   	tags = "TAGS"
-	subscribe = "LOOK ME."
+	subscribe = "FOLLOW ME"
 
 	# Enable Google search
 	search_enabled = true

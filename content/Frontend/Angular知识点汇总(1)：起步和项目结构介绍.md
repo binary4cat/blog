@@ -56,13 +56,13 @@ cd my-project
 这里可能会因为网络的问题造成`ng new my-project`命令执行失败，造成生成的基架项目无法运行，可以将`ng`命令调用的包管理命令改成其他的工具，例如`cnpm`或者`yarn`：
 
 - 首先打开`Home_Dir/.angular-config.json`文件
-- 然后修改其中的内容为需要的工具：
+- 然后修改其中`packageManager`的内容为指定的工具名：
 
 ```json
 {
   "version": 1,
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn" // "cnpm"
   }
 }
 ```
