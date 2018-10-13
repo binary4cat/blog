@@ -124,7 +124,7 @@ export class AppRoutingModule { }
 - 这里绑定路径的时候需要注意的是在路径前面需要加上“`/`”，否则就会找不到页面。
 - `<router-outlet`：该标签的作用是组件内容占位符，也就是当前路由的组件内容显示在这个位置。
 
-然后分别修改`home`和`article`模板中的内容，以作区分。`ng serve`浏览一下看看效果：
+然后分别修改`home`和`article`模板中的内容，以作区分。`ng serve`浏览一下看看效果：  
 ![主页](/image/Snipaste_2018-10-13_21-44-02.png)
 ![文章页](/image/Snipaste_2018-10-13_21-44-40.png)
 
@@ -241,7 +241,7 @@ export class ArticleComponent implements OnInit {
 </p>
 ```
 
-在浏览器中查看效果：
+在浏览器中查看效果：  
 ![参数](/image/Snipaste_2018-10-13_22-47-14.png)
 
 ### 4.2.2. 在路由路径中传递参数
@@ -288,7 +288,7 @@ export class ArticleComponent implements OnInit {
 }
 ```
 
-在浏览器中浏览可以看到效果：
+在浏览器中浏览可以看到效果：    
 ![参数](/image/Snipaste_2018-10-13_22-56-19.png)
 
 ## 4.3. 上面组件中获取参数的问题
@@ -303,7 +303,7 @@ export class ArticleComponent implements OnInit {
 <router-outlet></router-outlet>
 ```
 
-其他的都不需要修改，我们打开浏览器看看这个没有提到的问题在哪：
+其他的都不需要修改，我们打开浏览器看看这个没有提到的问题在哪：  
 ![问题](/image/Snipaste_2018-10-13_23-07-03.png)
 从上面的图中可以看到，不管路径参数是1还是2，我们在文章页面中显示的始终是1，也就是我们在组件中获取`params['id']`的值始终是1，这是怎么回事呢？怎么解决这个问题？
 
@@ -314,6 +314,7 @@ this.articleId = this.routerInfo.snapshot.params['id'];
 ```
 
 　　上面图片中出现的问题就是`snapshot`这个属性造成的，这个`snapshot`获取的参数叫做快照参数(从它的名字就可大概猜出)，也就是在组件`OnInit`方法被第一次调用的时候，它会保存一个参数值，以后无论参数如何修改它都不会得知有新的参数值，始终是这一个，这就是我们看到上面图片中展示的问题。同样的当你第一次点击的链接是“文章2”那么id的值就始终是2了。
+
 　　要解决这个问题，我们需要换一种获取参数的方式，叫做订阅参数，顾名思义就是订阅参数的变化，每次进来获取的都是最新的参数值。
 
 修改`article.component.ts`组件的接收方法：
@@ -331,7 +332,7 @@ ngOnInit() {
 - 这里我们将`snapshot`换成了`params.subscribe()`。
 - `subscribe()`函数接收一个匿名函数，会传入一个存在于`@angular/router`模块中的`Params`对象，它里面存储着最新的路由参数。
 
-我们在看浏览器效果是不是没有问题了：
+我们在看浏览器效果是不是没有问题了：  
 ![问题](/image/Snipaste_2018-10-13_23-23-08.png)
 
 # 5. 重定向路由
@@ -368,5 +369,5 @@ const routes: Routes = [
 
 # 9. 参考资料
 
-[https://www.angular.cn/guide/router](https://www.angular.cn/guide/router) 
+[https://www.angular.cn/guide/router](https://www.angular.cn/guide/router)  
 [https://www.angular.cn/tutorial/toh-pt5](https://www.angular.cn/tutorial/toh-pt5)
