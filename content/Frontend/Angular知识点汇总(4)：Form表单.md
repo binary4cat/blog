@@ -9,26 +9,31 @@ draft: false
 <!-- TOC -->
 
 - [1. Angular的两种表单API](#1-angular的两种表单api)
-    - [1.1. 概述](#11-概述)
+  - [1.1. 概述](#11-概述)
 - [2. 响应式表单](#2-响应式表单)
-    - [2.1. 如何建响应式表单数据模型](#21-如何建响应式表单数据模型)
-        - [2.1.1. `FormControl`](#211-formcontrol)
-        - [2.1.2. `FormGroup`](#212-formgroup)
-        - [2.1.3. `FormArray`](#213-formarray)
-    - [2.2. 响应式表单用到的指令](#22-响应式表单用到的指令)
-    - [2.3. 响应式表单的特点](#23-响应式表单的特点)
-    - [2.4. 响应式表单的例子](#24-响应式表单的例子)
-        - [2.4.1. 使用`FormGroup`编写表单并且获取提交](#241-使用formgroup编写表单并且获取提交)
-        - [2.4.2. `FormArray`绑定动态表单](#242-formarray绑定动态表单)
-    - [2.5. 可单独使用的`formControl`指令](#25-可单独使用的formcontrol指令)
-    - [2.6. `FormBuilder`](#26-formbuilder)
+  - [2.1. 如何建响应式表单数据模型](#21-如何建响应式表单数据模型)
+    - [2.1.1. `FormControl`](#211-formcontrol)
+    - [2.1.2. `FormGroup`](#212-formgroup)
+    - [2.1.3. `FormArray`](#213-formarray)
+  - [2.2. 响应式表单用到的指令](#22-响应式表单用到的指令)
+  - [2.3. 响应式表单的特点](#23-响应式表单的特点)
+  - [2.4. 响应式表单的例子](#24-响应式表单的例子)
+    - [2.4.1. 使用`FormGroup`编写表单并且获取提交](#241-使用formgroup编写表单并且获取提交)
+    - [2.4.2. `FormArray`绑定动态表单](#242-formarray绑定动态表单)
+  - [2.5. 可单独使用的`formControl`指令](#25-可单独使用的formcontrol指令)
+  - [2.6. `FormBuilder`](#26-formbuilder)
 - [3. 模板式表单](#3-模板式表单)
-    - [3.1. 概述](#31-概述)
-    - [3.2. 模板式表单对<form>元素的处理](#32-模板式表单对form元素的处理)
-    - [3.3. 模板式表单调用表单对象的实例](#33-模板式表单调用表单对象的实例)
-    - [3.4. 模板式表单的提交](#34-模板式表单的提交)
-    - [3.5. 模板式表单绑定`ngModel`](#35-模板式表单绑定ngmodel)
+  - [3.1. 概述](#31-概述)
+  - [3.2. 模板式表单对<form>元素的处理](#32-模板式表单对form元素的处理)
+  - [3.3. 模板式表单调用表单对象的实例](#33-模板式表单调用表单对象的实例)
+  - [3.4. 模板式表单的提交](#34-模板式表单的提交)
+  - [3.5. 模板式表单绑定`ngModel`](#35-模板式表单绑定ngmodel)
 - [4. 响应式表单校验](#4-响应式表单校验)
+  - [Angular校验器](#angular校验器)
+  - [校验器的使用](#校验器的使用)
+  - [校验器信息的获取](#校验器信息的获取)
+  - [实现自定义的校验器](#实现自定义的校验器)
+  - [在模板中显示校验信息](#在模板中显示校验信息)
 - [5. 模板式表单校验](#5-模板式表单校验)
 - [6. 参考资料](#6-参考资料)
 
@@ -402,6 +407,138 @@ Angular接管form表单后，默认会阻止原生的`submit`事件，取而代�
 ![打印](/image/Snipaste_2018-10-20_22-21-58.png)
 
 # 4. 响应式表单校验
+
+## Angular校验器
+
+不管是响应式表单校验还是模板式表单校验，都会用到Anglar校验器，Angular校验器其实是一个方法，它接收一个`AbstractControl`类型的参数，`FormControl`、`FormGroup`、`FormArray`都是继承自该参数类型的实例对象，也就是可以传入这三个模型数据中的任何一个，返回的值是一个任意的对象，只要该对象的key是一个string类型的数据。
+
+```typescript
+xxoo(control: AbstractControl): {[key: string]: any} {
+  return {xo: true};
+}
+```
+
+Angular中内置的校验器存在于`Validators`这个类中，例如`Validators.required`是校验必填项、`Validators.minLength()`是校验输入最少字符的。Angular内置的验证器可以查看此篇[文档内容](https://www.angular.cn/api/forms/Validators)。
+
+## 校验器的使用
+
+```typescript
+regist = this.fb.group({
+    // account: ['账号', Validators.required],
+    account: ['账号', [Validators.required, Validators.minLength(8)]],
+    password: this.fb.group({
+      pwd: ['密码', Validators.required],
+      repwd: ['重复密码', Validators.required]
+    },{validator: [Validators.max]}),
+    address: this.fb.array(['地址1', '地址2', ''], [Validators.required])
+  });
+```
+
+- 使用`FormBuilder`可以对响应式表单进行校验，只需要在代替`FormControl`的数组中传入第二个参数就可以对该`FormControl`进行校验。
+- 校验器可以是一个也可以是多个，一个的时候就是直接传入参数，多个时需要写成数组形式。
+- `FormGroup`的校验器传入需要在第二个参数传入一个对象，属性为`validator`，参数为校验器。
+- `FormArray`的校验器与`FormControl`一致，都是在第二个参数传入一个或多个校验器。
+
+## 校验器信息的获取
+
+可以获取单独的字段的校验结果和校验错误信息：
+
+```typescript
+onSubmit() {
+    const isValid: boolean = this.regist.get('account').valid;
+    console.log(`账号的校验结果是:${isValid}`);
+    const err: any = this.regist.get('account').errors;
+    console.log(`账号的校验错误信息是:${JSON.stringify(err)}`);
+}
+```
+
+- `.valid`可以获取当前字段的校验结果，该结果是一个bool类型的值。
+- `.errors`可以获取当前字段校验未通过时的错误信息，该结果是一个对象(any)类型。
+
+## 实现自定义的校验器
+
+创建一个新的ts文件，在其中编写通用的校验器：
+
+`user-info-valids.ts`:
+
+```typescript
+import { FormControl, FormGroup, FormArray } from '@angular/forms';
+
+/**
+ * email邮箱验证器
+ * @param control FormControl
+ */
+export function emailValidator(control: FormControl): any {
+    const reg = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
+    const valid = reg.test(control.value);
+    return valid ? null : { email: 'email格式不正确' };
+}
+/**
+ * 两次密码输入对比验证
+ * @param group FormGroup
+ */
+export function passwordEqualValidator(group: FormGroup): any {
+    const pwd: FormControl = group.get('pwd') as FormControl;
+    const repwd: FormControl = group.get('repwd') as FormControl;
+    // 返回密码对比的结果
+    const valid: boolean = pwd.value === repwd.value;
+    return valid ? null : { pwd: '两次输入的密码不一致' };
+}
+
+/**
+ * 验证地址都不能为空
+ * @param array FormArray
+ */
+export function addressValidator(array: FormArray): any {
+    for (let i = 0; i < array.controls.length; i++) {
+        const val = array.controls[i] as FormControl;
+        if (!val.value) {
+            return { address: '地址不能为空' };
+        }
+    }
+    return null;
+}
+```
+
+然后在`test.component.ts`组件中调用：
+
+```typescript
+import { emailValidator, passwordEqualValidator, addressValidator } from '../myValid/user-info-valids';
+...
+
+  constructor(private fb: FormBuilder) { }
+  regist = this.fb.group({
+    // account: ['账号', Validators.required],
+    account: ['账号', emailValidator],
+    password: this.fb.group({
+      pwd: ['密码'],
+      repwd: ['重复密码']
+    }, {validator: passwordEqualValidator}),
+    address: this.fb.array(['地址1', '地址2', ''], addressValidator)
+  });
+
+  /**
+   * 提交按钮响应事件，这里展示校验结果数据
+   */
+  onSubmit() {
+    const isValid: boolean = this.regist.valid;
+    console.log(`表单的校验结果是:${isValid}`);
+    const err1: any = this.regist.get('account').errors;
+    console.log(`账号的校验错误信息是:${JSON.stringify(err1)}`);
+    const err2: any = this.regist.get('password').errors;
+    console.log(`密码的校验错误信息是:${JSON.stringify(err2)}`);
+    const err3: any = this.regist.get('address').errors;
+    console.log(`地址的校验错误信息是:${JSON.stringify(err3)}`);
+  }
+```
+
+页面展示：  
+![页面](/image/Snipaste_2018-10-23_00-11-27.png)
+
+- 可以看到只要有未校验通过的元素，整个表单的校验结果就是false；
+- 如果校验未通过，就会展示我们在校验器中自定义的返回对象了，获取这个数据有助于我们个性化处理校验。
+
+## 在模板中显示校验信息
 
 # 5. 模板式表单校验
 
