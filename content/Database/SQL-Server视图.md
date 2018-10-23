@@ -2,7 +2,7 @@
 title: SQL Server视图
 date: 2015-04-27T16:57:47+08:00
 tags: ["SQL Server"]
-categories: ["SQL"]
+categories: ["Database"]
 permalink: SQL-Server-View
 description: SQL Server视图
 ---

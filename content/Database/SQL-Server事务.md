@@ -2,7 +2,7 @@
 title: SQL Server事务
 date: 2015-04-01T21:20:19+08:00
 tags: ["SQL Server"]
-categories: ["SQL"]
+categories: ["Database"]
 permalink: SQL-Server-Transaction
 description: SQL Server 事务
 ---

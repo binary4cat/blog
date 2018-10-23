@@ -1,8 +1,8 @@
 ---
 title: MQ技术架构
 date: 2017-10-17T21:10:08+08:00
-categories: ["架构之路"]
-tags: ["架构师之路文章笔记"]
+categories: ["Architect"]
+tags: ["消息队列"]
 permalink: MQ技术架构
 description: MQ技术架构
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fkljzphrdkj20cs05o0sx.jpg

@@ -29,11 +29,14 @@ draft: false
   - [3.4. 模板式表单的提交](#34-模板式表单的提交)
   - [3.5. 模板式表单绑定`ngModel`](#35-模板式表单绑定ngmodel)
 - [4. 响应式表单校验](#4-响应式表单校验)
-  - [Angular校验器](#angular校验器)
-  - [校验器的使用](#校验器的使用)
-  - [校验器信息的获取](#校验器信息的获取)
-  - [实现自定义的校验器](#实现自定义的校验器)
-  - [在模板中显示校验信息](#在模板中显示校验信息)
+  - [4.1. Angular校验器](#41-angular校验器)
+  - [4.2. 校验器的使用](#42-校验器的使用)
+  - [4.3. 校验器信息的获取](#43-校验器信息的获取)
+  - [4.4. 实现自定义的校验器](#44-实现自定义的校验器)
+  - [4.5. 在模板中显示校验信息](#45-在模板中显示校验信息)
+  - [4.6. 将校验失败的信息编写在校验器中](#46-将校验失败的信息编写在校验器中)
+  - [4.7. 异步校验器](#47-异步校验器)
+  - [4.8. 校验器的状态字段](#48-校验器的状态字段)
 - [5. 模板式表单校验](#5-模板式表单校验)
 - [6. 参考资料](#6-参考资料)
 
@@ -408,7 +411,7 @@ Angular接管form表单后，默认会阻止原生的`submit`事件，取而代�
 
 # 4. 响应式表单校验
 
-## Angular校验器
+## 4.1. Angular校验器
 
 不管是响应式表单校验还是模板式表单校验，都会用到Anglar校验器，Angular校验器其实是一个方法，它接收一个`AbstractControl`类型的参数，`FormControl`、`FormGroup`、`FormArray`都是继承自该参数类型的实例对象，也就是可以传入这三个模型数据中的任何一个，返回的值是一个任意的对象，只要该对象的key是一个string类型的数据。
 
@@ -420,7 +423,7 @@ xxoo(control: AbstractControl): {[key: string]: any} {
 
 Angular中内置的校验器存在于`Validators`这个类中，例如`Validators.required`是校验必填项、`Validators.minLength()`是校验输入最少字符的。Angular内置的验证器可以查看此篇[文档内容](https://www.angular.cn/api/forms/Validators)。
 
-## 校验器的使用
+## 4.2. 校验器的使用
 
 ```typescript
 regist = this.fb.group({
@@ -439,7 +442,7 @@ regist = this.fb.group({
 - `FormGroup`的校验器传入需要在第二个参数传入一个对象，属性为`validator`，参数为校验器。
 - `FormArray`的校验器与`FormControl`一致，都是在第二个参数传入一个或多个校验器。
 
-## 校验器信息的获取
+## 4.3. 校验器信息的获取
 
 可以获取单独的字段的校验结果和校验错误信息：
 
@@ -455,7 +458,7 @@ onSubmit() {
 - `.valid`可以获取当前字段的校验结果，该结果是一个bool类型的值。
 - `.errors`可以获取当前字段校验未通过时的错误信息，该结果是一个对象(any)类型。
 
-## 实现自定义的校验器
+## 4.4. 实现自定义的校验器
 
 创建一个新的ts文件，在其中编写通用的校验器：
 
@@ -482,7 +485,7 @@ export function passwordEqualValidator(group: FormGroup): any {
     const repwd: FormControl = group.get('repwd') as FormControl;
     // 返回密码对比的结果
     const valid: boolean = pwd.value === repwd.value;
-    return valid ? null : { pwd: '两次输入的密码不一致' };
+    return valid ? null : { equal: '两次输入的密码不一致' };
 }
 
 /**
@@ -511,7 +514,7 @@ import { emailValidator, passwordEqualValidator, addressValidator } from '../myV
     // account: ['账号', Validators.required],
     account: ['账号', emailValidator],
     password: this.fb.group({
-      pwd: ['密码'],
+      pwd: ['密码', Validators.minLength(8)],
       repwd: ['重复密码']
     }, {validator: passwordEqualValidator}),
     address: this.fb.array(['地址1', '地址2', ''], addressValidator)
@@ -538,7 +541,104 @@ import { emailValidator, passwordEqualValidator, addressValidator } from '../myV
 - 可以看到只要有未校验通过的元素，整个表单的校验结果就是false；
 - 如果校验未通过，就会展示我们在校验器中自定义的返回对象了，获取这个数据有助于我们个性化处理校验。
 
-## 在模板中显示校验信息
+## 4.5. 在模板中显示校验信息
+
+要在模板中显示校验的信息，那么就需要在模板中获取校验结果，下面我们看看怎么才能在模板中获取校验的数据；
+
+沿用前面的`test.component.ts`文件中的代码，我们在`test.component.html`文件中使用HTML的`hidden`属性来模拟控制错误信息的展示与否：
+
+```html
+<form [formGroup]="regist" (submit)="onSubmit()">
+  账号：<input formControlName="account">
+  <p [hidden]="!regist.hasError('email','account')">账号必须是合法的邮箱地址！</p>
+  <div formGroupName="password">
+    密码：<input formControlName="pwd">
+    <p [hidden]="!regist.hasError('minlength',['password','pwd'])">密码至少是8个字符</p>
+    重复密码：<input formControlName="repwd">
+    <p [hidden]="!regist.hasError('equal','password')">两次输入的密码不一致</p>
+  </div>
+  <br>
+  <div>
+    <ul formArrayName="address">
+      <li *ngFor="let a of this.regist.get('address').controls; let i=index;">
+        收货地址：<input type="text" [formControlName]="i">
+      </li>
+      <p [hidden]="!regist.hasError('address','address')">收货地址不能为空</p>
+    </ul>
+    <button type="button" (click)="addAddress()">增加地址栏</button>
+  </div>
+  <input type="submit" value="确定">
+</form>
+```
+
+- 模型对象的`hasError()`函数可以获取指定的校验器是否有错误。
+- 在`FormControl`上调用`hasError()`函数时，第一个参数是校验器校验失败时，返回对象的key值(*注意并不是校验器的名字，而是校验器校验失败时返回的对象的key的名字*)，可以看看前面我们定义的账号校验器失败时返回的对象的key是`email`；第二个参数是当前校验的字段的`formControName`。
+- 校验`FormGroup`里面的一个字段时，传入`hasError()`的第二个参数有所变化，需要传入一个数组，数组的第一个参数是当前的`formGroupName`，第二个才是当前校验字段的`formControlName`; 看上面的代码中，因为我们在“密码”所在的字段上标注了`Validators.minLength(8)`校验器，所以它就是在`FormGroup`内部的校验；而两次密码不一致的校验属于是`FromGroup`的校验，这就可以直接传入与前面`FormControl`校验时类似的两个参数就可以。
+
+看看页面上的效果 ：  
+![页面](/image/Snipaste_2018-10-23_22-18-18.png)
+
+## 4.6. 将校验失败的信息编写在校验器中
+
+前面我们是将校验失败的信息写在了HTML中，我们也可以定义在校验器中，直接在HTML中用插值表达式绑定，这样更加的灵活：
+
+`user-info-valids.ts`：
+
+```typescript
+/**
+ * email邮箱验证器
+ * @param control FormControl
+ */
+export function emailValidator(control: FormControl): any {
+    const reg = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
+    const valid = reg.test(control.value);
+    return valid ? null : { email: {errDesc: '邮箱的格式不正确！'} };
+}
+```
+
+- 我们将校验失败返回对象的属性值改成了一个对象形式，对象的属性名可以任意，这里我起的是`errDesc`，它的值就是想要显示的错误消息。
+
+`test.component.html`:
+
+```html
+账号：<input formControlName="account">
+<p [hidden]="!regist.hasError('email','account')">
+  {{regist.getError('email','account')?.errDesc}}
+</p>
+```
+
+- 我们将之前硬编码在<p>标签中的错误消息换成了插值表达式绑定。
+- 这里又用了一个新方法`getError()`，它的参数和之前的`hasError`一模一样，就是返回值不相同，`getError()`的返回值是校验器中定义的失败时返回的对象，然后调用该返回对象的属性名，就可以获得定义的错误消息了；这里为了避免返回一个空对象，使用了`?`避免报错。
+
+再打开页面就可以看到，错误信息显示成我们在校验器中设置的内容了。
+
+## 4.7. 异步校验器
+
+响应式表单还支持一种“异步校验器”，它可以在需要调用远程服务器校验的情况下使用，其写法和普通的校验器一致，就是返回的结果是一个响应流(`Observable`)，关于`Observable`的信息会在下一节“HTTP服务”中讲到。
+
+将`user-info-valids.ts`中的email校验改成异步校验器：
+
+```typescript
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
+/**
+ * email邮箱验证器
+ * @param control FormControl
+ */
+export function emailValidator(control: FormControl): any {
+    const reg = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
+    const valid = reg.test(control.value);
+    return of(valid ? null : { email: {errDesc: '邮箱的格式不正确！'} }).pipe(delay(3000));
+}
+```
+
+- 上面的代码只更改了返回值，返回了一个可观测的流，为了演示使用了`delay(3000)`延迟3秒返回结果；
+- 这里使用的是`rxjs`6的新语法，版本5和版本6的更改比较大，可以[在这里查阅](https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md)更改。或者使用[Promise方式](https://www.joshmorony.com/username-availability-with-an-asynchronous-validator-in-angular/)也可以。
+
+在页面上查看跟先前的校验没有区别，在本例中会等待3秒再显示错误消息。
+
+## 4.8. 校验器的状态字段
 
 # 5. 模板式表单校验
 
@@ -547,3 +647,4 @@ import { emailValidator, passwordEqualValidator, addressValidator } from '../myV
 [https://www.angular.cn/guide/reactive-forms](https://www.angular.cn/guide/reactive-forms)  
 [https://www.angular.cn/guide/forms](https://www.angular.cn/guide/forms)  
 [https://www.angular.cn/guide/form-validation](https://www.angular.cn/guide/form-validation)  
+[https://www.joshmorony.com/username-availability-with-an-asynchronous-validator-in-angular/](https://www.joshmorony.com/username-availability-with-an-asynchronous-validator-in-angular/)  

@@ -2,7 +2,7 @@
 title: SQL Server触发器
 date: 2015-04-16T23:33:00+08:00
 tags: ["SQL Server"]
-categories: ["SQL"]
+categories: ["Database"]
 permalink: SQL-Server-Tirgger
 description: SQL Server触发器
 ---

@@ -2,7 +2,7 @@
 title: SQL Server表连接(Join)
 date: 2015-04-20T21:44:19+08:00
 tags: ["SQL Server"]
-categories: ["SQL"]
+categories: ["Database"]
 permalink: SQL-Server-Join
 description: SQL Server表连接(Join)
 ---
