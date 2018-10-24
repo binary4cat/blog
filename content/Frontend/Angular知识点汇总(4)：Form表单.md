@@ -37,7 +37,18 @@ draft: false
   - [4.6. 将校验失败的信息编写在校验器中](#46-将校验失败的信息编写在校验器中)
   - [4.7. 异步校验器](#47-异步校验器)
   - [4.8. 校验器的状态字段](#48-校验器的状态字段)
+    - [4.8.1. `touched`/`untouched`](#481-toucheduntouched)
+    - [4.8.2. `pristine`/`dirty`](#482-pristinedirty)
+    - [4.8.3. `pending`](#483-pending)
+  - [4.9. 带有状态的class属性](#49-带有状态的class属性)
 - [5. 模板式表单校验](#5-模板式表单校验)
+  - [5.1. Angular内置校验指令](#51-angular内置校验指令)
+  - [5.2. 自定义指令](#52-自定义指令)
+    - [5.2.1. 指令校验器](#521-指令校验器)
+      - [5.2.1.1. 指令校验器的使用](#5211-指令校验器的使用)
+  - [获取校验结果](#获取校验结果)
+  - [错误消息](#错误消息)
+  - [状态字段](#状态字段)
 - [6. 参考资料](#6-参考资料)
 
 <!-- /TOC -->
@@ -640,7 +651,233 @@ export function emailValidator(control: FormControl): any {
 
 ## 4.8. 校验器的状态字段
 
+在前面显示错误信息的一节，我们看到错误信息在一开始就出现在页面上的，而正确的验证一般都是用户选中、或者光标离开的时候才进行验证，Angular的状态字段可以获取验证字段的几种状态：
+
+### 4.8.1. `touched`/`untouched`
+
+用来表示某个元素有没有获取过焦点(被点击过)，如果获取过那么`touched`的值就是`true`，同时`untouched`的值就是`false`；反之亦然。
+
+```html
+账号：<input formControlName="account">
+<div [hidden]="regist.get('account').valid||regist.get('account').untouched">
+  <p [hidden]="!regist.hasError('email','account')">
+    {{regist.getError('email','account')?.errDesc}}
+  </p>
+</div>
+```
+
+- 使用`FormFroup`的`get()`函数可以获取表单的验证状态`valid`和`touched`/`untouched`字段；
+- 这里我们判断验证通过(`valid=true`)或者用户没有点击输入框(`untouched=true`)的时候，隐藏错误信息
+
+### 4.8.2. `pristine`/`dirty`
+
+用来判断一个字段的值有没有被修改过，如果修改过`pristine`的值就是`true`，同时`dirty`的值就是`false`，反之亦然。
+
+```html
+账号：<input formControlName="account">
+<div [hidden]="regist.get('account').valid||regist.get('account').pristine">
+  <p [hidden]="!regist.hasError('email','account')">
+    {{regist.getError('email','account')?.errDesc}}
+  </p>
+</div>
+```
+
+- 调用的方式和之前一样，都在`FormGroup`的`get()`函数调用；
+- 这时只有当我们修改字段的值(必须是修改值)，才会触发验证，进而展示错误提示。
+
+### 4.8.3. `pending`
+
+用来获取异步校验的状态，当一个字段处于异步校验过程中时，`pending`的值为true，这时就可根据需要显示一个验证中的提示，告知用户，获得更好的用户体验。
+
+```html
+账号：<input formControlName="account">
+<div [hidden]="regist.get('account').valid||regist.get('account').pristine">
+  <div [hidden]="!regist.get('account').pending">
+    正在验证邮箱的格式是否正确，请稍后...
+  </div>
+  <p [hidden]="!regist.hasError('email','account')">
+    {{regist.getError('email','account')?.errDesc}}
+  </p>
+</div>
+```
+
+- 我们在之前的验证中加了一个“请稍后”的提示，在异步验证的过程中会出现，异步验证结束会隐藏。
+
+![pending](/image/20181024pending.gif)
+
+## 4.9. 带有状态的class属性
+
+Angular表单默认会在输入框等表单组件上根据状态增减class属性，我们可以对这些class属性进行自定义样式，从而定制字段DOM元素的外观样式。
+
+![样式](/image/Snipaste_2018-10-24_22-04-54.png)
+
+- 我们在第一次进入页面没有对页面的表单字段元素进行任何操作的时候，可以看到表单元素的class属性中默认有三个class属性：
+  - `ng-untouched`：表示没有获得过焦点，可以自由发挥设置没有获得过焦点的样式。
+  - `ng-pristine`：表示没有修改过字段的值，同样可以自由发挥编辑样式。
+  - `ng-invalid`：表示当前的验证是无效的，这是因为没有输入过任何值。
+
+![样式](/image/Snipaste_2018-10-24_22-09-23.png)
+
+- 当我们在“账号”输入框输入格式正确的邮箱时，会发现字段元素的class属性动态的变化了：
+  - `ng-dirty`：表示字段被修改过了
+  - `ng-valid`：表示字段通过了验证
+  - `ng-touched`：表示字段已经获取过焦点了
+
+![样式](/image/Snipaste_2018-10-24_22-12-43.png)
+
+- 在异步校验发生的时候，还会增加一个`ng-pending`的class属性，校验完成后会自动去掉，这个也可以自由控制样式。
+
 # 5. 模板式表单校验
+
+模板式表单的校验需要用到专门的指令来进行校验，Angular内置了一部分校验指令，也可以自定义校验指令。
+
+指令(`directive`)和组件(`component`)差不多，只不过指令没有模板，除此之外可以和组件实现相同的功能。
+
+## 5.1. Angular内置校验指令
+
+angular内置有位数不多的几个校验指令`required`/`minlength`/`maxlength`等，具体可以在[这部分文档](https://www.angular.cn/api/forms#%E6%8C%87%E4%BB%A4)查看。
+
+模板式表单的指令使用比较简单，不管是自定义的还是内置的，直接写在HTML元素的标签上即可：
+
+```html
+账号：<input ngModel name="account" type="text" required maxlength="50">
+```
+
+## 5.2. 自定义指令
+
+自定义指令需要创建指令：
+
+```shell
+ng g directive myDriective/emailValidDriective
+```
+
+看看生成的指令`email-valid-driective-drictive.ts`：
+
+```typescript
+import { Directive } from '@angular/core';
+
+@Directive({
+  selector: '[appEmailValidDriective]'
+})
+export class EmailValidDriectiveDirective {
+
+  constructor() { }
+
+}
+```
+
+- 指令装饰器中的`selector`值是作为标签的一个属性的：
+
+  ```html
+  <input selectorValue>
+  ```
+
+- 组件装饰器的`selector`的值是标签选择器：
+
+  ```html
+  <selectorValue></selectorValue>
+  ```
+
+### 5.2.1. 指令校验器
+
+只生成一个指令还不能作为校验器使用，要实现一个可以用来校验的指令，需要将一个普通的校验器包装起来，从而使该指令具有被包装校验器的功能。
+
+我们将之前的`emailValidator`校验器包装成指令：
+
+```typescript
+import { Directive } from '@angular/core';
+import { NG_VALIDATORS } from '@angular/forms';
+import { emailValidator } from '../myValid/user-info-valids';
+
+@Directive({
+  selector: '[appEmailValidDriective]',
+  providers: [{provide: NG_VALIDATORS, useValue: emailValidator, multi: true}]
+})
+export class EmailValidDriectiveDirective {
+  constructor() { }
+}
+```
+
+- 在指令装饰器的内部新增一个`providers`属性，在其值内部传入一个对象，该对象有三个属性：
+  - `provide`：该属性存储一个“token”，通常是Angular提供的一个常量`NG_VALIDATORS`，代表当前的指令。
+  - `useValue`：这个属性绑定了我们要包装的校验器。
+  - `multi`：这个字段表示是否可以在同一个“token下包装多个不同的校验器，因为我们会在同一个`NG_VALIDATORS`下包装多个校验器，所以设置为true，代表允许多个。
+- 指令的内部不需要任何实现，其实就是一个壳子，真正的校验工作是校验器的内部实现。
+
+**注意**
+要使自定义指令校验器生效，需要将指令导入到`app.module.ts`根模块中，一般只要我们使用`ng g drictive name`生成的指令都会自动导入，到根模块中，无需我们手动导入，但是如果指令没有生效，可以首先排查这里是否导入：
+
+```typescript
+import { EmailValidDriectiveDirective } from './myDriective/email-valid-driective.directive';
+@NgModule({
+  declarations: [
+    ...
+    EmailValidDriectiveDirective
+  ],
+  ...
+})
+export class AppModule { }
+```
+
+#### 5.2.1.1. 指令校验器的使用
+
+和之前描述的一样，只要将我们写的指令校验器的`selector`的值写在需要校验的元素的标签上即可。
+
+## 获取校验结果
+
+由于模板式表单没有编写数据模型对象，所以不能直接在组件中直接通过`FormGroup`对象调用来得知表单的校验通过与否；我们可以通过模板局部变量将校验结果传到方法的参数中，拿到组件中进行使用：
+
+```html
+// template
+
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value,myForm.valid)">
+  账号：<input ngModel name="account" type="text" required maxlength="50" appEmailValidDriective><br>
+  <div ngModelGroup="password">
+      密码：<input ngModel name="pwd" type="text"><br>
+      重复密码：<input ngModel name="repwd" type="text"><br>
+  </div>
+  <button type="button" (click)="viewMyForm(myForm)">查看模板本地变量</button>
+  <button type="submit">确定</button>
+</form>
+```
+
+- 我们在表单中定义了一个模板局部变量`myForm`，通过将`myForm`变量的`value`和`valid`属性传递给`onSubmit`函数，可以在组件中获取表单的值和校验结果：
+
+```typescript
+onSubmit(val: any, valid: boolean) {
+  console.log(val);
+  console.log(valid);
+}
+```
+
+页面效果：  
+![页面](/inmae/Snipaste_2018-10-24_23-25-07.png)
+
+## 错误消息
+
+在模板式表单中依然可以使用`hasError`函数来获取错误消息，其参数和响应式表单完全一致，只不过在模板式表单中需要用模板局部变量的`form`属性来调用它：
+
+```html
+账号：<input ngModel name="account" type="text" required maxlength="50" appEmailValidDriective><br>
+<div [hidden]="!myForm.form.hasError('email','account')">
+  {{myForm.form.getError('email','account')?.errDesc}}
+</div>
+```
+
+- 可以看到除了使用模板局部变量的`form`属性调用`hasError()`函数与`getError()`函数外，其余的参数等都是一致的，两个函数的第一个参数依然是校验器失败返回对象的key，第二个依然是字段的名称。
+
+## 状态字段
+
+状态字段同样可以使用模板局部变量来调用，状态的类型和响应式表单的几种类型一致，我们看一下使用方式
+
+```html
+账号：<input ngModel name="account" type="text" required maxlength="50" appEmailValidDriective><br>
+<div [hidden]="myForm.valid||myForm.untouched">
+  <div [hidden]="!myForm.form.hasError('email','account')">
+    {{myForm.form.getError('email','account')?.errDesc}}
+  </div>
+</div>
+```
 
 # 6. 参考资料
 
