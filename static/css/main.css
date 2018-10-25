@@ -52,7 +52,7 @@ a {
 }
 
 ul a {
-    color: #fbb297;
+    color: #0096ff;
 }
 
 a:active,
@@ -430,6 +430,7 @@ a:hover {
     font-weight: lighter;
     font-size: 95%;
     color: #FF0033;
+    background-color: #eee;
 }
 
 .highlight .c {
