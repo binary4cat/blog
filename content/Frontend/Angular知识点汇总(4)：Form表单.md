@@ -851,7 +851,7 @@ onSubmit(val: any, valid: boolean) {
 ```
 
 页面效果：  
-![页面](/inmae/Snipaste_2018-10-24_23-25-07.png)
+![页面](/image/Snipaste_2018-10-24_23-25-07.png)
 
 ## 错误消息
 
