@@ -9,9 +9,17 @@ draft: false
 <!-- TOC -->
 
 - [1. 响应式编程](#1-响应式编程)
-    - [1.1. 名词解释](#11-名词解释)
-    - [1.2. 简单例子](#12-简单例子)
-    - [1.3. 在Angular中使用响应式编程](#13-在angular中使用响应式编程)
+  - [1.1. 名词解释](#11-名词解释)
+  - [1.2. 简单例子](#12-简单例子)
+  - [1.3. 在Angular中使用响应式编程](#13-在angular中使用响应式编程)
+- [HttpClientModule模块](#httpclientmodule模块)
+  - [HttpClientModule模块介绍](#httpclientmodule模块介绍)
+  - [HttpClientModule的使用](#httpclientmodule的使用)
+  - [配置后端API请求地址](#配置后端api请求地址)
+  - [HTTP请求Header和参数设置](#http请求header和参数设置)
+  - [异步管道的方式获取数据](#异步管道的方式获取数据)
+  - [请求的防抖](#请求的防抖)
+- [WebSocket通信](#websocket通信)
 - [2. 参考资料](#2-参考资料)
 
 <!-- /TOC -->
@@ -84,6 +92,56 @@ export class TestHttpComponent implements OnInit {
 - 我们在构造函数中订阅了这个事件流，当页面上每次输入的内容变化时，就会延迟(`pipe`中的`delay`函数)1秒钟将value打印在控制台。
 
 ![observable](/image/20181025observable.gif)
+
+# HttpClientModule模块
+
+## HttpClientModule模块介绍
+
+Angular的`HttpClient`类封装了很多的请求方法，例如`POST`/`GET`/`PUT`/`DELETE`/`HEAD`等等众多方法。每一个方法返回的都是一个`Observable<T>`的响应流（`T`的类型众多，这里用来做代替），在请求的返回阶段我们需要订阅这个流，获取服务端响应的数据或者错误信息。
+
+```typescript
+request(method: string, url: string, options: {
+    body?: any;
+    headers?: HttpHeaders | {
+        [header: string]: string | string[];
+    };
+    observe?: 'body';
+    params?: HttpParams | {
+        [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType: 'blob';
+    withCredentials?: boolean;
+}): Observable<Blob>;
+
+get(url: string, options: {
+    headers?: HttpHeaders | {
+        [header: string]: string | string[];
+    };
+    observe: 'response';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType: 'arraybuffer';
+    withCredentials?: boolean;
+}): Observable<HttpResponse<ArrayBuffer>>;
+```
+
+- 上面从`HttpClient`类的定义中摘选了两个方法，方法中的参数大致都是相同的，请求的方式可以指定或者调用专用的方法。
+- 其中可以看到参数`options`时相同的，包含一致的属性，其中的作用可以从属性名大致看出来，其中影响`Observable<T>`的`T`类型的属性是`responseType`，因为我们最终返回的流中的数据类型应该是我们的`responseType`类型。
+
+## HttpClientModule的使用
+
+## 配置后端API请求地址
+
+## HTTP请求Header和参数设置
+
+## 异步管道的方式获取数据
+
+## 请求的防抖
+
+# WebSocket通信
 
 
 

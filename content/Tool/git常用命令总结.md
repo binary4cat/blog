@@ -2,7 +2,7 @@
 title: git常用命令总结
 date: 2016-03-28T21:16:58+08:00
 tags: ["Git学习"]
-categories: ["Git"]
+categories: ["Tool"]
 permalink: Git-command-summary
 description: git常用命令总结
 ---

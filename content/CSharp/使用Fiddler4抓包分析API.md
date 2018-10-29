@@ -2,7 +2,7 @@
 title: 使用Fiddler抓包分析API
 date: 2016-07-17T13:22:44+08:00
 tags: ["UWP学习笔记"]
-categories: ["CSharp"]
+categories: ["cSharp"]
 permalink: Fiddler-caught-analysis-API
 description: 使用Fiddler抓包分析API
 ---

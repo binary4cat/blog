@@ -2,7 +2,7 @@
 title: 理解RESTful
 date: 2016-02-24T23:37:09+08:00
 tags: ["ASP.NET Web API笔记"]
-categories: ["CSharp"]
+categories: ["cSharp"]
 permalink: Understanding-RESTful
 description: 理解RESTful
 ---

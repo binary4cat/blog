@@ -2,7 +2,7 @@
 title: 7、UmbracoNewsSite：新闻详情页
 date: 2016-01-07T21:53:36+08:00
 tags: ["Umbraco入门"]
-categories: ["Umbraco"]
+categories: ["cSharp"]
 permalink: Umbraco-Getting-Started-7
 description: Umbraco入门教程
 ---

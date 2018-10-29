@@ -2,7 +2,7 @@
 title: 1、Umbraco简介和安装
 date: 2016-01-01T21:23:04+08:00
 tags: ["Umbraco入门"]
-categories: ["Umbraco"]
+categories: ["cSharp"]
 permalink: Umbraco-Getting-Started-1
 description: Umbraco入门教程
 ---

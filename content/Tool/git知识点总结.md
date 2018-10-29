@@ -2,7 +2,7 @@
 title: git知识点总结
 date: 2015-10-14T20:30:45+08:00
 tags: ["Git学习"]
-categories: ["Git"]
+categories: ["Tool"]
 permalink: Git-points-summary
 description: git知识点总结
 ---

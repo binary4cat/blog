@@ -3,7 +3,7 @@ title: ASP.NET存储过程操作
 date: 2015-04-06T17:21:22+08:00
 tags: ["SQL Server","转载"]
 permalink: ASP-NET-stored-procedure-operations
-categories: ["SQL"]
+categories: ["cSharp"]
 ---
 原文地址：http://www.cnblogs.com/libingql/archive/2010/05/02/1726104.html
 

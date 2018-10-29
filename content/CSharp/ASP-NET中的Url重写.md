@@ -2,9 +2,8 @@
 title: ASP.NET中的Url重写
 date: 2015-02-11T13:47:48+08:00
 tags: ["ASP.NET","转载"]
-categories: ASP.NET
 permalink: ASP-NET-Url-Rewriting
-categories: ["ASP.NET"]
+categories: ["cSharp"]
 ---
 ##  一. 为了页面更有利于seo优化，url重写程序需要做出的不可缺少的手段之一。
 

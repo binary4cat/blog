@@ -3,7 +3,7 @@ title: EF code first简单示例
 date: 2016-04-13T20:35:53+08:00
 tags: ["Asp.Net MVC","EntityFramework"]
 permalink: EF-code-first-simple-example
-categories: ["Asp.Net MVC"]
+categories: ["cSharp"]
 ---
 　　一个简单的MVC5+EF6小demo，演示mvc和ef的简单编写流程。
 

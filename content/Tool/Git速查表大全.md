@@ -3,7 +3,7 @@ title: Git速查表大全
 date: 2016-02-12T22:06:36+08:00
 tags: ["Git学习","转载"]
 permalink: Git-quick-reference-table-greatly-entire
-categories: ["Git"]
+categories: ["Tool"]
 ---
 题图来自[慕课网](http://www.imooc.com)
 

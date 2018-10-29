@@ -2,7 +2,7 @@
 title: 2、Umbraco后台管理功能介绍
 date: 2016-01-02T11:13:41+08:00
 tags: ["Umbraco入门"]
-categories: ["Umbraco"]
+categories: ["cSharp"]
 permalink: Umbraco-Getting-Started-2
 description: Umbraco入门教程
 ---

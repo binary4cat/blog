@@ -1,8 +1,8 @@
 ---
 title: MVC延伸：MVP、MVVM
 date: 2015-09-19T01:16:16+08:00
-tags: ["Asp.Net MVC"]
-categories: ["CSharp"]
+tags: ["cSharp"]
+categories: ["cSharp"]
 permalink: Extends-MVC-MVP-and-MVVM
 description: MVC延伸：MVP、MVVM
 ---

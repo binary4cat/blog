@@ -2,7 +2,7 @@
 title: 'UWP学习笔记:使用Grid和StackPanel布局'
 date: 2016-05-08T21:40:48+08:00
 tags: ["UWP学习笔记"]
-categories: ["UWP"]
+categories: ["cSharp"]
 permalink: UWP-study-notes-use-Grid-and-StackPanel-layout
 description: UWP学习笔记:使用Grid和StackPanel布局
 ---
