@@ -27,7 +27,7 @@ install:
 
 script:
     - hugo
-    #- echo 'axdlog.com' > public/CNAME
+    - echo 'haijd.tech' > public/CNAME
 
 #nothing changes
 deploy:
