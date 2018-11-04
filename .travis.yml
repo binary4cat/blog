@@ -27,7 +27,7 @@ install:
 
 script:
     - hugo
-    - echo 'haijd.tech\nhaijd.me' > public/CNAME
+    - echo -e 'haijd.tech\nhaijd.me' > public/CNAME
 
 #nothing changes
 deploy:
