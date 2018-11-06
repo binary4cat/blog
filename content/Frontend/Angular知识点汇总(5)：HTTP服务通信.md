@@ -9,18 +9,20 @@ draft: false
 <!-- TOC -->
 
 - [1. 响应式编程](#1-响应式编程)
-  - [1.1. 名词解释](#11-名词解释)
-  - [1.2. 简单例子](#12-简单例子)
-  - [1.3. 在Angular中使用响应式编程](#13-在angular中使用响应式编程)
-- [HttpClientModule模块](#httpclientmodule模块)
-  - [HttpClientModule模块介绍](#httpclientmodule模块介绍)
-  - [HttpClientModule的使用](#httpclientmodule的使用)
-  - [配置后端API请求地址](#配置后端api请求地址)
-  - [HTTP请求Header和参数设置](#http请求header和参数设置)
-  - [异步管道的方式获取数据](#异步管道的方式获取数据)
-  - [请求的防抖](#请求的防抖)
-- [WebSocket通信](#websocket通信)
-- [2. 参考资料](#2-参考资料)
+    - [1.1. 名词解释](#11-名词解释)
+    - [1.2. 简单例子](#12-简单例子)
+    - [1.3. 在Angular中使用响应式编程](#13-在angular中使用响应式编程)
+- [2. HttpClientModule模块](#2-httpclientmodule模块)
+    - [2.1. HttpClientModule模块介绍](#21-httpclientmodule模块介绍)
+    - [2.2. HttpClientModule的使用](#22-httpclientmodule的使用)
+        - [2.2.1. Get请求演示](#221-get请求演示)
+        - [2.2.2. POST请求演示](#222-post请求演示)
+    - [2.3. 配置后端API请求地址](#23-配置后端api请求地址)
+    - [2.4. HTTP请求Header和参数设置](#24-http请求header和参数设置)
+    - [2.5. 异步管道的方式获取数据](#25-异步管道的方式获取数据)
+    - [2.6. 高级用法](#26-高级用法)
+- [3. WebSocket通信](#3-websocket通信)
+- [4. 参考资料](#4-参考资料)
 
 <!-- /TOC -->
 
@@ -93,9 +95,9 @@ export class TestHttpComponent implements OnInit {
 
 ![observable](/image/20181025observable.gif)
 
-# HttpClientModule模块
+# 2. HttpClientModule模块
 
-## HttpClientModule模块介绍
+## 2.1. HttpClientModule模块介绍
 
 Angular的`HttpClient`类封装了很多的请求方法，例如`POST`/`GET`/`PUT`/`DELETE`/`HEAD`等等众多方法。每一个方法返回的都是一个`Observable<T>`的响应流（`T`的类型众多，这里用来做代替），在请求的返回阶段我们需要订阅这个流，获取服务端响应的数据或者错误信息。
 
@@ -130,23 +132,197 @@ get(url: string, options: {
 
 - 上面从`HttpClient`类的定义中摘选了两个方法，方法中的参数大致都是相同的，请求的方式可以指定或者调用专用的方法。
 - 其中可以看到参数`options`时相同的，包含一致的属性，其中的作用可以从属性名大致看出来，其中影响`Observable<T>`的`T`类型的属性是`responseType`，因为我们最终返回的流中的数据类型应该是我们的`responseType`类型。
+- `HttpClient`是Angular中最新的HTTP请求封装类型，是在4.3.0版本引入的，它和以前的`Http`类有比较大的区别，总体使用更加方便了，你可以看[这篇文章](https://blog.angularindepth.com/the-new-angular-httpclient-api-9e5c85fe3361)了解新旧封装类型的变化，以及了解`HttpClient`的使用，我在接下来会简单的说一下使用需要注意的地方。
 
-## HttpClientModule的使用
+## 2.2. HttpClientModule的使用
 
-## 配置后端API请求地址
+在这里分别演示一个GET/POST请求的使用，调用的后端接口是一个简单的Go语言的接口实现，代码在[这里](https://gist.github.com/hjdo/4f0b0a87c1b289b1fe079a44d121f6c1)可以找见。
 
-## HTTP请求Header和参数设置
+### 2.2.1. Get请求演示
 
-## 异步管道的方式获取数据
+**Component:**
 
-## 请求的防抖
+```typescript
+export class TestHttpComponent implements OnInit {
+  getService: Observable<UserInfo>;
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+    this.getService = this.http.get<UserInfo>('http://localhost:2333/get');
+  }
+  /**
+   * 获取用户信息按钮事件
+   */
+  getUserInfo() {
+    this.getService.subscribe((data: UserInfo) => {
+      console.log(data);
+    });
+  }
+}
 
-# WebSocket通信
+/**
+ * 用户信息
+ */
+export class UserInfo {
+  constructor(
+    public Email: string,
+    public Password: string) {}
+}
+```
+
+- 首先定义了一个名为`getService`的`Observable<UserInfo>`可观察的流对象，泛型中的类型为我们定义的已知数据对象。
+    - 该`getService`我们单独的拿出来，要说明一下在正式的开发中，我们会将这种对后端的请求函数，会封装成一个service类，里面有各种的请求方法，在需要使用的地方直接调用即可，下面演示一下`getUserInfo`封装后的代码：
+
+    ```typescript
+    // UserInfo.service.ts
+
+    getUserInfo<T>(){
+        return this.http.get<T>('http://localhost:2333/get');
+    }
+    ```
+
+    - 我们将`getUserInfo`封装到了一个类中，它会返回一个可订阅的流对象`Observable<T>`，注意这里只是返回了一个可订阅的流，并没有真正的发起请求，真正的请求会在流被`subscribe`订阅的时候发生。
+
+- 在真正的点击事件中，我们订阅了这个流，此时就会发起GET请求，从后端接口返回数据，这里我们打印出来了：
+  
+![返回](/image/Snipaste_2018-11-05_22-49-11.png)
+
+### 2.2.2. POST请求演示
+
+**Component:**
+
+```typescript
+export class TestHttpComponent implements OnInit {
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+    // 组织
+    this.loginForm = fb.group({
+      email: [],
+      password: []
+    });
+  }
+
+  postService: Observable<any>;
+  loginForm: FormGroup;
+
+  postServiceFunc(userInfo: UserInfo) {
+    return this.postService = this.http.post<boolean>('http://localhost:2333/login', userInfo);
+  }
+
+  submit() {
+    const userInfo = new UserInfo(
+      this.loginForm.value.email,
+      this.loginForm.value.password
+    );
+    this.postServiceFunc(userInfo).subscribe(res =>
+      console.log(res)
+    );
+  }
+}
+```
+
+- 页面上是一个表单，填写`email`和`password`点击提交就会触发`submit`函数。
+- 这里我们定义的“service”是类似的，只不过请求的方法变为了`post`方法，并且多了一个参数。
+- 传入的参数默认会被序列化成json格式传递。
+
+![post](/image/Snipaste_2018-11-05_23-24-13.png)
+
+## 2.3. 配置后端API请求地址
+
+上面的两个例子中我们都将后端的接口地址写全了，但是在实际的开发中可能会用到多个后端的域名，这是因为在测试环境和发布环境肯定会调用不同的后端地址，但是如果像上面例子中写死的话，我想没有人会去挨个修改，所以我们需要将后端的域名(也就是上面例子的`http://localhost:2333`)作为配置变量，以便在需要改动的时候只修改一次。
+
+首先我们需要在项目的根目录下创建一个json文件，文件名一般为`proxy.conf.json`，当然你可以自定义文件名，其内容为：
+
+```json
+{
+  "/api": {
+    "target": "http://localhost:2333"
+  }
+}
+```
+
+- 在json文件中，我们定义了一个`/api`名称的变量，它的值是一个对象，其中包含一个`target`属性，也许从名字你就能大概猜出来了，它的作用是将Angular中的包含`/api`的请求，转发到`target`所代表的地址。
+- 需要注意的是，上面描述的是转发而不是替换，也就是将`/api/get`这个请求发往`http://localhost:2333/api/get`。
+- 所以这点是不同的，我们之前的例子里的路径是没有`api`这个字符的，但是我们需要使用`api`代表转发，所以后端的接口路径也需要包含`api`字符。
+- 更多的内容可以查阅[这里](https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md)
+
+然后我们将之前的请求地址都改成`/api/get`、`/api/login`这两个字符串。
+
+最后我们需要在服务启动的时候，让配置生效，需要用到`--proxy-config`参数，它会使指定的代理配置生效：
+
+```shell
+ng serve --proxy-config proxy.conf.json
+```
+
+启动后，我们尝试刚才的POST请求，可以看到请求依然是正确执行的。但是我们看`Network`请求的信息会发现Request URL的地址是Angular的链接，但是请求确实发送到了后端API，这点有点疑惑，如果你对这里有所了解，麻烦留言给我😊
+
+![Network](/image/Snipaste_2018-11-06_22-28-25.png)
+
+上面的启动命令写起来会比较麻烦，每次都需要写一大串，我们可以换种方式，调用npm的脚本启动。
+打开`package.json`文件，将其中`script`节点中的`start`的值改为我们刚才的启动命令：
+
+```json
+-- "start": "ng serve",
+++ "start": "ng serve --proxy-config proxy.conf.json",
+```
+
+以后每次启动我们就可以直接使用`npm start`来启动了。
+
+## 2.4. HTTP请求Header和参数设置
+
+在`HttpClient`模块中，所有的请求方法最后一个参数都是`options`，这个参数十分重要，它里面配置了我们请求携带的参数，以及返回的数据类型。
+这里要说的`Header`就是`options`中的一个属性，在我们需要请求携带身份验证信息的时候，就需要设置Header：
+
+```typescript
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
+
+this.http.post<Hero>(url, data, httpOptions)
+```
+
+## 2.5. 异步管道的方式获取数据
+
+上面的例子中，我们都是模拟定义一个service，然后再点击事件中使用`subscribe`触发HTTP请求的调用，如果一个请求只是单纯的返回一些可以直接使用的数据的话，Angular给我们提供了一个异步管道`async`，使用它我们可以直接再模板中，发起请求并接收数据。
+
+加入有一个`GetUserInfos`请求，它返回一个用户信息的集合，我们需要把这个集合循环展示在页面。
+
+在Component中增加一个值`Observable<Array<UserInfo>>`属性：
+
+```typescript
+userArrService: Observable<Array<UserInfo>>;
+constructor(private http: HttpClient, private fb: FormBuilder) {
+  this.userArrService = http.get<Array<UserInfo>>('api/getuserinfo');
+}
+```
+
+然后在页面中直接使用`async`异步管道去请求数据：
+
+```html
+<ul>
+    <li *ngFor="let user of userArrService | async">
+        {{user.email}} {{user.password}}
+    </li>
+</ul>
+```
+
+- 我们直接在`ngFor`中循环了`userArrService`这个流，由于借助了`async`管道，它会调用这个流，并且返回流中的数据，使得我们的`ngFor`正常渲染。
+- 当然使用场景不仅是在`ngFor`，其他可以在页面直接渲染的流，都可用`async`解决，会很方便。
+
+## 2.6. 高级用法
+
+Angular的HTTP通信组件非常强大，还有很多实用的高级用法，[官方文档](https://www.angular.cn/guide/http#advanced-usage)非常的详细，我没有办法再精简总结它，你可以浏览官方文档的这部分，以便在合适的场景下使用。
+
+# 3. WebSocket通信
 
 
 
-# 2. 参考资料
+# 4. 参考资料
 
 [https://www.angular.cn/guide/rx-library](https://www.angular.cn/guide/rx-library)  
 [https://www.angular.cn/guide/observables](https://www.angular.cn/guide/observables)  
 [https://www.angular.cn/guide/practical-observable-usage](https://www.angular.cn/guide/practical-observable-usage)  
+[https://blog.angularindepth.com/the-new-angular-httpclient-api-9e5c85fe3361](https://blog.angularindepth.com/the-new-angular-httpclient-api-9e5c85fe3361)  
+[https://www.angular.cn/guide/http](https://www.angular.cn/guide/http)  
+[https://webpack.js.org/configuration/dev-server/#devserver-proxy](https://webpack.js.org/configuration/dev-server/#devserver-proxy)  
+[https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md](https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md)  
