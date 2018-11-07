@@ -21,7 +21,7 @@ draft: false
     - [2.4. HTTP请求Header和参数设置](#24-http请求header和参数设置)
     - [2.5. 异步管道的方式获取数据](#25-异步管道的方式获取数据)
     - [2.6. 高级用法](#26-高级用法)
-- [3. WebSocket通信](#3-websocket通信)
+- [3. 编写可订阅的WebSocket通信](#3-编写可订阅的websocket通信)
 - [4. 参考资料](#4-参考资料)
 
 <!-- /TOC -->
@@ -313,9 +313,39 @@ constructor(private http: HttpClient, private fb: FormBuilder) {
 
 Angular的HTTP通信组件非常强大，还有很多实用的高级用法，[官方文档](https://www.angular.cn/guide/http#advanced-usage)非常的详细，我没有办法再精简总结它，你可以浏览官方文档的这部分，以便在合适的场景下使用。
 
-# 3. WebSocket通信
+# 3. 编写可订阅的WebSocket通信
 
+我们可以将websocket封装成一个可订阅的`Observable<any>`，这样的话我们在调用的时候，就可以直接订阅这个流就可以了。
 
+```typescript
+ws: WebSocket;
+getObservableWebSocket(url): Observable<any> {
+    this.ws = new WebSocket(url);
+    return new Observable(ob => {
+      this.ws.onmessage = (e) => ob.next(e.data);
+      this.ws.onerror = (e) => ob.error(e);
+      this.ws.onclose = (e) => ob.complete();
+    });
+}
+```
+
+- 我们定义了一个公用的方法，用来创建一个可订阅的WebSocket流对象。
+- 可以看到我们将WebSocket的三个事件分别添加到了流`Observable`的三个自定义函数。
+    - 第一个函数监听WebSocket的`onmessage`事件，当收到来自服务端的消息时，会触发`next`函数，将服务端发送的数据发射出去。
+    - 第二个函数监听`onerror`事件，当WebSocket发生错误的时候，会触发该事件，从而调用`error`函数，将错误传递出去。
+    - 第三个函数监听`onclose`事件，当WebSocket通信关闭的时候，会触发该事件，，从而调用`complete`函数，通知订阅者流结束了。
+
+我们在使用的时候，就可以直接调用这个方法，然后使用`subscribe`函数订阅，并且处理这三个事件：
+
+```typescript
+this.getObservableWebSocket('ws:localhost:2333').subscribe(
+    data => console.log('服务端返回了数据：' + data),
+    err => console.log('websocket通信发生错误' + err),
+    () => console.log('websocket关闭')
+);
+```
+
+- 在使用的时候，直接调用该方法，然后传入服务端地址，最后订阅并且处理返回的流即可。
 
 # 4. 参考资料
 
