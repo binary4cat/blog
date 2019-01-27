@@ -9,11 +9,13 @@ description: Umbraco入门教程
 　　我们接着上一篇的内容，这一篇我们引入stylesheets样式，并且尝试添加其他页面的内容。
 
 　　打开visual studio，在项目根目录下新建**js**和**css**文件夹，分别把bootstrap的文件复制进去。(如果已经有就不用新建了)
-　　然后打开Umbraco后台管理页面，刷新之后就可以看到**Stylesheets**节点下面出现了刚刚复制的文件。这是因为Umbraco规定了**Stylesheet**节点默认去读取根目录下名为*css*的文件夹中的文件；看到这你可能会下意识的认为那**Scripts**节点下肯定会出现刚才复制的js脚本文件啦！事实是——没有！**Scripts**节点默认读取的文件夹名是*scripts*，所以在引用这些文件的时候要注意路径。<!--more-->
+　　然后打开Umbraco后台管理页面，刷新之后就可以看到**Stylesheets**节点下面出现了刚刚复制的文件。这是因为Umbraco规定了**Stylesheet**节点默认去读取根目录下名为*css*的文件夹中的文件；看到这你可能会下意识的认为那**Scripts**节点下肯定会出现刚才复制的js脚本文件啦！事实是——没有！**Scripts**节点默认读取的文件夹名是*scripts*，所以在引用这些文件的时候要注意路径。
+
 ![](/image/umbraco/backoffice19.png)
 
 　　文件添加完毕了，我们在程序中引用文件，在**Templates**节点下打开Master文件，然后将bootstrap文件分别添加进去(这里需要注意路径)。
-```
+
+```csharp
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
@@ -37,7 +39,8 @@ description: Umbraco入门教程
 ![](/image/umbraco/backoffice20.png)
 
 　　我们把*Master*模板代码改动一下，让页面稍微好看一点。代码如下：
-```
+
+```html
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = null;
@@ -99,7 +102,8 @@ description: Umbraco入门教程
 ```
 
 　　将*Home*模板的代码也稍微改动一下：
-```
+
+```html
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "Master.cshtml";
@@ -109,7 +113,9 @@ description: Umbraco入门教程
 </div>
 
 ```
+
 　　改动后的页面效果如下：
+
 ![](/image/umbraco/backoffice21.png)
 
 　　下一篇我们添加导航栏的几个页面，看看在Umbrao中怎么添加页面。
