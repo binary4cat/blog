@@ -6,6 +6,7 @@ categories: ["Golang"]
 description : "深入了解fmt包"
 draft: false
 ---
+> 英文原文：[https://blog.gopheracademy.com/advent-2018/fmt/](https://blog.gopheracademy.com/advent-2018/fmt/)
 
 `fmt`包是我们最常使用的package，我们使用它打印输出一些内容，也可以当作字符串formatter工具。在这篇内容中我们再更进一步了解fmt的使用技巧。
 
