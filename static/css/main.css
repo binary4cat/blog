@@ -416,7 +416,7 @@ a:hover {
 /*代码块样式*/
 
 .single-content pre code {
-    font-family: Ubuntu;
+    font-family: console;
     font-size: 100%;
     line-height: 1.5;
     /*下面是防止行内代码段样式覆盖掉代码块的样式*/
