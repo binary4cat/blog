@@ -202,4 +202,61 @@ Task.Run(async () =>
 
 # 4. 附加内容（Go语言的channel使用方式）
 
-待续...
+```Golang
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	fmt.Println("运行开始...")
+	channelRun(2000, 0, 5, 50, 10)
+}
+
+// channel运行实例
+// readDelayMs, writeDelayMs分别是读取器需要暂停的时间和写入器需要暂停的时间
+// finalNumberOfReaders是读取器个个数
+// howManyMessages是消息的总数
+// maxCapacity是channel的容量
+func channelRun(readDelayMs, writeDelayMs, finalNumberOfReaders, howManyMessages, maxCapacity int) {
+	// 创建channel
+	channel := make(chan string, maxCapacity)
+	for i := 0; i < finalNumberOfReaders; i++ {
+		go func(i int) {
+			read(channel, i, readDelayMs)
+		}(i)
+	}
+
+	for i := 0; i < howManyMessages; i++ {
+		fmt.Printf("写入器在%v写入：%v\n", time.Now().Format("2006-01-02 15:04:05.0000"), i)
+		channel <- fmt.Sprintf("发布消息：%v", i)
+		time.Sleep(time.Duration(writeDelayMs) * time.Millisecond)
+	}
+}
+
+// 读取器从channel中读取数据
+// channel时chan的实例
+// readerNumner代表了当前Goroutine的编号
+// delayMs表示当前的Goroutine读取完需要等待的时间
+func read(channel chan string, readerNumber, delayMs int) {
+	// 不断循环读取
+	for {
+		select {
+		case msg := <-channel:
+			fmt.Printf("%v号Gouroutine 读取器在%v读取到了消息：'%s'\n", readerNumber, time.Now().Format("2006-01-02 15:04:05.0000"), msg)
+			time.Sleep(time.Duration(delayMs) * time.Millisecond)
+		}
+	}
+}
+```
+
+结果：
+![Snipaste_2019-02-20_23-04-24.png](/image/Snipaste_2019-02-20_23-04-24.png)
+
+# 5. 参考资料
+
+[https://medium.com/@alexyakunin/go-vs-c-part-1-goroutines-vs-async-await-ac909c651c11](https://medium.com/@alexyakunin/go-vs-c-part-1-goroutines-vs-async-await-ac909c651c11)
+[https://github.com/dotnet/corefx/blob/master/src/System.Threading.Channels/tests/ChannelTests.cs](https://github.com/dotnet/corefx/blob/master/src/System.Threading.Channels/tests/ChannelTests.cs)
+[https://sachabarbs.wordpress.com/2018/11/28/system-threading-channels/](https://sachabarbs.wordpress.com/2018/11/28/system-threading-channels/)

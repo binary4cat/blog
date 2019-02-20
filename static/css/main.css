@@ -416,9 +416,8 @@ a:hover {
 /*代码块样式*/
 
 .single-content pre code {
-    font-family: console;
-    font-size: 100%;
-    line-height: 1.5;
+    font-family: 'Ubuntu Mono';
+    font-size: 120%;
     /*下面是防止行内代码段样式覆盖掉代码块的样式*/
     background-color: transparent !important;
     color: inherit !important;
@@ -428,10 +427,9 @@ a:hover {
 /*行内代码段的样式*/
 
 .single-content code {
-    font-family: Ubuntu;
+    font-family: 'Ubuntu Mono';
     font-weight: lighter;
     font-size: 95%;
-    color: #FF0033;
     background-color: #eee;
     border-radius: 2px;
 }
