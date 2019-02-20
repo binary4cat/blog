@@ -54,3 +54,152 @@ Go语言的channel机制和`System.Threading.Channels`的不同之处有两个�
 
 # 2. 示例代码
 
+创建一个控制台程序演示channel的用法：
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading.Channels;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Task.Run(async () =>
+            {
+                await ChannelRun(0,0, 1, 50, 5);
+            });
+            Console.WriteLine("运行开始...");
+            Console.ReadLine();
+        }
+
+        /// <summary>
+        /// channel运行
+        /// </summary>
+        /// <param name="readDelayMs">读取器每次读取完等待时间</param>
+        /// <param name="writeDelayMs">写入器每次写入完等待时间</param>
+        /// <param name="finalNumberOfReaders">几个读取器同时读取</param>
+        /// <param name="howManyMessages">写入器总共写入多少消息</param>
+        /// <param name="maxCapacity">channel最大容量</param>
+        /// <returns></returns>
+        public static async Task ChannelRun(int readDelayMs, int writeDelayMs, int finalNumberOfReaders,int howManyMessages, int maxCapacity )
+        {
+            // 创建channel
+            var channel = Channel.CreateBounded<string>(maxCapacity);
+            var reader = channel.Reader;
+            var writer = channel.Writer;
+
+
+            var tasks = new List<Task>();
+            // 读取器执行读取任务，可以设置多个读取器同时读取
+            for (var i = 0; i < finalNumberOfReaders; i++)
+            {
+                var idx = i;
+                tasks.Add(Task.Run(() => Read(reader, idx + 1,readDelayMs)));
+            }
+
+            // 写入器执行写入操作
+            for (var i = 0; i < howManyMessages; i++)
+            {
+                Console.WriteLine($"写入器在{DateTime.Now.ToLongTimeString()}写入：{i}");
+                await writer.WriteAsync($"发布消息： '{i}");
+                // 写入完等待片刻
+                await Task.Delay(writeDelayMs);
+            }
+
+            // 写入器标记完成状态
+            writer.Complete();
+            // 等待读取器读取完成
+            await reader.Completion;
+            // 等待读取器所有的Task完成
+            await Task.WhenAll(tasks);
+
+        }
+        /// <summary>
+        /// 读取数据任务
+        /// </summary>
+        /// <param name="theReader">读取器</param>
+        /// <param name="readerNumber">读取器编号</param>
+        /// <param name="delayMs">读取完等待时间</param>
+        /// <returns>任务</returns>
+        public static async Task Read(ChannelReader<string> theReader, int readerNumber, int delayMs)
+        {
+            // 循环判断读取器是否完成状态
+            while (await theReader.WaitToReadAsync())
+            {
+                // 尝试读取数据
+                while (theReader.TryRead(out var theMessage))
+                {
+                    Console.WriteLine($"线程{readerNumber}号读取器在{DateTime.Now.ToLongTimeString()}读取到了消息： '{theMessage}'");
+                    // 读取完等待片刻
+                    await Task.Delay(delayMs);
+                }
+            }
+        }
+    }
+}
+```
+
+借助代码中的注释应当可以理解示例代码的作用，对其中的关键点做个说明：
+
+- 写入器只有一个，写入的容量由channel的容量控制。
+- 读取器可以设置多个，由`Task`调度同时读取。
+
+## 2.1. 写入器、读取器无等待
+
+写入器和读取器不等待，不停的读写数据，有一个读取器，总共写入50个数据，channel的容量为5，调用传参如下：
+
+```csharp
+Task.Run(async () =>
+{
+    await ChannelRun(0,0, 1, 50, 5);
+});
+```
+
+结果：
+![2019-02-20-1](/image/2019-02-20-1.gif)
+
+写入读取操作在一秒内完成了，观察输出可以发现，写入和读取交替进行，写入的数据会立刻被读取器读取出来打印在终端内。
+
+## 2.2. 读取器阻塞(等待)
+
+将读取器的等待时间设置长一些，观察一下写入器是否会被阻塞，调用传参如下：
+
+```csharp
+Task.Run(async () =>
+{
+    await ChannelRun(10000,0, 1, 50, 5);
+});
+```
+
+结果：
+![2019-02-20-2](/image/2019-02-20-2.gif)
+
+从输出的结果可以看见，在程序开始时写入器写入了6个数据(但是调试的时候capacity的值时5，这里的机制有待考证)，然后每过10秒读取器读取一个数据后，写入器才能写入一个数据，由于读取器的速度限制相当于将写入器也进行了阻塞。
+
+## 2.3. 多个读取器同时读取
+
+读取器还是每读取一次暂停10秒，但是有5个Task同时读取，调用传参如下：
+
+```csharp
+Task.Run(async () =>
+{
+    await ChannelRun(10000,0, 1, 50, 5);
+});
+```
+
+结果：
+![2019-02-20-3](/image/2019-02-20-3.gif)
+
+从输出可以看出来，5个读取器Task可以每10秒钟同时读取5个数据，而写入器也同样的几乎是每次写入5个数据。
+
+# 3. 总结
+
+`System.Threading.Channels`作为一个线程间通信的库，用来当作发布者/订阅者组件使用非常方便。但是比起Go语言中的channel还是有些区别的，因为c#的`Async`/`Await`从某中意义上讲，并不是真正的多线程。
+
+# 4. 附加内容（Go语言的channel使用方式）
+
+待续...
