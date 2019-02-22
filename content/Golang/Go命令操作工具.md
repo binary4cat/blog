@@ -7,25 +7,7 @@ permalink:
 description:
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 ---
-<!-- TOC -->
 
-- [1. 查看Go命令](#1-%E6%9F%A5%E7%9C%8Bgo%E5%91%BD%E4%BB%A4)
-- [2. Go命令](#2-go%E5%91%BD%E4%BB%A4)
-    - [2.1. go build](#21-go-build)
-        - [2.1.1. 参数介绍](#211-%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D)
-    - [2.2. go clean](#22-go-clean)
-        - [2.2.1. 参数介绍](#221-%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D)
-    - [2.3. go fmt](#23-go-fmt)
-        - [2.3.1. 参数介绍](#231-%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D)
-    - [2.4. go get](#24-go-get)
-        - [2.4.1. 参数介绍](#241-%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D)
-    - [2.5. go install](#25-go-install)
-        - [2.5.1. 参数介绍](#251-%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D)
-    - [2.6. go test](#26-go-test)
-    - [2.7. go tool](#27-go-tool)
-        - [2.7.1. 参数介绍](#271-%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D)
-
-<!-- /TOC -->
 # 1. 查看Go命令
 
 可以在命令行中执行`go`命令来查看所有的go命令：

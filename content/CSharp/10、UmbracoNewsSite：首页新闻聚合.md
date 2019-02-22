@@ -11,7 +11,8 @@ description: Umbraco入门教程
 　　要在首页拿到几个新闻板块的节点，然后分别读取最新的新闻数据显示在首页中。
 　　我们需要在**Home**模板中进行编写代码，具体的代码如下：<!--more-->
 　　其中比较关键的一个方法就是`AncestorOrSelf()`，这个方法能够拿到指定层级的节点数据。
-```
+
+```html
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "Master.cshtml";

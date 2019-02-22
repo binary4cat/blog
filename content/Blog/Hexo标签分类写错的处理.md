@@ -10,10 +10,12 @@ description: Hexo标签分类写错的处理
 
 　　打开Hexo博客，删除根目录下的**db.json**文件和**.deploy_git**文件夹。<!--more-->
 　　在博客目录下打开*Git Bash*,运行下列命令
-```
+
+```shell
 hexo clean
 hexo d -g
 ```
+
 　　*第一条命令是清除Hexo缓存，第二条是生成以及部署博客。*
 
 　　执行完以上操作，错误的标签分类名称就会被彻底清除掉了。

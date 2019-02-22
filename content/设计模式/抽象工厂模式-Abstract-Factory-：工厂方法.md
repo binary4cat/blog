@@ -27,7 +27,7 @@ description: 抽象工厂模式(Abstract Factory)：工厂方法
 **Code**
 　　我们在简单工厂*Code5*代码基础上进行改写。
 　　在下面的代码中，我们看似依旧需要`switch`进行子类工厂的创建，但是在具体的项目中，我们可以使用反射技术动态的加载创建的对象，这样体现出了工厂方法的便捷和解耦的好处。
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -12,8 +12,8 @@ description: Umbraco入门教程
 
 　　
 ***
-### 1、安装
-#### 两种安装方法：
+# 1. 、安装
+## 1.1. 两种安装方法：
 　　1、Umbraco的安装比较简单，可以直接去[our.umbraco.org](http://our.umbraco.org)网站进行下载完整的代码压缩文件并且解压到任意合适位置，其次还需要下载微软的一个web开发工具[**WebMatrix**](http://www.microsoft.com/web/webmatrix/),安装之后可以使用这个工具打开并且编辑Umbraco了。　
 　　2、打开VS建立一个新的空web程序，然后打开**程序包管理控制台**，在命令行界面输入`Install-Package UmbracoCms`这个命令安装Umbraco；之后会把Umbraco以NuGet包的形式安装在当前的空web程序当中，推荐这种安装方法，因为如果有升级之类的，使用NuGet比直接下载方便管理一些。
 　　

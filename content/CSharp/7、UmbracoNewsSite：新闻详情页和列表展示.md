@@ -35,7 +35,8 @@ description: Umbraco入门教程
 
 　　然后编写具体的代码，在**News Post**模板中添加如下代码：
 　　解释一下这几个方法的使用：`CurrentPage`是获得当前页面的所有数据，也就是当前页面所在的文档类型的所有属性，这是一个动态类型，只能在内容发布后才能获取到实际的值；`GetPropertyValue`方法可以获取对应的名称的属性的值，需要一个字符串(属性名称)作为参数；`CreateData`是一个只读属性，用来获取当前页面创建的时间；`CreatorName`是一个只读属性，用来获取当前页面的创建者。
-```
+
+```html
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "Master.cshtml";

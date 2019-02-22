@@ -8,8 +8,9 @@ description: c#中yield的用法
 ---
 　　记录一下c#中的一个关键字`yield`的用法，之前基本没怎么用过这个算是语法糖的关键字，最近做了一个小的机构账号管理项目，读取DataReader对象数据时，每一次都得Add到集合中，记得以前见过有人用过这个方法，写起来很方便，所以学习了一下，记录下来以备查看。
 
-### 之前查找数据库数据的部分代码
-```
+# 1. 之前查找数据库数据的部分代码
+
+```csharp
 public List<Organization> OrgModel=new List<Organization>();
 string sqlText="select * from Organization";
 var dataTable = SqlHelper.ExecuteReader(sqlText);
@@ -28,9 +29,10 @@ var dataTable = SqlHelper.ExecuteReader(sqlText);
             return orgModel;
 ```
 <!--more-->
-### yield的方式
+# 2. yield的方式
 　　　使用`yield`时，yield会返回结果集合，比如下面的代码，返回的是一个`IEnumerable<org>`，类型的数据，所以在组织数据的时候，需要是符合`IEnumerable`、`IEnumerable<T>`、`IEnumerator`或 `IEnumerator<T>`的数据。
-```
+
+```csharp
 //public List<Organization> OrgModel=new List<Organization>();
 string sqlText="select * from Organization";
 var dataTable = SqlHelper.ExecuteReader(sqlText);
@@ -52,8 +54,9 @@ var dataTable = SqlHelper.ExecuteReader(sqlText);
 ```
 
 
-### 一个小例子演示yield的用法
-```
+# 3. 一个小例子演示yield的用法
+
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,5 +98,6 @@ namespace yield
     }
 }
 ```
+
 执行结果：
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeegw1f2adypz1s8j20rp0g7wfd.jpg)

@@ -8,9 +8,11 @@ description: Hexo博客搭建
 ---
 　　这一篇中，我们介绍一下对Hexo博客的配置，和主题的一些设置。
 
-## 博客网站信息配置
+# 1. 博客网站信息配置
+
 　　在创建的博客文件夹根目录(比如我的是E:\Is2Blog),找到名为`_config.yml`的配置文件，使用编辑器打开，具体的配置信息说明在下面：<!--more-->
-```
+
+```yaml
 # Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
@@ -98,13 +100,15 @@ deploy:
 ![](http://ww2.sinaimg.cn/mw690/c55a7aeejw1f1mfao9xf8j212n0m1416.jpg)
 
 
-## 主题的配置
+# 2. 主题的配置
+
 　　Hexo有很多好看有特色的主题，安装使用也非常方便，基本上都在github上开源了， 而且都有使用文档，很容易配置。
 　　这里就使用默认的主题，介绍一下Hexo主题的一些设置修改的方法。更多主题请访问：https://hexo.io/themes/  或者 
 
 　　打开博客根目录下的`themes`文件夹，可以看到这里面有主题文件夹，这里我们打开`landscape`文件夹，里面有文件夹和文件，主题的配置文件就是`_config.yml`这个文件。
 　　使用编辑器打开：
-```
+
+```yaml
 # Header
 menu:  #这是标题栏的配置
   #Home: /
@@ -146,6 +150,7 @@ google_plus:
 fb_admins:
 fb_app_id:
 ```
+
 **添加关于页面**
 　　在“Git Bash Here”命令行窗口输入：`hexo new page "about"` 该命令创建一个新的页面，在博客根目录下依次打开`source/about/index.md`，然后在里面编辑内容即可。
 ![](http://ww3.sinaimg.cn/mw690/c55a7aeejw1f1nj1krgugj212n0c2jzb.jpg)

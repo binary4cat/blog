@@ -27,7 +27,7 @@ description: 适配器模式(Adapter)
 　　通过继承老的类实现的，如果新老两个都是类，就无法让适配器同时继承两个类；再如果老的类是一个sealed类，那么就无法对老的类进行继承，也无法实现。
 
 　　下面我们写一个例子：在手机产品中，使用的充电传输接口有两种老的microUSB和最新的Type-C，我们假设现在我们只有一条Type-C接口，但是要给拥有Lumia950XL和小米note进行充电和下载，其中Lumia950XL本身是Type-C接口的手机，而小米note则是旧的microUSB接口，所以为了给小米note充电和下载需要一个适配器，我们用代码实现一下这个适配器的功能：
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -121,7 +121,7 @@ namespace Adapter
 
 例子二：
 　　我们都知道姚明是NBA球星，假如姚明去NBA打球时不会说英语，那么就需要一个翻译，这个翻译就充当了Adapter的作用，在NBA中英语就是新系统，汉语就是旧系统，我们用代码实现一下教练指挥姚明打球的功能。
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;

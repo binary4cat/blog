@@ -13,7 +13,8 @@ description: Umbraco入门教程
 ![](/image/umbraco/backoffice54.png)
 
 　　现在需要对**News List**模板中的代码进行编写，重新编写的代码如下：
-```
+
+```html
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "Master.cshtml";

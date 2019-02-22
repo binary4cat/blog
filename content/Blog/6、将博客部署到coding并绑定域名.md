@@ -8,10 +8,12 @@ description: Hexo博客搭建
 ---
 　　由于墙的原因，github访问速度很慢，而且github屏蔽了百度蜘蛛，所以将博客部署到github对国内的访客来说，并不是最好的选择，这一篇我们介绍一下，怎么将博客同时部署到github和coding上，然后绑定域名，并且分别指向国外和国内线路。
 
-## 将博客同时部署到coding上
+# 1. 将博客同时部署到coding上
+
 　　之前是gitcafe+github的部署方式，奈何gitcafe被coding给收了，感叹世事变幻无常啊。还好coding也提供了pages服务，我们可以将博客部署到coding上。
 　　<!--more-->
-### 注册coding账号并创建项目
+## 1.1. 注册coding账号并创建项目
+
 　　去[www.coding.net](https://www.coding.net)注册一个账号，同时新建一个公开项目，项目名称与你的coding用户名一致。
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeejw1f1pttpkn9ej20oz0h90th.jpg)
 
@@ -25,13 +27,15 @@ description: Hexo博客搭建
 　　1. 打开博客根目录下的`_config.yml`文件。
 　　2. 找到`deploy`这个节点(就是配置部署到github地址的那个)。
 　　3. 修改代码为：
-```
+　　4. 
+```yaml
 deploy:
   type: git
   repo:
   github: https://github.com/username/username.github.io.git,master
   gitcafe: https://git.coding.net/hexoDemo/hexoDemo.git,master
 ```
+
 　　4. 同样的，`gitcafe`的值就是你的博客在coding.net上面的项目地址，后面的master表示要部署的分支。
 　　5. 保存文件，执行部署命令`hexo d -g`
 　　6. 会提示你输入账号密码，很麻烦不是？下一边博客写一下怎么使用SSH传输，这样就不用每次提交都输入账号密码这么麻烦了。
@@ -42,7 +46,8 @@ deploy:
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeegw1f3u8fzcaatj20yt0bsglt.jpg)![](http://ww3.sinaimg.cn/mw690/c55a7aeegw1f3u8m31zgxj20h5088dfs.jpg)
 
 　　最后，我们需要修改`_config.yml`文件中coding.net部署的分支名：
-```
+
+```yaml
 deploy:
   type: git
   repo:

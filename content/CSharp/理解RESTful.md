@@ -13,7 +13,7 @@ description: 理解RESTful
 　　RESTful是一种软件架构风格、设计风格，而不是标准或者实现。
 　　想想咱们操作网站，其实就是把人家网站服务器的资源增删改查，所以大神就想了个好办法，正好HTTP协议里面有几个状态能配对儿，程序员也用这方法写网站就行了啊！所以RESTful就是大神提出来的解决方案，利用HTTP协议中的几个动词：*GET*(获取资源)、*POST*(新建资源)、*PUT*(更新资源)、*DELETE*(删除资源)直接对服务器后台发送命令，这样既简单又符合规矩。
 
-### 正文
+# 1. 正文
 　　REST的提出者是HTTP协议的主要设计者、Apache基金会的第一任主席*Roy Fielding*，在2000年时他的博士论文[《Architectural Styles and the Design of Network-based Software Architectures》](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)中首次提到了REST这个词。
 　　REST的全拼是**Representational State Transfer**，翻译成中文就是**表征状态转移**。
 

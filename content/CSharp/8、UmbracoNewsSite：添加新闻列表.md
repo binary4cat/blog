@@ -16,7 +16,8 @@ description: Umbraco入门教程
 　　`OrderByDescending`是Umbraco自己重写的排序方法，使用和原生的Linq一样，都是lambda表达式的方式。
 　　`GetCropUrl`方法是用来获得*crop*图片的路径的方法，需要两个参数，第一个是设置图片的属性的名字，第二个是数据类型中设置的**Crop name**。
 　　`Umbraco.Truncate`是Umbraco实现的一个方法，用来截取指定长度的字符，有8个重载，在这里用到了三个参数的重载，这三个参数分别是：要截取的字符串；截取的长度；是否显示省略号。
-```
+
+```html
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = "Master.cshtml";

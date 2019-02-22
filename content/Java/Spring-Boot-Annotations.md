@@ -9,22 +9,6 @@ photos: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528
 ---
 > 原文地址：[http://www.baeldung.com/spring-boot-annotations](http://www.baeldung.com/spring-boot-annotations)
 > 此篇为译文，由于英语水平有限，可能对原文的理解有误，欢迎指正，不甚感激！
-<!-- TOC -->
-
-- [1. 概览](#1-%E6%A6%82%E8%A7%88)
-- [2. `@SpringBootApplication`](#2-springbootapplication)
-- [3. `@EnableAutoConfiguration`](#3-enableautoconfiguration)
-- [4. Auto-Configuration条件注解](#4-auto-configuration%E6%9D%A1%E4%BB%B6%E6%B3%A8%E8%A7%A3)
-    - [4.1. `@ConditionalOnClass`与`@ConditionalOnMissingClass`](#41-conditionalonclass%E4%B8%8Econditionalonmissingclass)
-    - [4.2. `@ConditionalOnBean`与`@ConditionalOnMissingBean`](#42-conditionalonbean%E4%B8%8Econditionalonmissingbean)
-    - [4.3. `@ConditionalOnProperty`](#43-conditionalonproperty)
-    - [4.4. `@ConditionalOnResource`](#44-conditionalonresource)
-    - [4.5. `@ConditionalOnWebApplication`与`@ConditionalOnNotWebApplication`](#45-conditionalonwebapplication%E4%B8%8Econditionalonnotwebapplication)
-    - [4.6. `@ConditionalExpression`](#46-conditionalexpression)
-    - [4.7. `@Conditional`](#47-conditional)
-- [5. 总结](#5-%E6%80%BB%E7%BB%93)
-
-<!-- /TOC -->
 
 # 1. 概览
 Spring Boot的自动配置功能使创建Spring配置变得非常容易。

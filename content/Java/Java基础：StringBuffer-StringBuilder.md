@@ -7,14 +7,8 @@ permalink:
 description: Java基础：StringBuffer&StringBuilder
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ---
-<!-- TOC -->
 
-- [StringBuffer特点可变字符数组](#stringbuffer%E7%89%B9%E7%82%B9%E5%8F%AF%E5%8F%98%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84)
-- [StringBuffer类的方法](#stringbuffer%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95)
-- [StringBuilder类](#stringbuilder%E7%B1%BB)
-
-<!-- /TOC -->
-### StringBuffer特点可变字符数组
+# 1. StringBuffer特点可变字符数组
 - `StringBuffe`r类概述
 	- 线程安全的可变字符序列 
 	- 底层采用字符数组实现,初始容量为16
@@ -22,7 +16,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 	- `String`是一个不可变的字符序列
 	- `StringBuffer`是一个可变的字符序列
 <!--more-->
-### StringBuffer类的方法
+# 2. StringBuffer类的方法
 - StringBuffer类的方法
 	- 方法介绍
 		- `StringBuffer append()`, 将任意类型的数据,添加缓冲区
@@ -124,7 +118,7 @@ public static void StringBufferFunc(){
 ```
 
 
-### StringBuilder类
+# 3. StringBuilder类
 - `StringBuffer`和`StringBuilder`的区别
 	- `StringBuffer`是jdk1.0版本的,是线程安全的,效率低
 	- `StringBuilder`是jdk1.5版本的,是线程不安全的,效率高

@@ -7,24 +7,15 @@ permalink:
 description: Java基础：Data&Calendar
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmdrn8b8i8j20go0dejrs.jpg
 ---
-<!-- TOC -->
 
-- [Date类的构造方法](#date%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95)
-- [Date类的get和set方法](#date%E7%B1%BB%E7%9A%84get%E5%92%8Cset%E6%96%B9%E6%B3%95)
-- [日期格式化SimpleDateFormat](#%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96simpledateformat)
-- [字符串转成日期对象](#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%88%90%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1)
-- [Calendar类](#calendar%E7%B1%BB)
-- [set(int field,int value)和add(int field, int value)的区别](#setint-fieldint-value%E5%92%8Caddint-field-int-value%E7%9A%84%E5%8C%BA%E5%88%AB)
-
-<!-- /TOC -->
-### Date类的构造方法
+# 1. Date类的构造方法
 - Date类的构造方法
 	- 空参构造
 		- `public Date()`
 	- 带参构造
 		- `public Date(long times)`
 	
-### Date类的get和set方法			
+# 2. Date类的get和set方法			
 - Date类的get和set方法
 	- `public long getTime()`	
 		- 将当前的日期对象，转为对应的毫秒值
@@ -32,7 +23,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmdrn8b8i8j20go0dejrs.jpg
 		- 根据给定的毫秒值，生成对应的日期对象
 
 <!--more-->
-### 日期格式化SimpleDateFormat
+# 3. 日期格式化SimpleDateFormat
 - 日期格式化SimpleDateFormat
    - SimpleDateFormat函数的继承关系：
     java.lang.Object
@@ -68,7 +59,7 @@ System.out.println(myFmt1.format(now)); //输出：17/05/25 18:17
 ```
 
 			
-### 字符串转成日期对象
+# 4. 字符串转成日期对象
 - 字符串转成日期对象
 	- 使用步骤
 		- 创建SimpleDateFormat的对象
@@ -83,7 +74,7 @@ System.out.println(myFmt.parse(now));  //输出：Thu May 25 18:17:35 CST 2017
 ```
 
 
-### Calendar类
+# 5. Calendar类
 - 日历类(抽象类)
 	- 所在包：`java.util.Calendar`
 - 创建对象
@@ -146,7 +137,7 @@ public static void function_2() {
 ```
 
 
-### set(int field,int value)和add(int field, int value)的区别
+# 6. set(int field,int value)和add(int field, int value)的区别
 - add：调整时间，在当前的时间的基础上增加或者减少，超过最大值，会全部增加。
 - set：设置时间，直接将指定的日期类型设置成指定的值，超过类型的最大值，会自动计算，例如set(Calendar.MONTH,13)，那么就会折合成1年零一个月，年份增加1年，月份为折合后的余数。
 

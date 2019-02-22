@@ -7,22 +7,7 @@ permalink:
 description:
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 ---
-<!-- TOC -->
 
-- [1. strings库常见例子](#1-strings%E5%BA%93%E5%B8%B8%E8%A7%81%E4%BE%8B%E5%AD%90)
-    - [1.1. `strings.Contains()`包含](#11-stringscontains%E5%8C%85%E5%90%AB)
-    - [1.2. `strings.Index()`索引](#12-stringsindex%E7%B4%A2%E5%BC%95)
-    - [1.3. `strings.Split()`切割](#13-stringssplit%E5%88%87%E5%89%B2)
-    - [1.4. `strings.Join()`合并](#14-stringsjoin%E5%90%88%E5%B9%B6)
-    - [1.5. `strings.HasPrefix() strings.HasSuffix()`是否包含前、后缀](#15-stringshasprefix-stringshassuffix%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E5%89%8D%E3%80%81%E5%90%8E%E7%BC%80)
-- [2. `strconv`库常用操作](#2-strconv%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C)
-    - [2.1. `Itoa`数字转字符串](#21-itoa%E6%95%B0%E5%AD%97%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2)
-    - [2.2. `Atoi`字符串转数字](#22-atoi%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97)
-    - [2.3. `ParseBool`字符串转bool类型](#23-parsebool%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%ACbool%E7%B1%BB%E5%9E%8B)
-    - [2.4. `ParseFloat`字符串转浮点数](#24-parsefloat%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%B5%AE%E7%82%B9%E6%95%B0)
-    - [2.5. `Format...`格式化](#25-format%E6%A0%BC%E5%BC%8F%E5%8C%96)
-
-<!-- /TOC -->
 # 1. strings库常见例子
 
 ## 1.1. `strings.Contains()`包含

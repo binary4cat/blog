@@ -16,11 +16,13 @@ description: hexo免输入用户名密码部署到github的方法
 
 　　然后在个人文件夹(例如：`C:\Users\MyFile`)下新建名为“**_netrc**”的文件。
 　　最后编辑刚刚创建的文件，文件内容如下：
-```
+
+```shell
 machine github.com
 login github-username  
 password github-password
 ```
+
 　　第一行保持不变，第二行和第三行分别是你的github用户名和密码。
 
 　　设置完成，以后执行`hexo deploy`就不需要输入用户名和密码啦。

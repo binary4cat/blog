@@ -29,7 +29,8 @@ description: Umbraco入门教程
 
 　　接下来我们将这几个页面分别链接到，上一篇中编写的首页导航条按钮中。
 　　回到**Templates**中，将**Master**中的代码改造一下，绑定几个新闻链接，将bootstrap导航条的代码改成：
-```
+
+```html
 <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">

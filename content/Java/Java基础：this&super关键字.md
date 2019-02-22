@@ -7,11 +7,11 @@ permalink: Java-this&super-keyword
 description: Java基础：this&super关键字
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ---
-### 为什么要有构造方法？
+# 1. 为什么要有构造方法？
 - 构造方法的作用: 
 	- 在new的同时给成员变量赋值,给对象属性进行初始化。
 			
-### 构造方法的定义和运行特点
+# 2. 构造方法的定义和运行特点
 - 构造方法定义
 构造方法的格式：
 
@@ -30,11 +30,11 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 
 
 
-### 默认添加的构造方法
+# 3. 默认添加的构造方法
 - 每一class类都必须有一个构造方法，构造方法不写也有。
 - 编译的时候，javac，系统会自动检查类中是否有构造方法，如果没有编译器就会自动添加一个构造方法
 		
-### 构造方法的内存
+# 4. 构造方法的内存
 - 内存加载的过程
 	- 例如有一个Person类, 创建Person 对象new Person()
 		1. 首先会将main方法压入栈中，执行main方法中的 new Person(23,"张三"); 
@@ -57,7 +57,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 		```
 
 
-### 构造方法的重载			
+# 5. 构造方法的重载			
 - 构造方法的细节：
 	- 一个类中可以有多个构造方法，多个构造方法是以重载的形式存在的
 	- 构造方法是可以被private修饰的，作用：其他程序无法创建该类的对象。
@@ -81,7 +81,7 @@ class Person {
 }
 ```
 
-### this在构造方法调用的内存
+# 6. this在构造方法调用的内存
 
 ```Java
 class Person {
@@ -113,7 +113,7 @@ class PersonDemo {
 	5. 程序继续执行构造方法（Person（String nm , int a）中的age = a；这时会将23赋值给成员属性age。赋值结束构造方法（Person（String nm , int a）弹栈。
 	6. 当构造方法（Person（String nm , int a）弹栈结束后，Person对象在内存中创建完成，并将0x001赋值给main方法中的p引用变量。
 	
-### super关键字	
+# 7. super关键字	
 - 子父类中构造方法的调用
 	- 在创建子类对象时，父类的构造方法会先执行，因为子类中所有构造方法的第一行有默认的隐式`super();`语句。
 - 格式：
@@ -174,7 +174,7 @@ Zi构造方法4
 	- 子类的构造方法什么都不写,默认的构造方法第一行super()
 
 		
-### 创建子类对象过程的细节
+# 8. 创建子类对象过程的细节
 - 创建子类对象过程的细节
 	* 如果子类的构造方法第一行写了this调用了本类其他构造方法，那么super调用父类的语句还有吗？
 		* 这时是没有的，因为this()或者super(),只能定义在构造方法的第一行，因为初始化动作要先执行。

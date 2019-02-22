@@ -5,15 +5,9 @@ categories: ["Java"]
 tags: ["Java基础"]
 permalink: Java-compareTo-String-Function
 description: compareTo字符串比较函数
-photos: 
-- http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
+photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ---
-<!-- TOC -->
 
-- [1. 调用方式：](#1-%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%9A)
-- [2. 关于返回值的三种判断](#2-%E5%85%B3%E4%BA%8E%E8%BF%94%E5%9B%9E%E5%80%BC%E7%9A%84%E4%B8%89%E7%A7%8D%E5%88%A4%E6%96%AD)
-
-<!-- /TOC -->
 # 1. 调用方式：
 
 `int compareTo(String)`

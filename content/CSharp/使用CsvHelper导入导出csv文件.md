@@ -10,17 +10,17 @@ description: 使用CsvHelper导入导出csv文件
 > 今天记录一下使用[CsvHelper](https://github.com/JoshClose/CsvHelper)导入导出CSV文件的方法。
 
 
-## CSV介绍
+# 1. CSV介绍
 　　csv文件是一种纯文本存储的文件格式，行和列分别用逗号和换行来代替，可以直接使用Excel打开。在代码中可以直接使用`TextWrite` 操作，比较方便快速。
 
-## CsvHelper
+# 2. CsvHelper
 
-### 项目介绍：
+## 2.1. 项目介绍：
 　　github主页：[https://github.com/JoshClose/CsvHelper](https://github.com/JoshClose/CsvHelper)
 　　文档：[http://joshclose.github.io/CsvHelper/](http://joshclose.github.io/CsvHelper/)
 　　wiki：[https://github.com/JoshClose/CsvHelper/wiki](https://github.com/JoshClose/CsvHelper/wiki)
 <!--more-->
-### Examples
+## 2.2. Examples
 模拟场景是需要从数据库中导出导入用户信息，有如下一个类：
 ```cSharp
 class People{
@@ -30,7 +30,7 @@ class People{
 }
 ```
 　　
-#### Write
+### 2.2.1. Write
 写入的时候需要注意列标题的名字问题，因为CsvHelper会默认将属性名作为列标题，想显示中文就得做映射([参考文档](https://github.com/JoshClose/CsvHelper/wiki/Fluent-Class-Mapping))
 Map类：
 ```cSharp
@@ -83,7 +83,7 @@ Console.WriteLine(watch.ElapsedMilliseconds.ToString());
 Console.ReadKey();
 ```
 
-#### Read
+### 2.2.2. Read
 读取操作代码：
 ```cSharp
 var objs = new List<People>();
@@ -107,5 +107,5 @@ Console.WriteLine(watch.ElapsedMilliseconds.ToString());
 Console.ReadKey();
 ```
 
-## 结束
+# 3. 结束
 　　操作csv文件比较简单，就是读取一个文本文件的操作，借助CsvHelper的帮助，可以省去我们自己排版、映射类等操作，操作速度很快，其配置也多种多样，文档比较详细，推荐大家使用，在此感谢组件作者的工作。

@@ -18,7 +18,7 @@ description: 单例模式(Singleton)
 　　2、将构造函数私有化，让外界不能*new*。
 　　3、创建一个全局的访问点。
 　　**问题**：对于线程不安全。如果有两个线程同时首次访问这个单例，会同时判断这个访问点的变量，这时该变量为null，这样就会创建两个实例，不符合单例的要求。
-```
+```csharp
 public sealed class Singleton
 {
     static Singleton instance = null;  //类内部维护一个静态的变量
@@ -44,7 +44,7 @@ public sealed class Singleton
 　　对象的实例由最先进入的那个线程创建。
 　　后来的线程在进入时(instance==null)为假，不会再去创建对象的实例。
 　　增加了额外的开销，损失了性能。
-```
+```csharp
 public sealed class Singleton
 {
     private static Singleton instance = null;
@@ -73,7 +73,7 @@ public sealed class Singleton
 
 **线程安全的实现(增强版)**：
 　　增加一个额外的判断，就能避免额外的判断步骤，减少开销。
-```
+```csharp
 public sealed class Singleton
 {
     private static Singleton instance = null;
@@ -106,7 +106,7 @@ public sealed class Singleton
 　　静态构造方法在程序运行的整个过程中只会执行一次，这是.net的内部机制。
 　　静态构造方法会在该类的任何操作发生时触发，包括执行该类中的其他方法、调用其它属性，都会执行静态构造函数。
 　　所以就有一个问题，如果我们需要在创建单例对象之前，执行该类中的其他方法，这时就会自动的执行静态构造方法，而此时我们并不需要这个单例对象，所以这不是一个完美的解决方法。
-```
+```csharp
 public sealed class Singleton
 {
     private static readonly Singleton instance = null;
@@ -132,7 +132,7 @@ public sealed class Singleton
 
 **延迟初始化**：
 　　初始化的工作交给了*BuildSingleton*这个类的静态构造函数，这样就不会像“静态初始化”那样只要操作Singleton类，就会执行静态构造函数，这样就实现了延迟初始化。
-```
+```csharp
 public sealed class Singleton
 {
     private Singleton()

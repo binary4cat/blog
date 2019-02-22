@@ -8,7 +8,7 @@ description: Guid.ToString()的格式化重载
 ---
 以下内容参考[msdn](https://msdn.microsoft.com/zh-cn/library/97af8hh4.aspx)。
 
-## 格式化Guid的值
+# 1. 格式化Guid的值
 　　`Guid.ToString();`这个方法有一个重载，接收一个string类型的参数，这个参数有固定值：“N”、“D”、“B”、“P”或“X”。
 　　分别表示：
 　　`N`:返回32位数字，比如：00000000000000000000000000000000

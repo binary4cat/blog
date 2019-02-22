@@ -7,19 +7,7 @@ permalink:
 description: Go标准库-fmt
 photos: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503503176164&di=3178bb0b334068f911022455b9f48b80&imgtype=0&src=http%3A%2F%2F7viirv.com1.z0.glb.clouddn.com%2Fgolang.jpg
 ---
-<!-- TOC -->
 
-- [1. fmt包](#1-fmt包)
-    - [1.1. printf函数](#11-printf函数)
-        - [1.1.1. 示例类型和变量](#111-示例类型和变量)
-        - [1.1.2. 普通占位符](#112-普通占位符)
-        - [1.1.3. 布尔占位符](#113-布尔占位符)
-        - [1.1.4. 整数占位符](#114-整数占位符)
-        - [1.1.5. 浮点数和复数的组成部分（实部和虚部）](#115-浮点数和复数的组成部分实部和虚部)
-        - [1.1.6. 字符串与字节切片](#116-字符串与字节切片)
-        - [1.1.7. 指针](#117-指针)
-
-<!-- /TOC -->
 # 1. fmt包
 
 - fmt包实现了类似c语言的`printf`和`scanf`函数，实现格式化I/O函数。

@@ -9,8 +9,8 @@ description: directive中写template遇见的问题
 　　记录一下先前在写指令时，遇到的一个令人无语的错误，避免以后重犯。
 
 　　错误的代码：
-```
-app. directive( ' ckqlnfo' ,[function(){
+```typescript
+app.directive( ' ckqlnfo' ,[function(){
         return {
     　　　restrict: ' AE ' 
     　　　replace: true, 
@@ -22,8 +22,8 @@ app. directive( ' ckqlnfo' ,[function(){
 　　首先看看指令中template的值`<p>模板</p><p>模板</p>`，这段看起来并没有什么错，但是在实际运行中会造成程序抛出异常，因为这段html代码有两个**p**节点，在Angular解析这个指令的时候，不知道应该解析template所标注的哪一个**p**节点。
 
 正确的代码：
-```
-app. directive( ' ckqlnfo' ,[function(){
+```typescript
+app.directive( ' ckqlnfo' ,[function(){
         return {
     　　　restrict: ' AE ' 
     　　　replace: true, 
@@ -39,7 +39,7 @@ app. directive( ' ckqlnfo' ,[function(){
 
 看下面的两个模板代码：
 *模板A*：
-```
+```html
 <!--这是模板A的注释-->
 <div>
     <p>模板</p>
@@ -47,7 +47,7 @@ app. directive( ' ckqlnfo' ,[function(){
 </div>
 ```
 *模板B*：
-```
+```html
 <div>
     <!--这是模板B的注释-->
     <p>模板</p>

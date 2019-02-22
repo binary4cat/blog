@@ -25,7 +25,7 @@ description: 抽象工厂模式(Abstract Factory)：抽象工厂
 
 **Code**：
 　　我们假设有两个系列(品牌)和两种产品，客户端只需要调用产品的抽象，而无须知道具体产品的工厂。
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -159,7 +159,7 @@ namespace AbstractFactory
 ![](/image/Design Pattern/design pattern17.png)
 
 　　在上述代码中，我们的变化点在于创建(new)具体的工厂这一步骤，需要不同的系列的产品，就可以创建不同的子工厂，我们修改一下客户端调用的代码，就可以看出来了：
-```
+```csharp
 static void Main(string[] args)
         {
             //客户端只需要知道产品的抽象和工厂的抽象

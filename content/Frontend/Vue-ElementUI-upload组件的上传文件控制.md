@@ -7,12 +7,7 @@ permalink: Vue-ElementUI-upload-file-controller
 description: Vue-ElementUI upload组件的上传文件控制，上传失败文件的复原，作为表单时的填充
 photos: https://cdn-images-1.medium.com/max/1003/1*M20GkaLW-OBcz6-ifDAJEg.png
 ---
-<!-- TOC -->
 
-- [1. 上传失败文件恢复](#1-上传失败文件恢复)
-- [2. 复原文件上传成功表单](#2-复原文件上传成功表单)
-
-<!-- /TOC -->
 # 1. 上传失败文件恢复
 element的上传组件有很多需要自行控制的东西，此次遇到的问题是怎么在上传失败后，保持选择的文件的不变，可以再次尝试上传。
 

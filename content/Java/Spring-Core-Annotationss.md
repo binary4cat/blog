@@ -10,30 +10,6 @@ photos: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528
 > 原文地址：[http://www.baeldung.com/spring-core-annotations](http://www.baeldung.com/spring-core-annotations)
 > 此篇为译文，由于英语水平有限，可能对原文的理解有误，欢迎指正，不甚感激！
 
-<!-- TOC -->
-
-- [1. 概览](#1-%E6%A6%82%E8%A7%88)
-- [2. DI有关的注解](#2-di%E6%9C%89%E5%85%B3%E7%9A%84%E6%B3%A8%E8%A7%A3)
-    - [2.1. `@Autowired`](#21-autowired)
-    - [2.2. `@Bean`](#22-bean)
-    - [2.3. `@Qualifier`](#23-qualifier)
-    - [2.4. `@Required`](#24-required)
-    - [2.5. `@Value`](#25-value)
-    - [2.6. `@DependsOn`](#26-dependson)
-    - [2.7. `@Lazy`](#27-lazy)
-    - [2.8. `@Lookup`](#28-lookup)
-    - [2.9. `@Primary`](#29-primary)
-    - [2.10. `@Scope`](#210-scope)
-- [3. 上下文配置注解](#3-%E4%B8%8A%E4%B8%8B%E6%96%87%E9%85%8D%E7%BD%AE%E6%B3%A8%E8%A7%A3)
-    - [3.1. `@Profile`](#31-profile)
-    - [3.2. `@Import`](#32-import)
-    - [3.3. `@ImportResource`](#33-importresource)
-    - [3.4. `@PropertySource`](#34-propertysource)
-    - [3.5. `@PropertySources`](#35-propertysources)
-- [4. 总结](#4-%E6%80%BB%E7%BB%93)
-
-<!-- /TOC -->
-
 # 1. 概览  
 
 我们可以利用`org.springframework.beans.factory.annotation`和`org.springframework.context.annotation`这两个包提供的注解功能使用Spring的依赖注入。

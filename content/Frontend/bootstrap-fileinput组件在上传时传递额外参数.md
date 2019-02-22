@@ -12,8 +12,9 @@ photos:
 
 　　由于英文水平问题，阅读官方文档时没有找到该问题的解决方法，于是去github提了一个[issue](https://github.com/kartik-v/bootstrap-fileinput/issues/795) ，得到的答案是仔细阅读文档，里面有一个回调函数可以解决问题😍
 <!--more-->
-### 解决方法
+# 1. 解决方法
 　　关键的配置参数是[uploadExtraData](http://plugins.krajee.com/file-input#option-uploadextradata)
+
 　　具体的代码如下：
 ```javascript
     //获得额外参数的方法
@@ -45,5 +46,5 @@ photos:
         }
 ```
 
-### 关键点：
+# 2. 关键点：
 　　可以看到配置文件中`uploadExtraData`的参数是一个函数形式，这是一个回调函数，会在上传时调用，读取配置的额外参数。

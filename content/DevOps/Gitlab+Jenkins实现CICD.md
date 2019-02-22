@@ -7,8 +7,6 @@ description : "Gitlab+Jenkins实现CICD"
 draft: false
 ---
 
-
-
 # 概述
 
 在这篇文章中，演示一个简单的持续集成的案例，使用Windows的Linux子系统部署Gitlab和Jenkins，实现一套自动测试、自动部署的系统，本次的内容没有涉及到Docker部署，下一篇文章将介绍全部使用Docker部署的持续集成。

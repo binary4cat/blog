@@ -7,14 +7,18 @@ permalink:
 description:
 photos:
 ---
-## 概述和官方文档
+# 1. 概述和官方文档
+
 　　使用微信JSSDK可以在网页中调用手机的拍照语音、定位等手机系统功能，还可以定制微信分享、扫一扫、卡券、支付等微信功能。
 　　官方文档：[http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html](http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)
 　　
-## 调用步骤
-### 1.绑定域名
+# 2. 调用步骤
+
+## 2.1. 绑定域名
+
 　　首先进入[微信公众号后台](http://mp.weixin.qq.com/)，进入公众号设置=>功能设置=>JS接口安全域名设置：在这里可以设置三个调用的JSSDK的域名，然后将提示信息注意事项3中的[文件下载](https://mp.weixin.qq.com/cgi-bin/mpverifytxt?lang=zh_CN&token=1492992380)下来，放到网站的根目录下，点击保存，微信会自动测试是否设置成功。
-### 2.页面引入JS文件
+## 2.2. 页面引入JS文件
+
 　　在需要使用到JSSDK的页面引入微信提供的js文件，可以支持https协议，下载：<!--more-->
  　　http://res.wx.qq.com/open/js/jweixin-1.2.0.js
  　　https://res.wx.qq.com/open/js/jweixin-1.2.0.js
@@ -23,7 +27,8 @@ photos:
     <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 }
 ```
-### 3.请求配置参数，注入微信权限验证配置
+
+## 2.3. 请求配置参数，注入微信权限验证配置
 　　在所有使用JSSDK的页面上，必须在打开页面之前注入配置信息，否则无法调用JSSDK，所以，在页面准备完成之前，我们需要操作js代码，对权限验证的参数进行获取。在这里我们需要注意两点：
 　　1.假设我们在后台可以直接拿到当前公众号的appId。如果后天拿不到就要想办法在页面上拿到appid，然后发送到后台，否则无法进行权限验证。
 　　2.请求配置需要的`jsapi_ticket`参数需要缓存下来，避免频繁请求，过期时间在请求成功返回的参数里面带有。
@@ -131,7 +136,9 @@ public class SHA1UtilHelper
     }
 }
 ```
+
 *JavaScript:*
+
 ```JavaScript
 <script>
     $(function(){
@@ -236,5 +243,5 @@ public class SHA1UtilHelper
 </script>
 ```
 
-## 结束
+# 3. 结束
 　　其他使用方法，参看官方文档。

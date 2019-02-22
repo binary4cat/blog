@@ -7,17 +7,8 @@ permalink:
 description: Java中的List接口
 photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.png
 ---
-<!-- TOC -->
 
-- [List接口](#list%E6%8E%A5%E5%8F%A3)
-- [List接口的方法](#list%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%96%B9%E6%B3%95)
-- [ArrayList集合](#arraylist%E9%9B%86%E5%90%88)
-- [LinkedList集合的自身特点](#linkedlist%E9%9B%86%E5%90%88%E7%9A%84%E8%87%AA%E8%BA%AB%E7%89%B9%E7%82%B9)
-- [LinkedList集合特有方法](#linkedlist%E9%9B%86%E5%90%88%E7%89%B9%E6%9C%89%E6%96%B9%E6%B3%95)
-- [Vector类](#vector%E7%B1%BB)
-
-<!-- /TOC -->
-### List接口
+# 1. List接口
 - List接口的特点:
     - 它是一个元素存取有序的集合
     - 它是一个带有索引的集合，通过索引就可以精确的操作集合中的元素。
@@ -27,7 +18,7 @@ photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.
     - `ArrayList`集合
     - `LinkedList`集合
 
-### List接口的方法
+# 2. List接口的方法
 - `boolean add(E e);` :将指定的元素添加到集合的末尾，返回是否添加成功
 - `void add(int index, E element);`  :将指定元素添加到指定的索引处
 
@@ -95,7 +86,7 @@ public static void function(){
 
 ```
 
-### ArrayList集合
+# 3. ArrayList集合
 - ArrayList集合底层采用的是数组结构
     - 当`new ArrayList()`的时候，底层创建了一个长度为10的Object类型的数组
     
@@ -145,11 +136,11 @@ public static void function(){
 ```
 
 
-### LinkedList集合的自身特点
+# 4. LinkedList集合的自身特点
 - LinkedList集合底层采用链表结构,每次查询都要从链头或链尾找起,查询相比数组较慢，但是增删直接修改元素记录的地址值即可,不要大量移动元素，相比数组较快。
 - LinkedList根据索引使用二分法查找需要的元素数据
 
-### LinkedList集合特有方法
+# 5. LinkedList集合特有方法
 - `E removeFirst()` :移除链表的开头，并返回移除的元素
 - `E removeLast()` ：移除链表的结尾，并返回移除的元素
 
@@ -216,7 +207,7 @@ private void linkFirst(E e) {
 
 ```
 
-### Vector类
+# 6. Vector类
 - `Vector`类的特点
     - `Vector`集合数据存储的结构是数组结构，为JDK中最早提供的集合,它是线程同步的
     - `Vector`中提供了一个独特的取出方式，就是枚举`Enumeration`，它其实就是早期的迭代器。

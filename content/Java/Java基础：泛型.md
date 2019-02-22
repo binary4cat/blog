@@ -7,28 +7,18 @@ permalink:
 description: Java泛型学习
 photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.png
 ---
-<!-- TOC -->
 
-- [泛型概述](#泛型概述)
-- [Java中的伪泛型](#java中的伪泛型)
-- [泛型类](#泛型类)
-- [泛型的方法](#泛型的方法)
-- [泛型的接口](#泛型的接口)
-- [泛型的通配符](#泛型的通配符)
-- [泛型的限定](#泛型的限定)
-
-<!-- /TOC -->
-### 泛型概述
+# 1. 泛型概述
 - Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。
 - 泛型的本质就是参数化类型，也就是说把数据类型作为一个参数传递。例如：`private class Itr implements Iterator<E>{...}`
 
-### Java中的伪泛型
+# 2. Java中的伪泛型
 - 泛型只在编译时存在，编译之后的class文件中并不存在泛型。
     - 例如:ArrayList<String> al=new ArrayList<String>();
     - 编译后:ArrayList al = new ArrayList();
 - 泛型只是在编译期进行的类型安全检查机制，避免程序可能发生的错误。
 <!--more-->
-### 泛型类
+# 3. 泛型类
 - 定义格式：
 
 ```java
@@ -58,7 +48,7 @@ class ArrayList<Integer>{
 ```
 
 
-### 泛型的方法
+# 4. 泛型的方法
 - 定义格式：
 
 ```java
@@ -78,7 +68,7 @@ public <Integer> Integer[] toArray(Integer[] a){
 } 
 ```
 
-### 泛型的接口 
+# 5. 泛型的接口 
 - 带有泛型的接口
 
 ```java
@@ -95,7 +85,7 @@ public static void function(){
 ```
 
 
-### 泛型的通配符   
+# 6. 泛型的通配符   
 - 泛型的通配符就相当于给泛型穿了一个Object类型，也就是可以给泛型传递任何类型的参数。
 - 用在集合中，那么就相当于之前的没有使用泛型的集合，因为没有限制了。
 
@@ -120,7 +110,7 @@ public class Test {
 }
 ```
 
-### 泛型的限定
+# 7. 泛型的限定
 - 由于通配符太灵活了，容易出错，所以引入了限制条件，这就是限定通配符
 
 ```java

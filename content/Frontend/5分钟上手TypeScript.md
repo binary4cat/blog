@@ -7,16 +7,6 @@ permalink: 5-minutes-to-fit-the-TypeScript
 description: 5分钟快速概览上手TypeScript
 photos: https://lc-mhke0kuv.cn-n1.lcfile.com/4efd9a4018b57efdcf77.png
 ---
-<!-- TOC -->
-
-- [1. 简介](#1-简介)
-- [2. 语法特性](#2-语法特性)
-- [3. 基础语法](#3-基础语法)
-    - [3.1. 声明语法:](#31-声明语法)
-    - [3.2. 基础类型：](#32-基础类型)
-    - [3.3. 属性和函数](#33-属性和函数)
-
-<!-- /TOC -->
 
 > 5分钟快速上手，请猛击[这里](https://www.tslang.cn/docs/handbook/typescript-in-5-minutes.html)看官网文档。  
   

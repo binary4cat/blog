@@ -7,17 +7,8 @@ permalink:
 description: Iterator迭代器概述和应用
 photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.png
 ---
-<!-- TOC -->
 
-- [迭代器的概述](#迭代器的概述)
-- [迭代器的实现原理](#迭代器的实现原理)
-- [迭代器代码实现](#迭代器代码实现)
-- [迭代器的执行过程](#迭代器的执行过程)
-- [集合迭代中的转型](#集合迭代中的转型)
-- [foreach遍历数组](#foreach遍历数组)
-
-<!-- /TOC -->
-### 迭代器的概述
+# 1. 迭代器的概述
 - 迭代器概述:
     - Java中有很多种集合，这些集合在存储元素的时候，存储的方式都是不尽相同的，那么对应的我们在取出元素的时候也不相同，为每一种集合设计一个取出方式显然是不合理的，所以就出现了一种屏蔽集合间差异的读取元素的方式，就是迭代器。
    
@@ -26,13 +17,13 @@ photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.
     - 每种集合的底层的数据结构不同,例如ArrayList是数组,LinkedList底层是链表,但是无论使用那种集合,我们都会有判断是否有元素
      以及取出里面的元素的动作,那么Java为我们提供一个迭代器定义了统一的判断元素和取元素的方法 。
 <!--more-->
-### 迭代器的实现原理
+# 2. 迭代器的实现原理
 - 迭代器的实现原理:Collection接口定义了一个方法`Iterator  iterator()`,实现类重写这个方法就可以返回一个实现`Iterator`接口的对象，该对象就可以对集合中的元素进行迭代。
     - 接口`Iterator` : 两个抽象方法
         - `boolean hasNext()` 判断集合中还有没有可以被取出的元素,如果有返回true
         - `next()` 取出集合中的下一个元素
 
-### 迭代器代码实现
+# 3. 迭代器代码实现
 
 ```java
 public static void main(String[] args) {
@@ -55,7 +46,7 @@ public static void main(String[] args) {
 ```
 
 
-### 迭代器的执行过程
+# 4. 迭代器的执行过程
 
 ```java
 /**
@@ -150,7 +141,7 @@ private class Itr implements Iterator<E> {
 ![](http://ww1.sinaimg.cn/large/c55a7aeely1fmf7hlgxx2j20r709owek.jpg)
 
 
-### 集合迭代中的转型 
+# 5. 集合迭代中的转型 
 - 在使用集合时，我们需要注意以下几点：
     - 集合中存储其实都是对象的地址。
     - jdk1.5版本以后因为出现了基本类型包装类，它提供了自动装箱操作，这样，集合中的元素就是基本数值的包装类对象。
@@ -186,7 +177,7 @@ while (it.hasNext()) {
 ```
 
 
-### foreach遍历数组
+# 6. foreach遍历数组
 - JDK1.5版本后,出现新的接口`java.lang.Iterable`，对于任何实现`Iterator`接口的对象都可以使用`foreach`遍历。
 - 格式：
 

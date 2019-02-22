@@ -23,13 +23,13 @@ public List<Ninja> GetAllNinjas() {
 
 在与 Steve Smith ([deviq.com](http://deviq.com/)) 合著 Pluralsight 课程“域驱动设计基础知识”([bit.ly/PS-DDD](http://bit.ly/PS-DDD)) 时，我最终接受了使用 StructureMap 库。此库自 2005 年创建以来就成为 .NET 开发者最常用的 IoC 容器之一。说到底，我参与这场游戏有点晚了。在 Smith的指导下，我能够了解此库的工作原理及其优势，但仍觉得尚未相当熟练地掌握它。所以，在 Miller 提示我后，我就决定要重构我之前的示例，以便利用容器，这样可以更加容易地将对象实例注入需要使用这些实例的逻辑中。
 
-## 但首先，让我们来谈谈“不要自我重复”
+# 1. 但首先，让我们来谈谈“不要自我重复”
 我的类（囊括了之前所示 GetAllNinjas 类）中最初出现的问题是，我在此类的其他方法中重复使用以下 using 代码：
-```
+```csharp
 using(var context=new NinjaContext)
 ```
 如下所示：
-```
+```csharp
 public Ninja GetOneNinja(int id) {
   using (var context=new NinjaContext())
   {
@@ -38,14 +38,14 @@ public Ninja GetOneNinja(int id) {
 }
 ```
 不要自我重复 (DRY) 原则帮助我发现了这一潜在问题。我将把 NinjaContext 实例的创建代码移入构造函数中，并与各种方法共享诸如 _context 之类的变量：
-```
+```csharp
 NinjaContext _context;
 public NinjaRepository() {
   _context = new NinjaContext();
 }
 ```
 不过，此类应仅以检索数据为重点，却仍在负责确定如何以及何时创建上下文。我想在流中将确定如何以及何时创建上下文的任务上移，只让我的存储库使用注入的上下文。因此，我将再次重构，以便传递其他位置创建的上下文：
-```
+```csharp
 NinjaContext _context;
 public NinjaRepository(NinjaContext context) {
   _context = context;
@@ -55,9 +55,9 @@ public NinjaRepository(NinjaContext context) {
 
 我原来的示例还存在一个问题，就是我将连接字符串硬编码为 DbContext。我刚才也说明了理由，就是因为这“只是个演示”，而且将连接字符串从正在执行的应用（ASP.NET 5 应用程序）移入 EF6 项目过程十分复杂，而我则关注的是其他方面的问题。不过，在我重构此项目时，我将能够利用 IoC 从正在执行的应用程序传递连接字符串。请继续阅读本文，注意介绍此问题的地方。
 
-## 让 ASP.NET 5 注入 NinjaContext
+# 2. 让 ASP.NET 5 注入 NinjaContext
 不过，我该将 NinjaContext 创建代码移入哪里呢？ 答案就是使用存储库的控制器。我当然不想在控制器中引入 EF，以此来将它传递到存储库的新实例中。这会导致混乱局面的产生（如下所示）：
-```
+```csharp
 public class NinjaController : Controller {
   NinjaRepository _repo;
   public NinjaController() {
@@ -72,7 +72,7 @@ public class NinjaController : Controller {
 同时，我也在强制控制器注意 EF，此代码不存在我刚才在存储库中解决的实例化依赖对象的问题。控制器可直接实例化存储库类。我只想让它使用存储库，而不用担心具体的创建方式和时间或处置时间。就像我在存储库中注入 NinjaContext 实例一样，我想在控制器中注入随时可用的存储库实例。
 
 控制器类中更简洁的代码版本更像是下面这样：
-```
+```csharp
 public class NinjaController : Controller {
   NinjaRepository _repo;
   public NinjaController(NinjaRepository repo) {
@@ -84,11 +84,11 @@ public class NinjaController : Controller {
 }
 ```
 
-## 使用 IoC 容器安排创建对象
+# 3. 使用 IoC 容器安排创建对象
 由于我要处理的是 ASP.NET 5，而不是 StructureMap 中的请求，因此我将利用 ASP.NET 5 内置的 DI 支持。ASP.NET 5 不仅可以注入许多旨在接受对象的新 ASP.NET 类， 还提供可以协调对象去向的服务基础结构（即 IoC 容器）。它还允许您指定将创建和注入的对象的范围（应何时创建和处置对象）。借助内置支持是更简单的入门方法。
 
 在借助 ASP.NET 5 DI 支持以根据需要注入 NinjaContext 和 NinjaRepository 之前，让我们来看看注入 EF7 类是什么样的情况，因为 EF7 内置可关联 ASP.NET 5 DI 支持的方法。属于标准 ASP.NET 5 项目的 startup.cs 类具有称为“ConfigureServices”的方法。您就是在这其中告知应用程序您想如何关联依赖关系的，以便创建适当的对象并将其注入需要使用这些对象的对象中。在下面的方法中，除 EF7 配置以外的其他所有内容均已被排除：
-```
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
   services.AddEntityFramework()
@@ -106,20 +106,20 @@ AddDbContext 是 EF 的核心方法。这种核心方法可向 ASP.NET 5 内置�
 
 这就是 EF7 内置的实用功能。遗憾的是，EF6 不具有其中任何一项功能。但既然您知道服务的工作原理，向应用程序服务添加 EF6 NinjaContext 的模式应该就是有意义的。
 
-## 添加不是专为 ASP.NET 5 构建的服务
+# 4. 添加不是专为 ASP.NET 5 构建的服务
 除了可以添加与 ASP.NET 5 兼容的服务（包含实用的扩展方法，如 AddEntityFramework 和 AddMvc）之外，还可以添加其他依赖关系。IServicesCollection 接口提供了普通的 Add 方法，以及一系列用于指定所添加服务的生存期的方法： AddScoped、AddSingleton 和 AddTransient。我将针对我的解决方案主要介绍 AddScoped，因为它将请求的实例的生存期限定为 MVC 应用程序（我想在其中使用我的 EF6Model 项目）中每个 HTTP 请求的生存期。此应用程序不会尝试跨请求共享实例。这将会在每个控制器操作中创建和处置我的 NinjaContext，从而模拟我原来要实现的目标，因为每个控制器操作均响应一个请求。
 
 请注意，我有两个需要注入对象的类。NinjaRepository 类需要注入 NinjaContext 对象，而 NinjaController 类则需要注入 NinjaRepository 对象。
 
 在 startup.cs ConfigureServices 方法中，我从添加以下代码入手：
-```
+```csharp
 services.AddScoped<NinjaRepository>();
 services.AddScoped<NinjaContext>();
 ```
 现在，我的应用程序已注意到这些类型，将在另一个类型的构造函数提出请求时，实例化这些类型。
 
 当控制器构造函数在寻找要作为参数传递的 NinjaRepository 时：
-```
+```csharp
 public NinjaController(NinjaRepository repo) {
     _repo = repo;
   }
@@ -127,7 +127,7 @@ public NinjaController(NinjaRepository repo) {
 但什么内容都没有传递，服务将快速创建 NinjaRepository。这就被称为“构造函数注入”。如果 NinjaRepository 需要 NinjaContext 实例，但什么内容都没有传递，那么服务也会知道进行实例化。
 
 还记得我之前指出的 DbContext 中获取的连接字符串吗？ 现在，我可以告知构造 NinjaContext 的 AddScoped 方法这个连接字符串。我将再次在 appsetting.json 文件中添加此字符串。下面就是此文件中的相应部分：
-```
+```csharp
 "Data": {
     "DefaultConnection": {
       "NinjaConnectionString":
@@ -139,24 +139,24 @@ public NinjaController(NinjaRepository repo) {
 请注意，JSON 不支持自动换行，因此以 Server= 开头的字符串无法在 JSON 文件中自动换行。此处进行自动换行只是为了方便您阅读。
 
 我已将 NinjaContext 构造函数修改为接收连接字符串，并在 DbContext 重载中使用此字符串，而这也会接收连接字符串：
-```
+```csharp
 public NinjaContext(string connectionString):
     base(connectionString) { }
 ```
 现在，我可以告知 AddScoped，在发现 NinjaContext 后，应使用相应的重载构造它，同时传递 appsettings.json 中的 Ninja­ConnectionString：
-```
+```csharp
 services.AddScoped<NinjaContext>
 (serviceProvider=>new NinjaContext
   (Configuration["Data:DefaultConnection:NinjaConnectionString"]));
 ```
 在进行这最后一项更改之后，我重构的解决方案现在就能从头到尾正常运行了。启动逻辑将应用设置为注入存储库和上下文。在应用路由到默认控制器（所使用的存储库使用上下文）后，不仅会快速创建所需的对象，还会检索数据库中的数据。我的 ASP.NET 5 应用程序利用其内置 DI 与我在其中使用 EF6 构建模型的旧程序集进行交互。
 
-## 旨在提高灵活性的接口
+# 5. 旨在提高灵活性的接口
 还可以进行最后一项改进，就是利用接口。如果可以使用不同版本的 NinjaRepository 或 NinjaContext 类，我可能会从头到尾实现接口。由于我无法预见是否需要在 NinjaContext 上使用变体，因此我将只为存储库类创建接口。
 如图 1 所示，NinjaRepository 现在实现 INinjaRepository 协定。
 
 图 1：使用接口的 NinjaRepository
-```
+```csharp
 public interface INinjaRepository
 {
   List<Ninja> GetAllNinjas();
@@ -173,7 +173,7 @@ public class NinjaRepository : INinjaRepository
 }
 ```
 ASP.NET 5 MVC 应用程序中的控制器现在使用 INinjaRepository 接口，而不是 NinjaRepository 的具体实现：
-```
+```csharp
 public class NinjaController : Controller {
   INinjaRepository _repo;
   public NinjaController(INinjaRepository repo) {
@@ -185,12 +185,12 @@ public class NinjaController : Controller {
 }
 ```
 我已修改了 NinjaRepository 的 AddScoped 方法，以告知 ASP.NET 5 无论何时需要使用接口，使用相应的实现（当前是 NinjaRepository）：
-```
+```csharp
 services.AddScoped<INinjaRepository, NinjaRepository>();
 ```
 如果需要使用新版本，或者我要在其他应用程序中使用接口的不同实现，那么我可以将 AddScoped 方法修改为使用正确的实现。
 
-## 在实践中学习，而非仅仅复制粘贴
+# 6. 在实践中学习，而非仅仅复制粘贴
 我非常感激 Miller 有礼貌地为我提出了重构解决方案的挑战。从我所撰写的内容来看，我的重构之路自然不像看起来那么顺利。由于我并不是简单地复制其他人的解决方案，因此我在一开始就做错了几个地方。了解所出现的问题并编写出正确的代码，不仅让我取得了成功，还在很大程度上帮助我了解 DI 和 IoC。我希望我撰写的内容可以为您带来同样的帮助，以免您像我一样在黑暗中摸索。
 
 原文来自[MSDN订阅杂志](https://msdn.microsoft.com/zh-cn/magazine/mt632269)

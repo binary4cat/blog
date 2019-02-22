@@ -7,16 +7,8 @@ permalink:
 description: System类
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ---
-<!-- TOC -->
 
-- [System类方法currentTimeMillis](#system%E7%B1%BB%E6%96%B9%E6%B3%95currenttimemillis)
-- [System类方法exit](#system%E7%B1%BB%E6%96%B9%E6%B3%95exit)
-- [System类方法gc](#system%E7%B1%BB%E6%96%B9%E6%B3%95gc)
-- [System类方法getProperties](#system%E7%B1%BB%E6%96%B9%E6%B3%95getproperties)
-- [System类方法arraycopy](#system%E7%B1%BB%E6%96%B9%E6%B3%95arraycopy)
-
-<!-- /TOC -->
-### System类方法currentTimeMillis
+# 1. System类方法currentTimeMillis
 - System类方法`currentTimeMillis()`:获取系统当前的毫秒值
 
 ```Java
@@ -37,7 +29,7 @@ public static void function(){
 
 
 <!--more-->
-### System类方法exit 
+# 2. System类方法exit 
 - System类方法`exit()`方法
 	- 退出虚拟机，所有程序全停止
 
@@ -55,7 +47,7 @@ public static void function(){
 ```
 
 
-### System类方法gc 
+# 3. System类方法gc 
 - System类方法gc
 	- 调用垃圾回收，直接回收所有对象。
 
@@ -86,7 +78,7 @@ public static void function(){
 ```
 
 
-### System类方法getProperties 
+# 4. System类方法getProperties 
 - System类方法getProperties
 	- 获取当前操作系统的相关属性数据
 
@@ -102,7 +94,7 @@ public static void function(){
 
 
 ![](http://ww1.sinaimg.cn/large/c55a7aeely1fmeb40nxj7j20fo0hrgm8.jpg)   
-### System类方法arraycopy
+# 5. System类方法arraycopy
 - System类方法arraycopy：
 	- 用来实现将源数组部分元素复制到目标数组的指定位置
     

@@ -7,19 +7,8 @@ permalink:
 description: Java中的Map接口使用概述
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ---
-<!-- TOC -->
 
-- [Map接口](#map接口)
-    - [Map接口中的常用方法](#map接口中的常用方法)
-    - [Map集合遍历(keySet)](#map集合遍历keyset)
-    - [Map集合Entry对象](#map集合entry对象)
-    - [Map集合遍历(entrySet方法)](#map集合遍历entryset方法)
-    - [HashMap集合存储自定义对象](#hashmap集合存储自定义对象)
-    - [LinkedHashMap](#linkedhashmap)
-
-<!-- /TOC -->
-
-# Map接口
+# 1. Map接口
 
 - Map接口概述:
   - Map中存储元素是成对存在的，每一个元素都包含键和值(key、value)。
@@ -27,7 +16,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
   - Map集合中的`key`是不能重复的，但是`value`可以重复，每个键只能对应一个值。
   - Map下的主要实现类：`HashMap`、`LinkedHashMap`
 
-## Map接口中的常用方法
+## 1.1. Map接口中的常用方法
 
 - `public V put(K key, V value)` ：存储键值对
 - `public void putAll(Map<? extends K, ? extends V> m)` :添加一个相同类型的Map(注意限定符约束)
@@ -83,7 +72,7 @@ public static void function() {
 ```
 
 
-## Map集合遍历(keySet)
+## 1.2. Map集合遍历(keySet)
 
 - 首先获取Map集合中所有的键，`keySet()`方法返回一个Set集合存储所有的键
 - 遍历返回的Set，调用`get(key)`方法获取对应的值
@@ -111,7 +100,7 @@ public static void function() {
 
 ```
 
-## Map集合Entry对象
+## 1.3. Map集合Entry对象
 
 - Map接口中有一个嵌套的接口`Entry<K,V>`，它将键值对的对应关系封装成了键值对对象
 
@@ -137,7 +126,7 @@ public Set<Map.Entry<K,V>> entrySet() {
 
 ```
 
-## Map集合遍历(entrySet方法)
+## 1.4. Map集合遍历(entrySet方法)
 
 
 ```java
@@ -167,7 +156,7 @@ public static void function() {
 
 ```
 
-## HashMap集合存储自定义对象
+## 1.5. HashMap集合存储自定义对象
 
 - `HashMap`集合的key、value值都可以是Object类型的，也就是可以存储任意类型的对象。
 - key为自定义对象时：
@@ -176,7 +165,7 @@ public static void function() {
 - value为自定义对象时：
   - 因为Map存储时判断的时键是否重复，所以value为自定义对象时，可以没有特殊的处理。
 
-## LinkedHashMap
+## 1.6. LinkedHashMap
 
 - `LinkedHashMap`和`HashMap`基本一致，`LinkedHashMap`的特定就是可以保证迭代的顺序和插入的顺序一致。
 

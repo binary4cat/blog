@@ -7,32 +7,6 @@ permalink:
 description:
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 ---
-<!-- TOC -->
-
-- [1. 基础知识](#1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86)
-- [2. 类型与变量](#2-%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%98%E9%87%8F)
-    - [2.1. 基本类型](#21-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B)
-    - [2.2. 类型默认值](#22-%E7%B1%BB%E5%9E%8B%E9%BB%98%E8%AE%A4%E5%80%BC)
-        - [2.2.1. 类型的别名](#221-%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%AB%E5%90%8D)
-    - [2.3. 变量的声明与赋值](#23-%E5%8F%98%E9%87%8F%E7%9A%84%E5%A3%B0%E6%98%8E%E4%B8%8E%E8%B5%8B%E5%80%BC)
-    - [2.4. 变量的类型转换](#24-%E5%8F%98%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2)
-    - [2.5. 常量的定义](#25-%E5%B8%B8%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89)
-    - [2.6. 运算符](#26-%E8%BF%90%E7%AE%97%E7%AC%A6)
-    - [2.7. 控制语句](#27-%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5)
-        - [2.7.1. 循环](#271-%E5%BE%AA%E7%8E%AF)
-        - [2.7.2. switch](#272-switch)
-    - [2.8. Array](#28-array)
-    - [2.9. 切片Slice](#29-%E5%88%87%E7%89%87slice)
-    - [2.10. map](#210-map)
-    - [2.11. 函数](#211-%E5%87%BD%E6%95%B0)
-        - [2.11.1. defer](#2111-defer)
-    - [2.12. 结构struct](#212-%E7%BB%93%E6%9E%84struct)
-    - [2.13. 方法method](#213-%E6%96%B9%E6%B3%95method)
-    - [2.14. 接口interface](#214-%E6%8E%A5%E5%8F%A3interface)
-    - [2.15. 反射reflection](#215-%E5%8F%8D%E5%B0%84reflection)
-    - [2.16. 并发concurrency](#216-%E5%B9%B6%E5%8F%91concurrency)
-
-<!-- /TOC -->
 
 # 1. 基础知识
 

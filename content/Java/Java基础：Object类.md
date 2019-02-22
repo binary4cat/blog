@@ -7,22 +7,15 @@ permalink:
 description: Java基础：Object类
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ---
-<!-- TOC -->
 
-- [Object类概述](#object%E7%B1%BB%E6%A6%82%E8%BF%B0)
-- [equals方法比较内存地址](#equals%E6%96%B9%E6%B3%95%E6%AF%94%E8%BE%83%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80)
-- [重写equals方法](#%E9%87%8D%E5%86%99equals%E6%96%B9%E6%B3%95)
-- [重写toString方法](#%E9%87%8D%E5%86%99tostring%E6%96%B9%E6%B3%95)
-
-<!-- /TOC -->
-### Object类概述
+# 1. Object类概述
 - Object类概述
 	- 类层次结构的根类
 	- 所有类都直接或者间接的继承自该类
 	- Object中描述的所有方法子类都可以使用
 	- 所有类在创建对象的时候，最终找的父类就是Object。
 			
-### equals方法比较内存地址
+# 2. equals方法比较内存地址
 - Object类中的equals方法
 	- 用于比较两个对象是否相同，Object类中就是使用两个对象的内存地址在比较。
 	- Object类中的`equals`方法内部使用的就是`==`比较运算符。
@@ -68,7 +61,7 @@ public class TestEquals {
 ```
 
 
-### 重写equals方法
+# 3. 重写equals方法
 - 重写equals方法
 	- 开发中要比较两个对象是否相同，经常会根据对象中的属性值进行比较	
 	- 在开发经常需要子类重写equals方法根据对象的属性值进行比较。	
@@ -131,7 +124,7 @@ public class TestEquals {
 ```
 
 
-### 重写toString方法
+# 4. 重写toString方法
 - 重写toString方法
 	- 为什么要重写toString方法
 		- toString方法返回该对象的字符串表示，其实该字符串内容就是对象的类型+@+内存地址值。
@@ -161,4 +154,3 @@ public class TestToString {
 }
 
 ```
-

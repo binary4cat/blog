@@ -7,15 +7,8 @@ permalink:
 description: Java基础：String类
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ---
-<!-- TOC -->
 
-- [String类的概念和不变性](#string%E7%B1%BB%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E4%B8%8D%E5%8F%98%E6%80%A7)
-- [String类创建方式和比较](#string%E7%B1%BB%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F%E5%92%8C%E6%AF%94%E8%BE%83)
-- [String类构造方法](#string%E7%B1%BB%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95)
-- [String类的其他方法](#string%E7%B1%BB%E7%9A%84%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95)
-
-<!-- /TOC -->
-### String类的概念和不变性
+# 1. String类的概念和不变性
 - String类的概念和不变性
 	- String类
 		- API中的String类的描述，发现String 类代表字符串
@@ -47,7 +40,7 @@ public class StringDemo {
 ```
 
 
-### String类创建方式和比较
+# 2. String类创建方式和比较
 - String类创建方式和比较
 	- 创建对象的数量比较
 		- `String s3 = "abc";`
@@ -70,7 +63,7 @@ public class StringDemo2 {
 ```
 
 
-### String类构造方法
+# 3. String类构造方法
 - String类构造方法
 	- 常见构造方法
 		- `public String()`:空构造
@@ -143,7 +136,7 @@ public class StringDemo {
 ```
 
 
-### String类的其他方法			
+# 4. String类的其他方法			
 - String类的其他方法
 	- 方法介绍
 		- `int length()`: 返回字符串的长度

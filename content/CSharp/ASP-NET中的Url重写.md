@@ -5,13 +5,15 @@ tags: ["ASP.NET","转载"]
 permalink: ASP-NET-Url-Rewriting
 categories: ["cSharp"]
 ---
-##  一. 为了页面更有利于seo优化，url重写程序需要做出的不可缺少的手段之一。
+# 1. 一. 为了页面更有利于seo优化，url重写程序需要做出的不可缺少的手段之一。
 
-## 二.目前url重写最常见的两种方法有：
+# 2. 二.目前url重写最常见的两种方法有：
+
 　　1. 通过熟悉页面的内部执行流程，也就是asp.net请求管道中的相关知识点，进行url重写。
 　　2. 通过使用微软提供的UrlRewriter.dll实现url重写（简单）；
 
-## 三、在请求管道中的第一个请求管道中拦截url并使其完成url重写功能：
+# 3. 三、在请求管道中的第一个请求管道中拦截url并使其完成url重写功能：
+
 　　1. 熟悉请求管道实现程序运行的全过程：
 　　　　(1)：BeginRequest: 开始处理请求
 　　　　(2)：AuthenticateRequest授权验证请求，获取用户授权信息
@@ -33,8 +35,10 @@ categories: ["cSharp"]
 　　　　(18)PostLogRequest 已完成日志
 　　　　(19)EndRequest 完成
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeejw1f1hc5019pej20it0buwhk.jpg)
+
 　　2. 直接上代码：
-```
+　　3. 
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -80,7 +84,8 @@ namespace UrlReWriter
     }
 }
 ```
-```
+
+```html
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="url重写.WebForm1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -98,7 +103,8 @@ namespace UrlReWriter
 </body>
 </html>
 ```
-```
+
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -117,13 +123,15 @@ namespace url重写
     }
 }
 ```
-```
+
+```html
  <httpModules>
       <add name="UrlReWriter" type="UrlReWriter.UrlWriter,UrlReWriter"/>
     </httpModules>
     <pages controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID"/>
   </system.web>
 ```
+
 **Note:**记得在url重写项目中引用UrlReWriter项目。否则httpModules接口没有注册，url重写泡汤是必然的。
 
 原文来自[博客园](http://www.cnblogs.com/knowledgesea/archive/2012/10/08/2715350.html)

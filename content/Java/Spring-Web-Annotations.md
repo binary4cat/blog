@@ -9,24 +9,6 @@ photos: https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528
 ---
 > 原文地址：[http://www.baeldung.com/spring-mvc-annotations](http://www.baeldung.com/spring-mvc-annotations)
 > 此篇为译文，由于英语水平有限，可能对原文的理解有误，欢迎指正，不甚感激！
-<!-- TOC -->
-
-- [1. 概览](#1-%E6%A6%82%E8%A7%88)
-- [2. `@RequestMapping`](#2-requestmapping)
-- [3. `@RequestBody`](#3-requestbody)
-- [4. `@PathVariable`](#4-pathvariable)
-- [5. `@RequestParam`](#5-requestparam)
-- [6. 响应相关的注解](#6-%E5%93%8D%E5%BA%94%E7%9B%B8%E5%85%B3%E7%9A%84%E6%B3%A8%E8%A7%A3)
-    - [6.1. `@ResponseBody`](#61-responsebody)
-    - [6.2. `@ExceptionHandler`](#62-exceptionhandler)
-    - [6.3. `@ResponseStatus`](#63-responsestatus)
-- [7. 其他Web相关注解](#7-%E5%85%B6%E4%BB%96web%E7%9B%B8%E5%85%B3%E6%B3%A8%E8%A7%A3)
-    - [7.1. `@RestController`](#71-restcontroller)
-    - [7.2. `@ModelAttribute`](#72-modelattribute)
-    - [7.3. `@CrossOrigin`](#73-crossorigin)
-- [8. 总结](#8-%E6%80%BB%E7%BB%93)
-
-<!-- /TOC -->
 
 # 1. 概览
 在本篇教程中，我们将要探讨Spring web开发有关的注解(Spring MVC注解)，这些注解存在于`org.springframework.web.bind.annotation`包中。

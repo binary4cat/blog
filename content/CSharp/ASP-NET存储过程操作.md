@@ -9,8 +9,9 @@ categories: ["cSharp"]
 
 　　存储过程是存放在数据库服务器上的预先编译好的sql语句。使用存储过程，可以直接在数据库中存储并运行功能强大的任务。存储过程在第一应用程序执行时进行语法检查和编译，编译好的版本保存在高速缓存中。在执行重复任务时，存储过程可以提高性能和一致性。由于存储过程可以将一系列对数据库的操作放在数据库服务器上执行，因而可以降低Web服务器的负载，提高整个系统的性能。
 
-### 1、创建存储过程
-```
+# 1. 、创建存储过程
+
+```sql
 USE Northwind
 GO
 CREATE PROC [DBO].[GetOrdersByOrderDate]
@@ -28,9 +29,11 @@ USE Northwind
 GO
 EXEC GetByOrderDate '1996-10-10 0:00:00'
 ```
+
 <!--more-->
-### 2、调用存储过程
-```
+# 2. 、调用存储过程
+
+```csharp
 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Northwind"].ConnectionString);
 
             try
@@ -66,9 +69,10 @@ SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["N
         }
 ```
 
-### 3、输出参数
+# 3. 、输出参数
 存储过程可以通过输出参数来返回值。
-```
+
+```sql
 USE Northwind
 GO
 CREATE PROC [DBO].[GetOrderDetailsTotalByProductID]
@@ -81,7 +85,8 @@ AS
     WHERE
         [ProductID] = @ProductID
 ```
-```
+
+```csharp
 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Northwind"].ConnectionString);
 
             try
@@ -110,11 +115,12 @@ SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["N
             }
 ```
 
-### 4、Return 返回值
+# 4. 、Return 返回值
 使用返回值表示存储过程的执行状态，它类似于输出参数，其区别：
 (1)、返回值只能返回sql整数值；
 (2)、返回值不能在存储过程内部声明，它使用Transcat-SQL的RETURN语句返回；
-```
+
+```sql
 USE Northwind
 GO
 CREATE PROC [DBO].[GetOrdersByCustomerID]
@@ -132,7 +138,8 @@ AS
     ELSE
         RETURN 1
 ```
-```
+
+```csharp
 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Northwind"].ConnectionString);
 
             try

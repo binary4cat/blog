@@ -6,11 +6,11 @@ categories: ["cSharp"]
 permalink: String-class-functions-and-properties
 description: string类常用函数和属性
 ---
-### 字符串的特殊性
+# 1. 字符串的特殊性
 　　1、字符串的不可变性，当我们在给字符串进行重新赋值、拼接、累加的过程中，都会在内存的堆空间中重新开辟一块新的空间。
 　　2、我们可以将字符串看做是一个`char`类型的数组。
 
-### 字符串常用函数：
+# 2. 字符串常用函数：
 
 `ToCharArray();` 将字符串转换成一个char类型的数组： <!--more-->
 　　使用string.ToCharArray();这个函数，就能把字符串转换成一个char类型的数组，字符串里面的每一个字符都是这个char类型数组的每一个元素。
@@ -63,7 +63,7 @@ description: string类常用函数和属性
 `TrimEnd();` 去掉字符串右边(结尾)的空格：
 　　string.TrimEnd();去掉字符串结尾的空格，中间和开头的空格去不掉。
 
-### 两个静态函数
+# 3. 两个静态函数
 
 `IsNullOrEmpty();` 判断指定字符串是否为null或者为空，返回一个bool类型的值：
 　　string.IsNullOrEmpty();判断指定字符串是否为空或者为null，返回一个bool类型的值。
@@ -71,7 +71,7 @@ description: string类常用函数和属性
 `Join(string);` 将指定的字符插入字符串的每一个元素的结尾，最后一个元素后面不加：
 　　string.Join("要插入的字符");将指定的字符插入调用字符串的每一个元素的后面，最后一个元素默认不加，返回的是string类型的值。
 
-### 字符串常用属性
+# 4. 字符串常用属性
 
 `Length` 返回字符串的长度：
 　　string.Length;可以拿到调用字符串的长度(字符个数)，返回一个int类型的值。

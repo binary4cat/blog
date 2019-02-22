@@ -7,24 +7,15 @@ permalink:
 description: Java基础：正则表达式
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmdrn8b8i8j20go0dejrs.jpg
 ---
-<!-- TOC -->
 
-- [正则表达式的概念和作用](#正则表达式的概念和作用)
-- [正则表达式语法规则](#正则表达式语法规则)
-- [正则表达式相关的String类方法](#正则表达式相关的string类方法)
-- [匹配示例](#匹配示例)
-- [切割示例](#切割示例)
-- [替换示例](#替换示例)
-
-<!-- /TOC -->
-### 正则表达式的概念和作用
+# 1. 正则表达式的概念和作用
 - 正则表达式的概述
 	- 正则表达式也是一个字符串，用来定义匹配规则，在Pattern类中有简单的规则定义。可以结合字符串类的方法使用。
 	- 正则表达式是具有特殊含义的字符串。
 - 正则表达式的作用
 	- 比如注册账户,需要输入用户名和密码,一般会对其限制长度,这个限制长度的事情就是正则表达式做的
 <!--more-->		
-### 正则表达式语法规则
+# 2. 正则表达式语法规则
 - 正则表达式语法规则
 	- 字符
 		- `x`  代表的是字符x
@@ -55,7 +46,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmdrn8b8i8j20go0dejrs.jpg
 		- `X{n,m}` X，至少 n 次，但是不超过 m 次
 
 
-### 正则表达式相关的String类方法
+# 3. 正则表达式相关的String类方法
 - 正则表达式练习和相关的String类方法
 	- `boolean matches(String 正则的规则)`
 		- `"abc".matches("[a]")` 
@@ -68,7 +59,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmdrn8b8i8j20go0dejrs.jpg
 		- 按照正则的规则,替换字符串
 	
 	
-### 匹配示例
+# 4. 匹配示例
 
 ```Java
 /*
@@ -97,7 +88,7 @@ public static void checkQQ(){
 ```
 
 
-### 切割示例
+# 5. 切割示例
 
 ```Java
 /*
@@ -145,7 +136,7 @@ public static void splitExample(){
 ```
 
 
-### 替换示例
+# 6. 替换示例
 
 ```Java
 /*

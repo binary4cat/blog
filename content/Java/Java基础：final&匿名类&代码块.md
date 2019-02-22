@@ -7,25 +7,8 @@ tags:
   - Java基础
 permalink: Java-final-class-code
 description: Java基础：final&匿名类&代码块
-photos: 'http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg'
+photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ---
-
-<!-- TOC -->
-
- - [final关键字](#final关键字)
-
-  - [final修饰类义](#final修饰类义)
-  - [final修饰方法](#final修饰方法)
-  - [final修饰局部变量](#final修饰局部变量)
-  - [final修饰成员变量](#final修饰成员变量)
-  - [匿名对象](#匿名对象)
-  - [内部类](#内部类)
-  - [成员内部类的调用格式](#成员内部类的调用格式)
-  - [成员内部类的同名变量调用](#成员内部类的同名变量调用)
-  - [局部内部类](#局部内部类)
-  - [代码块](#代码块)
-
-<!-- /TOC -->
 
  # final关键字
 
@@ -33,11 +16,11 @@ photos: 'http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg'
 
   - 继承的出现提高了代码的复用性，并方便开发。但随之也有问题，有些类在描述完之后，不想被继承，或者有些类中的部分方法功能是固定的，不想让子类重写。可是当子类继承了这些特殊类之后，就可以对其中的方法进行重写，那怎么解决呢？
   - 要解决上述的这些问题，需要使用到一个关键字final，final的意思为最终，不可变。
-  - final是个修饰符，它可以用来修饰类，类的成员，以及局部变量。<br>
+  - final是个修饰符，它可以用来修饰类，类的成员，以及局部变量。
 
     <!-- more -->
 
-     ### final修饰类义
+# final修饰类
 
 - `final` 修饰类
 

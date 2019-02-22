@@ -8,18 +8,6 @@ description: Java种的Set接口
 photos: 'http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.png'
 ---
 
-<!-- TOC -->
-
-- [1. Set接口](#1-set接口)
-- [2. 实现类HashSet的存储和迭代](#2-实现类hashset的存储和迭代)
-- [3. 字符串对象的哈希值](#3-字符串对象的哈希值)
-    - [3.1. HashSet的存储过程](#31-hashset的存储过程)
-    - [3.2. LinkedHashSet集合](#32-linkedhashset集合)
-- [4. ArrayList,HashSet判断对象是否重复](#4-arraylisthashset判断对象是否重复)
-- [5. hashCode和equals方法](#5-hashcode和equals方法)
-
-<!-- /TOC -->
-
 # 1. Set接口
 
 - Set接口的特点

@@ -7,7 +7,7 @@ categories: ["Tool"]
 ---
 题图来自[慕课网](http://www.imooc.com)
 
-### Git常用命令速查表
+# 1. Git常用命令速查表
 ![](http://ww3.sinaimg.cn/mw690/c55a7aeejw1f1d54uf2jkj21kw146tqg.jpg)<!--more-->
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeejw1f0wylzabhfj20rc0l844n.jpg)
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeejw1f0wylyzp3zj21cq0ygdqt.jpg)

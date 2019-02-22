@@ -15,20 +15,22 @@ description: SQL Server表连接(Join)
 　　3. right join :右连接。关键字前面的表是左表，后面的表是右表。--右连接可以得到右表所有数据，即使左表没有匹配的行。如果建立关联的字段值在右左表中不存在，那么左表的数据就以null值替换。
 　　4. full join :可以得到左右连接的综合结果--去重复
 <!--more-->
-### 语法
+# 语法
+
+```sql
 SELECT column_name(s)
 FROM table_name1
 inner|left|right|full JOIN table_name2 
 ON table_name1.column_name=table_name2.column_name
-
+```
 
 有两张表：
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeejw1f1e9ogltfcj20ha05wmx1.jpg)
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeejw1f1eagmfb0cj20fe04cjr8.jpg)
 我们现在要获取谁订购了什么商品的数据：
 
-### inner Join代码示例
-```
+# inner Join代码示例
+```sql
 --我们可以用这个种方式获取
 select person.Name,person.Address,orders.ordernum 
 from person,orders 
@@ -36,7 +38,7 @@ where person.P_Id=orders.P_Id
 ```
 ![](http://ww2.sinaimg.cn/mw690/c55a7aeejw1f1e9stu5clj20ex04ijr6.jpg)
 **使用Join实现：**
-```
+```sql
 select person.Name,person.Address,orders.ordernum 
 from person 
 inner join orders 
@@ -44,8 +46,8 @@ on person.P_Id=orders.P_Id
 ```
 ![](http://ww2.sinaimg.cn/mw690/c55a7aeejw1f1e9stu5clj20ex04ijr6.jpg)
 
-### left join代码示例
-```
+# left join代码示例
+```sql
 select person.Name,person.Address,orders.ordernum 
 from person 
 left join orders 
@@ -53,8 +55,8 @@ on person.P_Id=orders.P_Id
 ```
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeejw1f1easqr69jj20h404mq3a.jpg)
 
-### right join代码示例
-```
+# right join代码示例
+```sql
 select person.Name,person.Address,orders.ordernum 
 from person 
 right join orders 
@@ -62,8 +64,8 @@ on person.P_Id=orders.P_Id
 ```
 ![](http://ww1.sinaimg.cn/mw690/c55a7aeejw1f1eayxaeauj20ep04ymxd.jpg)
 
-### full join代码示例
-```
+# full join代码示例
+```sql
 select person.Name,person.Address,orders.ordernum 
 from person 
 full join orders 

@@ -6,25 +6,6 @@ categories: ["Frontend"]
 description : "Angular知识点汇总(5)：HTTP服务通信"
 draft: false
 ---
-<!-- TOC -->
-
-- [1. 响应式编程](#1-响应式编程)
-    - [1.1. 名词解释](#11-名词解释)
-    - [1.2. 简单例子](#12-简单例子)
-    - [1.3. 在Angular中使用响应式编程](#13-在angular中使用响应式编程)
-- [2. HttpClientModule模块](#2-httpclientmodule模块)
-    - [2.1. HttpClientModule模块介绍](#21-httpclientmodule模块介绍)
-    - [2.2. HttpClientModule的使用](#22-httpclientmodule的使用)
-        - [2.2.1. Get请求演示](#221-get请求演示)
-        - [2.2.2. POST请求演示](#222-post请求演示)
-    - [2.3. 配置后端API请求地址](#23-配置后端api请求地址)
-    - [2.4. HTTP请求Header和参数设置](#24-http请求header和参数设置)
-    - [2.5. 异步管道的方式获取数据](#25-异步管道的方式获取数据)
-    - [2.6. 高级用法](#26-高级用法)
-- [3. 编写可订阅的WebSocket通信](#3-编写可订阅的websocket通信)
-- [4. 参考资料](#4-参考资料)
-
-<!-- /TOC -->
 
 # 1. 响应式编程
 

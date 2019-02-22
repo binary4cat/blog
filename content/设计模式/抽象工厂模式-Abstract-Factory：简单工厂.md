@@ -8,7 +8,7 @@ description: 抽象工厂模式(Abstract Factory)：简单工厂
 ---
 　　学习抽象工厂之前，我们有必要对另外两个：简单工厂、工厂方法进行学习，以更好的掌握抽象工厂的使用。
 
-### 简单工厂
+# 1. 简单工厂
 　　简单工厂并不是一种模式，而是面向对象方式的一种体现。<!--more-->
 ![](/image/Design Pattern/design pattern6.png)
 　　**特点**：
@@ -19,7 +19,7 @@ description: 抽象工厂模式(Abstract Factory)：简单工厂
 我们按照图中的例子编写代码，演示什么是简单工厂：
 **Code 1**
 　　面向过程的写法。
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,7 +62,7 @@ namespace SimpleFactory1
 
 **Code 2**
 　　稍微改写一下，将返回结果封装起来。
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -117,7 +117,7 @@ namespace SimpleFactory2
 
 **Code 3**
 　　将运算抽象出来，使用运算符对象实例，进行计算。
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -228,7 +228,7 @@ namespace SimpleFactory3
 
 **Code 4**
 　　我们这一步改写一下*Code 3*中的代码,简化`switch`中的代码。
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -323,7 +323,7 @@ namespace SimpleFactory4
 
 **Code 5**
 　　现在将`switch`封装成简单工厂方法。
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -7,21 +7,14 @@ permalink:
 description:
 photos: http://img.mp.sohu.com/upload/20170809/7f6678264b154d028f0e36e9159c8e9a.png
 ---
-<!-- TOC -->
 
-- [集合概述](#集合概述)
-- [集合继承关系图](#集合继承关系图)
-- [集合Collection的方法](#集合collection的方法)
-- [集合Collection的remove方法](#集合collection的remove方法)
-
-<!-- /TOC -->
-### 集合概述 
+# 1. 集合概述 
 - 集合，集合是java中提供的一种容器，可以用来存储多个数据
     - 数组的长度是固定的。集合的长度是可变的
     - 集合中存储的元素必须是引用类型数据(基本类型可以使用包装类，Java内部自动帮我们做了拆装箱操作)
 
 <!--more-->
-### 集合继承关系图
+# 2. 集合继承关系图
 ![](http://ww1.sinaimg.cn/large/c55a7aeely1fmeyzdwjidj20nc08wmxf.jpg)
 
 - ArrayList的继承关系:
@@ -46,7 +39,7 @@ public class ArrayList extends AbstractList implements List{
 
    
 
-### 集合Collection的方法
+# 3. 集合Collection的方法
 - 集合Collection的方法,是集合中所有实现类必须拥有的方法
 - `Object[] toArray()`  
     - 集合中的元素,转成一个数组中的元素, 集合转成数组   
@@ -108,7 +101,7 @@ public static void function(){
 }
 ```
 
-### 集合Collection的remove方法
+# 4. 集合Collection的remove方法
 - `boolean remove(Object o)`   ：移除集合中指定的元素
 - `boolean removeAll(Collection<?> c)` ：删除有元素，集合容器本身还在
 

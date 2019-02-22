@@ -7,14 +7,8 @@ permalink:
 description: Java基础：数值类型操作
 photos: http://ww1.sinaimg.cn/large/c55a7aeely1fmbwbz5s71j20et08cjra.jpg
 ---
-<!-- TOC -->
 
-- [Math类的方法](#math类的方法)
-- [BigInteger类概述和构造方法](#biginteger类概述和构造方法)
-- [BigDecimal类操作高精度数据](#bigdecimal类操作高精度数据)
-
-<!-- /TOC -->
-### Math类的方法
+# 1. Math类的方法
 - `public static double sqrt(double a)`
     - 返回参数的平方根  
 
@@ -97,7 +91,7 @@ public static void function(){
 ```
 
 
-### BigInteger类概述和构造方法
+# 2. BigInteger类概述和构造方法
 - BigInteger类概述和构造方法
     - BigInteger类可以对超大的数值进行操作(远超long类型的最大长度)
     - 构造方法中传递的字符串参数不允许出现数字以外的字符
@@ -142,7 +136,7 @@ public static void function_1(){
 ```
 
 
-### BigDecimal类操作高精度数据
+# 3. BigDecimal类操作高精度数据
 - BigDecimal类概述
     - BigDecimal可以操作超大型的浮点数据，提供高精度的浮点运算
 
