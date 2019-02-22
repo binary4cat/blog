@@ -5,5 +5,6 @@ tags: []
 categories: []
 description : "{{ replace .Name "-" " " | title }}"
 draft: false
+photos: 
 ---
 

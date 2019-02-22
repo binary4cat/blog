@@ -5,10 +5,10 @@ tags: ["Angular","VSCode"]
 categories: ["Frontend"]
 description : "6个Angular开发者必备的VSCode扩展"
 draft: false
+photos: /image/5c4008c23f81db7deb6967541550734744680.png
 ---
-![angular](/image/5c4008c23f81db7deb6967541550734744680.png)
 
-在这片文章，我将推荐6个我认为是使用VSCode开发Angular必备的扩展，如果你有喜欢的有用插件，也请推荐给我😁。
+在这篇文章，我将推荐6个我认为是使用VSCode开发Angular必备的扩展，如果你有喜欢的有用插件，也请推荐给我😁。
 
 # 1. 扩展推荐
 
