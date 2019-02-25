@@ -46,6 +46,7 @@ let res = users.filter(it => it.name.includes('oli'));
 
 ```javascript
 let res = users.filter(it => new RegExp('oli', "i").test(it.name));
+
 // res 等于
 [
   { id: 97, name: 'Oliver', age: 28, group: 'admin' }
@@ -58,6 +59,7 @@ let res = users.filter(it => new RegExp('oli', "i").test(it.name));
 
 ```javascript
 const hasAdmin = users.some(user => user.group === 'admin');
+
 // hasAdmin 等于 true
 ```
 
@@ -90,7 +92,7 @@ let flat = nested.reduce((acc, it) => [...acc, ...it]);
 let flat = [].concat.apply([], nested);
 ```
 
-所以产生了一个新的功能[`Array.flat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)，不过到目前仍是一个实验性的功能。
+而且由这种使用方式还产生了一个新的功能[`Array.flat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)，不过到目前这仍是一个实验性的功能。
 
 # 6. 从一个对象中获取指定属性出现的频率（次数）
 

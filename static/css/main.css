@@ -4,8 +4,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
 html {
-    font-family: Ubuntu ,sans-serif;
-    letter-spacing: 0.7px;  /*字体间距*/
+    font-family: Ubuntu, sans-serif;
+    letter-spacing: 0.7px;
+    /*字体间距*/
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
@@ -406,6 +407,10 @@ a:hover {
     /* margin: 2em auto; */
     /* overflow: scroll; */
     color: gray;
+}
+
+.highlight tr {
+    line-height: 22px;
 }
 
 .highlight div {
@@ -1221,7 +1226,7 @@ footer small {
 }
 
 .big-first-letter-Q {
-    font-family: Ubuntu,serif;
+    font-family: Ubuntu, serif;
     font-style: italic;
     font-size: 6em;
     line-height: .9em;
@@ -1233,7 +1238,7 @@ footer small {
 }
 
 .big-first-letter-J {
-    font-family: Ubuntu,serif;
+    font-family: Ubuntu, serif;
     font-size: 7em;
     line-height: .85em;
     float: left;
@@ -1254,6 +1259,7 @@ footer small {
     border-bottom: 1px dotted #e0e1e6;
     margin: 0 auto 3.5em;
 }
+
 .single-wrap .tag-and-categories ul {
     list-style: none
 }
@@ -1262,6 +1268,7 @@ footer small {
     float: left;
     margin-left: 10px
 }
+
 .single-wrap .feat a.popup {
     display: inline-block;
     position: relative;
@@ -1302,7 +1309,7 @@ footer small {
 .single-wrap h1.page-title {
     /* font-size: 220%; */
     /* line-height: 135%; */
-    font-family: Ubuntu,serif;
+    font-family: Ubuntu, serif;
     /* font-style: italic; */
     text-align: center;
     margin: 0 0 0 0;
