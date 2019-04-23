@@ -14,6 +14,10 @@ Linux是比较理想的开发环境，先前电脑装的Ubuntu系统，流畅度
 
 关于如何安装WSL的操作就省略了，Google一下很多，也很简单，主要介绍一下其他的配置内容。
 
+## 配置清华大学软件源
+
+Ubuntu官方阿软件源服务器在国外，执行`apt-get`比较慢，所以切换为国内的软件源进行加速，这里使用[清华大学开源软件镜像站提供的Ubuntu镜像](https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/)
+
 ## Hyper
 
 好看是第一生产力，Hyper是一个第三方的命令行工具，使用`Electron`框架开发的，可配置性很高，有丰富的主题可以选择，直接秒杀自带的黑框框，来两张图对比一下：
@@ -87,7 +91,7 @@ source ~/.bashrc
 # source ~/.zshrc
 ```
 
-# 测试
+## 测试
 
 我在`E:\Golang\src\github.com\haijiandong\demo`文件夹下编写了一个简单的测试程序，接下来我们测试一下开发环境。
 
@@ -95,3 +99,66 @@ source ~/.bashrc
 ![main.go](/image/Snipaste_2019-04-20_23-15-24.png)
 
 这样配置后可以简单的替代Linux开发环境，并且也可以使用Windows办公两不误了。
+
+
+# 安装Docker
+
+如果直接用 apt 来安装 docker，不会是最新版的，所以参考[官方文档](https://docs.docker.com/install/linux/docker-ce/ubuntu/)来安装最新版的
+
+```shell
+sudo apt-get remove docker docker-engine docker.io
+sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce
+```
+
+执行一下`docker version`:
+
+![](/image/微信截图_2019164102.png)
+
+启动Docker：
+
+```shell
+sudo service docker start
+```
+
+此时直接运行镜像会报错：
+
+![](/image/微信截图_20190420165031.png)
+
+因为WSL不是一个完整阿Linux系统，所以没有办法运行Docker的守护进程，如果在Windows中安装了Docker，那么在WSL中可以操作Windows安装的Docker。
+
+## 在WSL中操作Docker
+
+首先下载安装[Docker for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows)并运行。
+
+然后打开Docker for Windows的配置，勾选`Expose daemon on tcp:localhost:2375 without TLS`
+
+![](/image/微信截图_20190420165951.png)
+
+
+配置WSL中的Docker链接到Docker for Windows：
+
+使用命令`vi ~/.bashrc`（`vi ~/.zshrc`），增加下面的配置：
+
+```shell
+export DOCKER_HOST=tcp://127.0.0.1:2375
+```
+
+保存后执行`source ~/.bashrc`（`vi ~/.zshrc`）使配置生效。
+
+## 执行Docker操作
+
+![](/image/微信截图_20190420173017.png)
+
