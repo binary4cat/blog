@@ -8,7 +8,7 @@ photos: http://ww1.sinaimg.cn/large/c55a7aeely1ficnszlhh9j20go098jrl.jpg
 draft: false
 ---
 
-Linux是比较理想的开发环境，先前电脑装的Ubuntu系统，流畅度、字体效果完爆Windows，但是开发之外其他的内容就很难在Linux上进行了，例如印象笔记、微信QQ传输文件等，最近又换回了Windows系统，借助win10的Linux子系统也能搭一个Linux下的开发环境。
+Linux是比较理想的开发环境，先前电脑装的Ubuntu系统，流畅度、字体效果感觉都比Windows好，但是开发之外其他的内容就很难在Linux上进行了，例如印象笔记、微信QQ传输文件等，最近又换回了Windows系统，花时间借助win10的Linux子系统也能搭一个Linux下的开发环境。
 
 # 安装WSL
 
@@ -125,7 +125,7 @@ sudo apt-get install docker-ce
 
 执行一下`docker version`:
 
-![](/image/微信截图_2019164102.png)
+![docker](/image/wx_2019164102.png)
 
 启动Docker：
 
@@ -135,7 +135,7 @@ sudo service docker start
 
 此时直接运行镜像会报错：
 
-![](/image/微信截图_20190420165031.png)
+![docker](/image/wx_20190420165031.png)
 
 因为WSL不是一个完整阿Linux系统，所以没有办法运行Docker的守护进程，如果在Windows中安装了Docker，那么在WSL中可以操作Windows安装的Docker。
 
@@ -145,7 +145,7 @@ sudo service docker start
 
 然后打开Docker for Windows的配置，勾选`Expose daemon on tcp:localhost:2375 without TLS`
 
-![](/image/微信截图_20190420165951.png)
+![docker](/image/wx_20190420165951.png)
 
 
 配置WSL中的Docker链接到Docker for Windows：
@@ -160,5 +160,5 @@ export DOCKER_HOST=tcp://127.0.0.1:2375
 
 ## 执行Docker操作
 
-![](/image/微信截图_20190420173017.png)
+![docker](/image/wx_20190420173017.png)
 
