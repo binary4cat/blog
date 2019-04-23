@@ -141,7 +141,7 @@ sudo service docker start
 
 ## 在WSL中操作Docker
 
-首先下载安装[Docker for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows)并运行。
+首先启用Windows10系统的**Hyper-V**，然后下载安装[Docker for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows)并运行（Hyper-V只支持win10 Pro以上系统，其他系统需要使用[docker toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)安装）。
 
 然后打开Docker for Windows的配置，勾选`Expose daemon on tcp:localhost:2375 without TLS`
 
