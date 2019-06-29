@@ -3,6 +3,7 @@ title: WSL+VSCODE体验UBUNTU环境下的开发
 date: 2019-06-29T22:06:36+08:00
 tags: ['WSL', 'VS code']
 categories: ['Tool']
+draft: false
 ---
 
 # 配置 WSL 环境
