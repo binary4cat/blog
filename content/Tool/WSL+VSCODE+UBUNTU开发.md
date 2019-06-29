@@ -86,15 +86,15 @@ ZSH_THEME="agnoster"
 
 在 VS code 中搜索`Remote-WSL`并安装，完成之后在左下角会出现这个图标：
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4h8e1hhl0j20kr03tq37.jpg)
+![](/image/Snipaste_2019-06-28_22-17-35.png)
 
 点击该图标，选择 New Window
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4h8ezeqkyj20kf05574q.jpg)
+![](/image/Snipaste_2019-06-28_22-19-26.png)
 
 第一次有些慢，需要安装组件：
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4h8fupbbvj20sd032aa7.jpg)
+![](/image/Snipaste_2019-06-28_22-20-17.png)
 
 ## 切换默认终端为 zsh
 
@@ -113,13 +113,13 @@ fi
 
 解决乱码问题，修改 VS code 的字体即可，这里推荐[Fira Code](https://github.com/tonsky/FiraCode)字体，下载安装该字体，并修改为 VS code 的默认字体，再打开终端就是下面的效果了：
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4hxg9w8xyj20z90j70v5.jpg)
+![](/image/Snipaste_2019-06-29_12-45-47.png)
 
 ## 安装 WSL 下的 VS code 扩展
 
 进入 WSL 中时 VS code 的本地扩展都是没有的，需要在 WSL 下在安装一边，也就是点点点就行：
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4hxkb14zaj208w0hrjsp.jpg)
+![](/image/Snipaste_2019-06-29_12-49-44.png)
 
 把已安装过的插件上显示"Install on WSL"的都点击安装上就行啦。
 
@@ -129,7 +129,7 @@ fi
 
 按照上面的官方文档在 terminal 中安装.net core：
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4hyn11wvhj211y0kh787.jpg)
+![](/image/Snipaste_2019-06-29_13-26-52.png)
 
 ## 创建并运行
 
@@ -143,21 +143,21 @@ cd myApp
 dotnet run
 ```
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4hzxhthpmj20sx0h5q55.jpg)
+![](/image/Snipaste_2019-06-29_14-11-35.png)
 
 ## 在 VS code 中修改编译运行
 
 在 VS code 中编辑 myApp 的内容，然后运行：
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4i0024996j211t0am0ty.jpg)
+![](/image/Snipaste_2019-06-29_14-14-04.png)
 
 将`Hello World!`修改为`Hello WSL!`
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4i01nq2n2j211y0khjt1.jpg)
+![](/image/Snipaste_2019-06-29_14-15-07.png)
 
 ### 在 terminal 中编译为 Linux 版本运行
 
-![](http://ww1.sinaimg.cn/large/c55a7aeely1g4i06pib96j211y0khn0b.jpg)
+![](/image/Snipaste_2019-06-29_14-20-26.png)
 
 # 结尾
 
