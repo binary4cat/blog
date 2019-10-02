@@ -27,7 +27,7 @@ install:
 
 script:
     - hugo
-    - echo 'haijd.tech' > public/CNAME
+    - echo 'blog.haijd.me' > public/CNAME
 
 #nothing changes
 deploy:
